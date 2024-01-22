@@ -1,0 +1,13 @@
+{
+  "ada.projectFile": "ada/sarif.gpr",
+  // It is recommended to check out the VSS repository as ../VSS
+  "terminal.integrated.env.osx": {
+      "GPR_PROJECT_PATH": "${workspaceFolder}/../VSS/gnat:${env:GPR_PROJECT_PATH}"
+  },
+  "terminal.integrated.env.linux": {
+      "GPR_PROJECT_PATH": "${workspaceFolder}/../VSS/gnat:${env:GPR_PROJECT_PATH}"
+  },
+  "terminal.integrated.env.windows": {
+      "GPR_PROJECT_PATH": "${workspaceFolder}/../VSS/gnat;${env:GPR_PROJECT_PATH}"
+  }
+}
