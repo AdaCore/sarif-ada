@@ -1,16 +1,17 @@
 --
---  Copyright (C) 2022, AdaCore
+--  Copyright (C) 2024, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+pragma Style_Checks ("M99");  --  suppress style warning unitl gnatpp is fixed
 with Ada.Containers.Doubly_Linked_Lists;
 with Ada.Finalization;
 with VSS.JSON.Streams;
 with VSS.Strings;
 with VSS.String_Vectors;
 
-package SARIF is
+package SARIF.Types is
    package JSON_Event_Lists is new Ada.Containers.Doubly_Linked_Lists
      (VSS.JSON.Streams.JSON_Stream_Element, VSS.JSON.Streams."=");
 
@@ -171,6 +172,10 @@ package SARIF is
      Variable_Indexing => Get_edge_Variable_Reference,
      Constant_Indexing => Get_edge_Constant_Reference;
 
+   type toolComponent_contents_Vector is tagged private with
+     Variable_Indexing => Get_toolComponent_contents_Variable_Reference,
+     Constant_Indexing => Get_toolComponent_contents_Constant_Reference;
+
    type node_Vector is tagged private with
      Variable_Indexing => Get_node_Variable_Reference,
      Constant_Indexing => Get_node_Constant_Reference;
@@ -191,6 +196,10 @@ package SARIF is
      Variable_Indexing => Get_artifactChange_Variable_Reference,
      Constant_Indexing => Get_artifactChange_Constant_Reference;
 
+   type artifact_roles_Vector is tagged private with
+     Variable_Indexing => Get_artifact_roles_Variable_Reference,
+     Constant_Indexing => Get_artifact_roles_Constant_Reference;
+
    type artifact_Vector is tagged private with
      Variable_Indexing => Get_artifact_Variable_Reference,
      Constant_Indexing => Get_artifact_Constant_Reference;
@@ -199,6 +208,10 @@ package SARIF is
      Variable_Indexing => Get_logicalLocation_Variable_Reference,
      Constant_Indexing => Get_logicalLocation_Constant_Reference;
 
+   type webRequest_Vector is tagged private with
+     Variable_Indexing => Get_webRequest_Variable_Reference,
+     Constant_Indexing => Get_webRequest_Constant_Reference;
+
    type externalProperties_Vector is tagged private with
      Variable_Indexing => Get_externalProperties_Variable_Reference,
      Constant_Indexing => Get_externalProperties_Constant_Reference;
@@ -206,10 +219,6 @@ package SARIF is
    type run_Vector is tagged private with
      Variable_Indexing => Get_run_Variable_Reference,
      Constant_Indexing => Get_run_Constant_Reference;
-
-   type webRequest_Vector is tagged private with
-     Variable_Indexing => Get_webRequest_Variable_Reference,
-     Constant_Indexing => Get_webRequest_Constant_Reference;
 
    type a_exception_Vector is tagged private with
      Variable_Indexing => Get_a_exception_Variable_Reference,
@@ -248,6 +257,16 @@ package SARIF is
                null;
          end case;
       end record;
+
+      type toolComponent_contents is (localizedData, nonLocalizedData);
+
+      type artifact_roles is
+        (analysisTarget, attachment, responseFile, resultFile, standardStream,
+         tracedFile, unmodified, modified, added, deleted, renamed,
+         uncontrolled, driver, extension, translation, taxonomy, policy,
+         referencedOnCommandLine, memoryContents, directory,
+         userSpecifiedConfiguration, toolSpecifiedConfiguration,
+         debugOutputFile);
 
       type reportingConfiguration_level is (none, note, warning, error);
 
@@ -727,7 +746,7 @@ package SARIF is
    end record;
 
    type artifactChange is record
-      artifactLocation : SARIF.artifactLocation;
+      artifactLocation : SARIF.Types.artifactLocation;
       --  The location of the artifact to change.
       replacements     : replacement_Vector;
       --  An array of replacement objects, each of which represents the
@@ -815,9 +834,9 @@ package SARIF is
    type notification is record
       locations      : location_Vector;
       --  The locations relevant to this notification.
-      message        : SARIF.message;
+      message        : SARIF.Types.message;
       --  A message that describes the condition that was encountered.
-      level          : VSS.Strings.Virtual_String;
+      level          : Enum.Optional_notification_level;
       --  A value specifying the severity level of the notification.
       threadId       : Optional_Integer;
       --  The thread identifier of the code that generated the notification.
@@ -862,9 +881,9 @@ package SARIF is
    type suppression is record
       guid          : VSS.Strings.Virtual_String;
       --  A stable, unique identifer for the suprression in the form of a GUID.
-      kind          : VSS.Strings.Virtual_String;
+      kind          : Enum.suppression_kind;
       --  A string that indicates where the suppression is persisted.
-      status        : VSS.Strings.Virtual_String;
+      status        : Enum.Optional_suppression_status;
       --  A string that indicates the review status of the suppression.
       justification : VSS.Strings.Virtual_String;
       --  A string representing the justification for the suppression.
@@ -923,6 +942,18 @@ package SARIF is
       --  Identifies the target node (the node at which the edge ends).
       properties   : Optional_propertyBag;
       --  Key/value pairs that provide additional information about the edge.
+   end record;
+
+   type Root is record
+      schema                   : VSS.Strings.Virtual_String;
+      --  The URI of the JSON schema corresponding to the version.
+      runs                     : run_Vector;
+      --  The set of runs contained in this log file.
+      inlineExternalProperties : externalProperties_Vector;
+      --  References to external property files that share data between runs.
+      properties               : Optional_propertyBag;
+      --  Key/value pairs that provide additional information about the log
+      --  file.
    end record;
 
    type specialLocations is record
@@ -1007,7 +1038,7 @@ package SARIF is
       --  uppercase subculture code associated with a country or region). The
       --  casing is recommended but not required (in order for this data to
       --  conform to RFC5646).
-      contents : VSS.String_Vectors.Virtual_String_Vector;
+      contents : toolComponent_contents_Vector;
       --  The kinds of data contained in this object.
       isComprehensive                             : Boolean := Boolean'First;
       --  Specifies whether this object contains a complete definition of
@@ -1139,7 +1170,7 @@ package SARIF is
    end record;
 
    type conversion is record
-      tool                 : SARIF.tool;
+      tool                 : SARIF.Types.tool;
       --  A tool object that describes the converter.
       invocation           : Optional_invocation;
       --  An invocation object that describes the invocation of the converter.
@@ -1202,8 +1233,6 @@ package SARIF is
       schema                 : VSS.Strings.Virtual_String;
       --  The URI of the JSON schema corresponding to the version of the
       --  external property file format.
-      version                : VSS.Strings.Virtual_String;
-      --  The SARIF format version of this external properties object.
       guid                   : VSS.Strings.Virtual_String;
       --  A stable, unique identifer for this external properties object, in
       --  the form of a GUID.
@@ -1274,7 +1303,7 @@ package SARIF is
    type reportingConfiguration is record
       enabled    : Boolean := Boolean'First;
       --  Specifies whether the report may be produced during the scan.
-      level      : VSS.Strings.Virtual_String;
+      level      : Enum.Optional_reportingConfiguration_level;
       --  Specifies the failure level for the report.
       rank       : Optional_Float;
       --  Specifies the relative priority of the report. Used for analysis
@@ -1352,7 +1381,7 @@ package SARIF is
       --  The offset in bytes of the artifact within its containing artifact.
       length              : Optional_Integer;
       --  The length of the artifact in bytes.
-      roles               : VSS.String_Vectors.Virtual_String_Vector;
+      roles               : artifact_roles_Vector;
       --  The role or roles played by the artifact in the analysis.
       mimeType            : VSS.Strings.Virtual_String;
       --  The MIME type (RFC 2045) of the artifact.
@@ -1375,20 +1404,6 @@ package SARIF is
       properties          : Optional_propertyBag;
       --  Key/value pairs that provide additional information about the
       --  artifact.
-   end record;
-
-   type Root is record
-      schema                   : VSS.Strings.Virtual_String;
-      --  The URI of the JSON schema corresponding to the version.
-      version                  : VSS.Strings.Virtual_String;
-      --  The SARIF format version of this log file.
-      runs                     : run_Vector;
-      --  The set of runs contained in this log file.
-      inlineExternalProperties : externalProperties_Vector;
-      --  References to external property files that share data between runs.
-      properties               : Optional_propertyBag;
-      --  Key/value pairs that provide additional information about the log
-      --  file.
    end record;
 
    type webRequest is record
@@ -1476,11 +1491,11 @@ package SARIF is
       rule                : Optional_reportingDescriptorReference;
       --  A reference used to locate the rule descriptor relevant to this
       --  result.
-      kind                : VSS.Strings.Virtual_String;
+      kind                : Enum.Optional_result_kind;
       --  A value that categorizes results by evaluation state.
-      level               : VSS.Strings.Virtual_String;
+      level               : Enum.Optional_result_level;
       --  A value specifying the severity level of the result.
-      message             : SARIF.message;
+      message             : SARIF.Types.message;
       --  A message that describes the result. The first sentence of the
       --  message only will be displayed when visible space is limited.
       analysisTarget      : Optional_artifactLocation;
@@ -1519,7 +1534,7 @@ package SARIF is
       --  A set of locations relevant to this result.
       suppressions        : suppression_Vector;
       --  A set of suppressions relevant to this result.
-      baselineState       : VSS.Strings.Virtual_String;
+      baselineState       : Enum.Optional_result_baselineState;
       --  The state of a result relative to a baseline of a previous run.
       rank                : Optional_Float;
       --  A number representing the priority or importance of the result.
@@ -1568,7 +1583,7 @@ package SARIF is
    type attachment is record
       description      : Optional_message;
       --  A message describing the role played by the attachment.
-      artifactLocation : SARIF.artifactLocation;
+      artifactLocation : SARIF.Types.artifactLocation;
       --  The location of the attachment.
       regions          : region_Vector;
       --  An array of regions of interest within the attachment.
@@ -1655,7 +1670,7 @@ package SARIF is
    end record;
 
    type run is record
-      tool                           : SARIF.tool;
+      tool                           : SARIF.Types.tool;
       --  Information about the tool or tool pipeline that generated the
       --  results in this run. A run can only contain results produced by
       --  a single tool or tool pipeline. A run can aggregate results from
@@ -1712,7 +1727,7 @@ package SARIF is
       newlineSequences : VSS.String_Vectors.Virtual_String_Vector;
       --  An ordered list of character sequences that were treated as line
       --  breaks when computing region information for the run.
-      columnKind                     : VSS.Strings.Virtual_String;
+      columnKind                     : Enum.Optional_run_columnKind;
       --  Specifies the unit in which the tool measures columns.
       externalPropertyFileReferences : Optional_externalPropertyFileReferences;
       --  References to external property files that should be inlined with the
@@ -1776,7 +1791,7 @@ package SARIF is
       executionTimeUtc : VSS.Strings.Virtual_String;
       --  The Coordinated Universal Time (UTC) date and time at which this
       --  location was executed.
-      importance       : VSS.Strings.Virtual_String;
+      importance       : Enum.Optional_threadFlowLocation_importance;
       --  Specifies the importance of this location in understanding the code
       --  flow in which it occurs. The order from most to least important is
       --  "essential", "important", "unimportant". Default: "important".
@@ -2651,6 +2666,36 @@ package SARIF is
       return edge_Constant_Reference with
      Inline;
 
+   function Length (Self : toolComponent_contents_Vector) return Natural;
+
+   procedure Clear (Self : in out toolComponent_contents_Vector);
+
+   procedure Append
+     (Self  : in out toolComponent_contents_Vector;
+      Value : Enum.toolComponent_contents);
+
+   type toolComponent_contents_Variable_Reference
+     (Element : not null access Enum.toolComponent_contents) is
+   null record with
+     Implicit_Dereference => Element;
+
+   not overriding function Get_toolComponent_contents_Variable_Reference
+     (Self  : aliased in out toolComponent_contents_Vector;
+      Index : Positive)
+      return toolComponent_contents_Variable_Reference with
+     Inline;
+
+   type toolComponent_contents_Constant_Reference
+     (Element : not null access constant Enum.toolComponent_contents) is
+   null record with
+     Implicit_Dereference => Element;
+
+   not overriding function Get_toolComponent_contents_Constant_Reference
+     (Self  : aliased toolComponent_contents_Vector;
+      Index : Positive)
+      return toolComponent_contents_Constant_Reference with
+     Inline;
+
    function Length (Self : node_Vector) return Natural;
 
    procedure Clear (Self : in out node_Vector);
@@ -2786,6 +2831,35 @@ package SARIF is
       return artifactChange_Constant_Reference with
      Inline;
 
+   function Length (Self : artifact_roles_Vector) return Natural;
+
+   procedure Clear (Self : in out artifact_roles_Vector);
+
+   procedure Append
+     (Self : in out artifact_roles_Vector; Value : Enum.artifact_roles);
+
+   type artifact_roles_Variable_Reference
+     (Element : not null access Enum.artifact_roles) is
+   null record with
+     Implicit_Dereference => Element;
+
+   not overriding function Get_artifact_roles_Variable_Reference
+     (Self  : aliased in out artifact_roles_Vector;
+      Index : Positive)
+      return artifact_roles_Variable_Reference with
+     Inline;
+
+   type artifact_roles_Constant_Reference
+     (Element : not null access constant Enum.artifact_roles) is
+   null record with
+     Implicit_Dereference => Element;
+
+   not overriding function Get_artifact_roles_Constant_Reference
+     (Self  : aliased artifact_roles_Vector;
+      Index : Positive)
+      return artifact_roles_Constant_Reference with
+     Inline;
+
    function Length (Self : artifact_Vector) return Natural;
 
    procedure Clear (Self : in out artifact_Vector);
@@ -2842,6 +2916,33 @@ package SARIF is
       return logicalLocation_Constant_Reference with
      Inline;
 
+   function Length (Self : webRequest_Vector) return Natural;
+
+   procedure Clear (Self : in out webRequest_Vector);
+
+   procedure Append (Self : in out webRequest_Vector; Value : webRequest);
+
+   type webRequest_Variable_Reference (Element : not null access webRequest) is
+   null record with
+     Implicit_Dereference => Element;
+
+   not overriding function Get_webRequest_Variable_Reference
+     (Self  : aliased in out webRequest_Vector;
+      Index : Positive)
+      return webRequest_Variable_Reference with
+     Inline;
+
+   type webRequest_Constant_Reference
+     (Element : not null access constant webRequest) is
+   null record with
+     Implicit_Dereference => Element;
+
+   not overriding function Get_webRequest_Constant_Reference
+     (Self  : aliased webRequest_Vector;
+      Index : Positive)
+      return webRequest_Constant_Reference with
+     Inline;
+
    function Length (Self : externalProperties_Vector) return Natural;
 
    procedure Clear (Self : in out externalProperties_Vector);
@@ -2895,33 +2996,6 @@ package SARIF is
      (Self  : aliased run_Vector;
       Index : Positive)
       return run_Constant_Reference with
-     Inline;
-
-   function Length (Self : webRequest_Vector) return Natural;
-
-   procedure Clear (Self : in out webRequest_Vector);
-
-   procedure Append (Self : in out webRequest_Vector; Value : webRequest);
-
-   type webRequest_Variable_Reference (Element : not null access webRequest) is
-   null record with
-     Implicit_Dereference => Element;
-
-   not overriding function Get_webRequest_Variable_Reference
-     (Self  : aliased in out webRequest_Vector;
-      Index : Positive)
-      return webRequest_Variable_Reference with
-     Inline;
-
-   type webRequest_Constant_Reference
-     (Element : not null access constant webRequest) is
-   null record with
-     Implicit_Dereference => Element;
-
-   not overriding function Get_webRequest_Constant_Reference
-     (Self  : aliased webRequest_Vector;
-      Index : Positive)
-      return webRequest_Constant_Reference with
      Inline;
 
    function Length (Self : a_exception_Vector) return Natural;
@@ -3365,6 +3439,20 @@ private
 
    overriding procedure Finalize (Self : in out edge_Vector);
 
+   type toolComponent_contents_Array is
+     array (Positive range <>) of aliased Enum.toolComponent_contents;
+   type toolComponent_contents_Array_Access is
+     access toolComponent_contents_Array;
+   type toolComponent_contents_Vector is
+   new Ada.Finalization.Controlled with record
+      Data   : toolComponent_contents_Array_Access;
+      Length : Natural := 0;
+   end record;
+
+   overriding procedure Adjust (Self : in out toolComponent_contents_Vector);
+
+   overriding procedure Finalize (Self : in out toolComponent_contents_Vector);
+
    type node_Array is array (Positive range <>) of aliased node;
    type node_Array_Access is access node_Array;
    type node_Vector is new Ada.Finalization.Controlled with record
@@ -3421,6 +3509,18 @@ private
 
    overriding procedure Finalize (Self : in out artifactChange_Vector);
 
+   type artifact_roles_Array is
+     array (Positive range <>) of aliased Enum.artifact_roles;
+   type artifact_roles_Array_Access is access artifact_roles_Array;
+   type artifact_roles_Vector is new Ada.Finalization.Controlled with record
+      Data   : artifact_roles_Array_Access;
+      Length : Natural := 0;
+   end record;
+
+   overriding procedure Adjust (Self : in out artifact_roles_Vector);
+
+   overriding procedure Finalize (Self : in out artifact_roles_Vector);
+
    type artifact_Array is array (Positive range <>) of aliased artifact;
    type artifact_Array_Access is access artifact_Array;
    type artifact_Vector is new Ada.Finalization.Controlled with record
@@ -3443,6 +3543,17 @@ private
    overriding procedure Adjust (Self : in out logicalLocation_Vector);
 
    overriding procedure Finalize (Self : in out logicalLocation_Vector);
+
+   type webRequest_Array is array (Positive range <>) of aliased webRequest;
+   type webRequest_Array_Access is access webRequest_Array;
+   type webRequest_Vector is new Ada.Finalization.Controlled with record
+      Data   : webRequest_Array_Access;
+      Length : Natural := 0;
+   end record;
+
+   overriding procedure Adjust (Self : in out webRequest_Vector);
+
+   overriding procedure Finalize (Self : in out webRequest_Vector);
 
    type externalProperties_Array is
      array (Positive range <>) of aliased externalProperties;
@@ -3467,17 +3578,6 @@ private
    overriding procedure Adjust (Self : in out run_Vector);
 
    overriding procedure Finalize (Self : in out run_Vector);
-
-   type webRequest_Array is array (Positive range <>) of aliased webRequest;
-   type webRequest_Array_Access is access webRequest_Array;
-   type webRequest_Vector is new Ada.Finalization.Controlled with record
-      Data   : webRequest_Array_Access;
-      Length : Natural := 0;
-   end record;
-
-   overriding procedure Adjust (Self : in out webRequest_Vector);
-
-   overriding procedure Finalize (Self : in out webRequest_Vector);
 
    type a_exception_Array is array (Positive range <>) of aliased a_exception;
    type a_exception_Array_Access is access a_exception_Array;
@@ -3515,4 +3615,4 @@ private
 
    overriding procedure Finalize (Self : in out artifactLocation_Vector);
 
-end SARIF;
+end SARIF.Types;

@@ -1,12 +1,12 @@
 --
---  Copyright (C) 2022, AdaCore
+--  Copyright (C) 2024, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 with VSS.JSON.Content_Handlers;
 
-package SARIF.Outputs is
+package SARIF.Types.Outputs is
 
    procedure Output_notification_level
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -19,6 +19,14 @@ package SARIF.Outputs is
    procedure Output_suppression_status
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
       Value   : Enum.suppression_status);
+
+   procedure Output_toolComponent_contents
+     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
+      Value   : Enum.toolComponent_contents);
+
+   procedure Output_artifact_roles
+     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
+      Value   : Enum.artifact_roles);
 
    procedure Output_reportingConfiguration_level
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -124,6 +132,10 @@ package SARIF.Outputs is
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
       Value   : edge);
 
+   procedure Output_Root
+     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
+      Value   : Root);
+
    procedure Output_specialLocations
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
       Value   : specialLocations);
@@ -175,10 +187,6 @@ package SARIF.Outputs is
    procedure Output_tool
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
       Value   : tool);
-
-   procedure Output_Root
-     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
-      Value   : Root);
 
    procedure Output_webRequest
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -256,4 +264,4 @@ package SARIF.Outputs is
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
       Value   : configurationOverride);
 
-end SARIF.Outputs;
+end SARIF.Types.Outputs;
