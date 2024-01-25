@@ -3,9 +3,7 @@
   "title": "Static Analysis Results Format (SARIF) Version 2.1.0 JSON Schema",
   "$id": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
   "description": "Static Analysis Results Format (SARIF) Version 2.1.0 JSON Schema: a standard format for the output of static analysis tools.",
-
-  "definitions": {
-"Root":{  "additionalProperties": false,
+  "additionalProperties": false,
   "type": "object",
   "properties": {
 
@@ -46,7 +44,9 @@
     }
   },
 
-  "required": [ "version", "runs" ]},
+  "required": [ "version", "runs" ],
+
+  "definitions": {
 
     "address": {
       "description": "A physical or virtual address, or a range of addresses, in an 'addressable region' (memory or a binary file).",
@@ -794,7 +794,11 @@
           "description": "Key/value pairs that provide additional information about the external property file.",
           "$ref": "#/definitions/propertyBag"
         }
-      }
+      },
+      "anyOf": [
+        { "required": [ "location" ] },
+        { "required": [ "guid" ] }
+      ]
     },
 
     "externalPropertyFileReferences": {
@@ -1460,7 +1464,11 @@
           "description": "Key/value pairs that provide additional information about the message.",
           "$ref": "#/definitions/propertyBag"
         }
-      }
+      },
+      "anyOf": [
+        { "required": [ "text" ] },
+        { "required": [ "id" ] }
+      ]
     },
 
     "multiformatMessageString": {
@@ -1623,7 +1631,16 @@
           "description": "Key/value pairs that provide additional information about the physical location.",
           "$ref": "#/definitions/propertyBag"
         }
-      }
+      },
+
+      "anyOf": [
+        {
+          "required": [ "address" ]
+        },
+        {
+          "required": [ "artifactLocation" ]
+        }
+      ]
     },
 
     "propertyBag": {
@@ -1963,7 +1980,12 @@
           "description": "Key/value pairs that provide additional information about the reporting descriptor reference.",
           "$ref": "#/definitions/propertyBag"
         }
-      }
+      },
+      "anyOf": [
+        { "required": [ "index" ] },
+        { "required": [ "guid" ] },
+        { "required": [ "id" ] }
+      ]
     },
 
     "reportingDescriptorRelationship": {
