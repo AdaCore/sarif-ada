@@ -13,8 +13,9 @@ Have a working Ada environment, with `gnatchop` and `gnatpp` binaries (present
 by default in GNAT toolchains) and `alr` available in your `PATH`
 (you can download Alire [here](https://alire.ada.dev/)).
 
-Then you will need to build the `gen_json` tool from the `VSS` repository, and
-make it available in your `PATH` environment variable.
+Then you will need to build the `gen_json` tool from the
+[`VSS` repository](https://github.com/AdaCore/VSS/tree/master/tools/json_schema),
+and make it available in your `PATH` environment variable.
 Here are the instructions to achieve that:
 
 ```shell
