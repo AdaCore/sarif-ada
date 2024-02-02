@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2022, AdaCore
+--  Copyright (C) 2024, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -7,7 +7,7 @@
 pragma Ada_2022;
 with Minimal_Perfect_Hash;
 
-package body SARIF.Inputs is
+package body SARIF.Types.Inputs is
    pragma Style_Checks (Off);
    use type VSS.JSON.JSON_Number_Kind;
    use type VSS.Strings.Virtual_String;
@@ -58,11 +58,11 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.notification_level;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            notification_level_Minimal_Perfect_Hash.Get_Index
              (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.notification_level'Val (Index - 1);
@@ -80,11 +80,11 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.suppression_kind;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            suppression_kind_Minimal_Perfect_Hash.Get_Index
              (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.suppression_kind'Val (Index - 1);
@@ -103,11 +103,11 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.suppression_status;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            suppression_status_Minimal_Perfect_Hash.Get_Index
              (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.suppression_status'Val (Index - 1);
@@ -116,6 +116,70 @@ package body SARIF.Inputs is
          Success := False;
       end if;
    end Input_suppression_status;
+
+   package toolComponent_contents_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
+     (["localizedData",
+      "nonLocalizedData"]);
+
+   procedure Input_toolComponent_contents
+     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
+      Value   : out Enum.toolComponent_contents;
+      Success : in out Boolean) is
+      Index : constant Integer :=
+        (if Reader.Is_String_Value then
+           toolComponent_contents_Minimal_Perfect_Hash.Get_Index
+             (Reader.String_Value)
+         else -1);
+   begin
+      if Index > 0 then
+         Value := Enum.toolComponent_contents'Val (Index - 1);
+         Reader.Read_Next;
+      else
+         Success := False;
+      end if;
+   end Input_toolComponent_contents;
+
+   package artifact_roles_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
+     (["analysisTarget",
+      "attachment",
+      "responseFile",
+      "resultFile",
+      "standardStream",
+      "tracedFile",
+      "unmodified",
+      "modified",
+      "added",
+      "deleted",
+      "renamed",
+      "uncontrolled",
+      "driver",
+      "extension",
+      "translation",
+      "taxonomy",
+      "policy",
+      "referencedOnCommandLine",
+      "memoryContents",
+      "directory",
+      "userSpecifiedConfiguration",
+      "toolSpecifiedConfiguration",
+      "debugOutputFile"]);
+
+   procedure Input_artifact_roles
+     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
+      Value   : out Enum.artifact_roles;
+      Success : in out Boolean) is
+      Index : constant Integer :=
+        (if Reader.Is_String_Value then
+           artifact_roles_Minimal_Perfect_Hash.Get_Index (Reader.String_Value)
+         else -1);
+   begin
+      if Index > 0 then
+         Value := Enum.artifact_roles'Val (Index - 1);
+         Reader.Read_Next;
+      else
+         Success := False;
+      end if;
+   end Input_artifact_roles;
 
    package reportingConfiguration_level_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
      (["none",
@@ -127,11 +191,11 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.reportingConfiguration_level;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            reportingConfiguration_level_Minimal_Perfect_Hash.Get_Index
              (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.reportingConfiguration_level'Val (Index - 1);
@@ -153,10 +217,10 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.result_kind;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            result_kind_Minimal_Perfect_Hash.Get_Index (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.result_kind'Val (Index - 1);
@@ -176,10 +240,10 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.result_level;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            result_level_Minimal_Perfect_Hash.Get_Index (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.result_level'Val (Index - 1);
@@ -199,11 +263,11 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.result_baselineState;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            result_baselineState_Minimal_Perfect_Hash.Get_Index
              (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.result_baselineState'Val (Index - 1);
@@ -221,10 +285,10 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.run_columnKind;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            run_columnKind_Minimal_Perfect_Hash.Get_Index (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.run_columnKind'Val (Index - 1);
@@ -243,11 +307,11 @@ package body SARIF.Inputs is
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.threadFlowLocation_importance;
       Success : in out Boolean) is
-      Index : constant Natural :=
+      Index : constant Integer :=
         (if Reader.Is_String_Value then
            threadFlowLocation_importance_Minimal_Perfect_Hash.Get_Index
              (Reader.String_Value)
-         else 0);
+         else -1);
    begin
       if Index > 0 then
          Value := Enum.threadFlowLocation_importance'Val (Index - 1);
@@ -1396,12 +1460,11 @@ package body SARIF.Inputs is
                   when 2 =>  --  message
                      Input_message (Reader, Value.message, Success);
                   when 3 =>  --  level
-                     if Reader.Is_String_Value then
-                        Value.level := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.level :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_notification_level
+                       (Reader, Value.level.Value, Success);
                   when 4 =>  --  threadId
                      Value.threadId :=
                        (Is_Set => True,
@@ -1783,19 +1846,13 @@ package body SARIF.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  kind
-                     if Reader.Is_String_Value then
-                        Value.kind := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Input_suppression_kind (Reader, Value.kind, Success);
                   when 3 =>  --  status
-                     if Reader.Is_String_Value then
-                        Value.status := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.status :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_suppression_status
+                       (Reader, Value.status.Value, Success);
                   when 4 =>  --  justification
                      if Reader.Is_String_Value then
                         Value.justification := Reader.String_Value;
@@ -2059,6 +2116,102 @@ package body SARIF.Inputs is
          Reader.Read_Next;  --  skip End_Object
       end if;
    end Input_edge;
+
+   package Root_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
+     (["$schema",
+      "version",
+      "runs",
+      "inlineExternalProperties",
+      "properties"]);
+
+   procedure Input_Root
+     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
+      Value   : out Root;
+      Success : in out Boolean) is
+   begin
+      if Success and Reader.Is_Start_Object then
+         Reader.Read_Next;
+      else
+         Success := False;
+      end if;
+
+      while Success and not Reader.Is_End_Object loop
+         if Reader.Is_Key_Name then
+            declare
+               Index : constant Natural :=
+                 Root_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
+            begin
+               Reader.Read_Next;
+
+               case Index is
+                  when 1 =>  --  $schema
+                     if Reader.Is_String_Value then
+                        Value.schema := Reader.String_Value;
+                        Reader.Read_Next;
+                     else
+                        Success := False;
+                     end if;
+                  when 2 =>  --  version
+                     if Reader.Is_String_Value
+                       and then Reader.String_Value = "2.1.0"
+                     then
+                        Reader.Read_Next;
+                     else
+                        Success := False;
+                     end if;
+                  when 3 =>  --  runs
+                     if Success and Reader.Is_Start_Array then
+                        Reader.Read_Next;
+                        while Success and not Reader.Is_End_Array loop
+                           declare
+                              Item : run;
+                           begin
+                              Input_run (Reader, Item, Success);
+                              Value.runs.Append (Item);
+                           end;
+                        end loop;
+                        if Success then
+                           Reader.Read_Next;  --  skip End_Array
+                        end if;
+                     else
+                        Success := False;
+                     end if;
+                  when 4 =>  --  inlineExternalProperties
+                     if Success and Reader.Is_Start_Array then
+                        Reader.Read_Next;
+                        while Success and not Reader.Is_End_Array loop
+                           declare
+                              Item : externalProperties;
+                           begin
+                              Input_externalProperties (Reader, Item, Success);
+                              Value.inlineExternalProperties.Append (Item);
+                           end;
+                        end loop;
+                        if Success then
+                           Reader.Read_Next;  --  skip End_Array
+                        end if;
+                     else
+                        Success := False;
+                     end if;
+                  when 5 =>  --  properties
+                     Value.properties :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_propertyBag
+                       (Reader, Value.properties.Value, Success);
+                  when others =>
+                     Reader.Skip_Current_Value;
+               end case;
+            end;
+         else
+            Success := False;
+         end if;
+      end loop;
+
+      if Success then
+         Reader.Read_Next;  --  skip End_Object
+      end if;
+   end Input_Root;
 
    package specialLocations_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
      (["displayBase",
@@ -2344,14 +2497,10 @@ package body SARIF.Inputs is
                         Reader.Read_Next;
                         while Success and not Reader.Is_End_Array loop
                            declare
-                              Item : VSS.Strings.Virtual_String;
+                              Item : Enum.toolComponent_contents;
                            begin
-                              if Reader.Is_String_Value then
-                                 Item := Reader.String_Value;
-                                 Reader.Read_Next;
-                              else
-                                 Success := False;
-                              end if;
+                              Input_toolComponent_contents
+                                (Reader, Item, Success);
                               Value.contents.Append (Item);
                            end;
                         end loop;
@@ -3740,14 +3889,9 @@ package body SARIF.Inputs is
                         Reader.Read_Next;
                         while Success and not Reader.Is_End_Array loop
                            declare
-                              Item : VSS.Strings.Virtual_String;
+                              Item : Enum.artifact_roles;
                            begin
-                              if Reader.Is_String_Value then
-                                 Item := Reader.String_Value;
-                                 Reader.Read_Next;
-                              else
-                                 Success := False;
-                              end if;
+                              Input_artifact_roles (Reader, Item, Success);
                               Value.roles.Append (Item);
                            end;
                         end loop;
@@ -3849,12 +3993,11 @@ package body SARIF.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  level
-                     if Reader.Is_String_Value then
-                        Value.level := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.level :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_reportingConfiguration_level
+                       (Reader, Value.level.Value, Success);
                   when 3 =>  --  rank
                      Value.rank :=
                        (Is_Set => True,
@@ -4039,102 +4182,6 @@ package body SARIF.Inputs is
          Reader.Read_Next;  --  skip End_Object
       end if;
    end Input_tool;
-
-   package Root_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
-     (["$schema",
-      "version",
-      "runs",
-      "inlineExternalProperties",
-      "properties"]);
-
-   procedure Input_Root
-     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
-      Value   : out Root;
-      Success : in out Boolean) is
-   begin
-      if Success and Reader.Is_Start_Object then
-         Reader.Read_Next;
-      else
-         Success := False;
-      end if;
-
-      while Success and not Reader.Is_End_Object loop
-         if Reader.Is_Key_Name then
-            declare
-               Index : constant Natural :=
-                 Root_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
-            begin
-               Reader.Read_Next;
-
-               case Index is
-                  when 1 =>  --  $schema
-                     if Reader.Is_String_Value then
-                        Value.schema := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
-                  when 2 =>  --  version
-                     if Reader.Is_String_Value
-                       and then Reader.String_Value = "2.1.0"
-                     then
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
-                  when 3 =>  --  runs
-                     if Success and Reader.Is_Start_Array then
-                        Reader.Read_Next;
-                        while Success and not Reader.Is_End_Array loop
-                           declare
-                              Item : run;
-                           begin
-                              Input_run (Reader, Item, Success);
-                              Value.runs.Append (Item);
-                           end;
-                        end loop;
-                        if Success then
-                           Reader.Read_Next;  --  skip End_Array
-                        end if;
-                     else
-                        Success := False;
-                     end if;
-                  when 4 =>  --  inlineExternalProperties
-                     if Success and Reader.Is_Start_Array then
-                        Reader.Read_Next;
-                        while Success and not Reader.Is_End_Array loop
-                           declare
-                              Item : externalProperties;
-                           begin
-                              Input_externalProperties (Reader, Item, Success);
-                              Value.inlineExternalProperties.Append (Item);
-                           end;
-                        end loop;
-                        if Success then
-                           Reader.Read_Next;  --  skip End_Array
-                        end if;
-                     else
-                        Success := False;
-                     end if;
-                  when 5 =>  --  properties
-                     Value.properties :=
-                       (Is_Set => True,
-                        Value  => <>);
-                     Input_propertyBag
-                       (Reader, Value.properties.Value, Success);
-                  when others =>
-                     Reader.Skip_Current_Value;
-               end case;
-            end;
-         else
-            Success := False;
-         end if;
-      end loop;
-
-      if Success then
-         Reader.Read_Next;  --  skip End_Object
-      end if;
-   end Input_Root;
 
    package webRequest_Minimal_Perfect_Hash is new Minimal_Perfect_Hash
      (["index",
@@ -4386,19 +4433,15 @@ package body SARIF.Inputs is
                      Input_reportingDescriptorReference
                        (Reader, Value.rule.Value, Success);
                   when 4 =>  --  kind
-                     if Reader.Is_String_Value then
-                        Value.kind := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.kind :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_result_kind (Reader, Value.kind.Value, Success);
                   when 5 =>  --  level
-                     if Reader.Is_String_Value then
-                        Value.level := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.level :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_result_level (Reader, Value.level.Value, Success);
                   when 6 =>  --  message
                      Input_message (Reader, Value.message, Success);
                   when 7 =>  --  analysisTarget
@@ -4560,12 +4603,11 @@ package body SARIF.Inputs is
                         Success := False;
                      end if;
                   when 20 =>  --  baselineState
-                     if Reader.Is_String_Value then
-                        Value.baselineState := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.baselineState :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_result_baselineState
+                       (Reader, Value.baselineState.Value, Success);
                   when 21 =>  --  rank
                      Value.rank :=
                        (Is_Set => True,
@@ -5544,12 +5586,11 @@ package body SARIF.Inputs is
                         Success := False;
                      end if;
                   when 18 =>  --  columnKind
-                     if Reader.Is_String_Value then
-                        Value.columnKind := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.columnKind :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_run_columnKind
+                       (Reader, Value.columnKind.Value, Success);
                   when 19 =>  --  externalPropertyFileReferences
                      Value.externalPropertyFileReferences :=
                        (Is_Set => True,
@@ -6243,12 +6284,11 @@ package body SARIF.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  importance
-                     if Reader.Is_String_Value then
-                        Value.importance := Reader.String_Value;
-                        Reader.Read_Next;
-                     else
-                        Success := False;
-                     end if;
+                     Value.importance :=
+                       (Is_Set => True,
+                        Value  => <>);
+                     Input_threadFlowLocation_importance
+                       (Reader, Value.importance.Value, Success);
                   when 12 =>  --  webRequest
                      Value.webRequest :=
                        (Is_Set => True,
@@ -6723,4 +6763,4 @@ package body SARIF.Inputs is
       end if;
    end Input_configurationOverride;
 
-end SARIF.Inputs;
+end SARIF.Types.Inputs;

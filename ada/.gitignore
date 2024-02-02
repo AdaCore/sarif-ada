@@ -1,1 +1,3 @@
 /.objs
+/example-output.sarif
+/sarif-schema.json

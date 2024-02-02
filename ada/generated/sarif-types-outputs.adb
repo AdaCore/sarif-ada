@@ -1,11 +1,11 @@
 --
---  Copyright (C) 2022, AdaCore
+--  Copyright (C) 2024, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 with Interfaces;
-package body SARIF.Outputs is
+package body SARIF.Types.Outputs is
    pragma Style_Checks (Off);
    procedure Output_Any_Value
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -86,6 +86,72 @@ package body SARIF.Outputs is
             Handler.String_Value ("rejected");
       end case;
    end Output_suppression_status;
+
+   procedure Output_toolComponent_contents
+     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
+      Value   : Enum.toolComponent_contents) is
+   begin
+      case Value is
+         when Enum.localizedData =>
+            Handler.String_Value ("localizedData");
+         when Enum.nonLocalizedData =>
+            Handler.String_Value ("nonLocalizedData");
+      end case;
+   end Output_toolComponent_contents;
+
+   procedure Output_artifact_roles
+     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
+      Value   : Enum.artifact_roles) is
+   begin
+      case Value is
+         when Enum.analysisTarget =>
+            Handler.String_Value ("analysisTarget");
+         when Enum.attachment =>
+            Handler.String_Value ("attachment");
+         when Enum.responseFile =>
+            Handler.String_Value ("responseFile");
+         when Enum.resultFile =>
+            Handler.String_Value ("resultFile");
+         when Enum.standardStream =>
+            Handler.String_Value ("standardStream");
+         when Enum.tracedFile =>
+            Handler.String_Value ("tracedFile");
+         when Enum.unmodified =>
+            Handler.String_Value ("unmodified");
+         when Enum.modified =>
+            Handler.String_Value ("modified");
+         when Enum.added =>
+            Handler.String_Value ("added");
+         when Enum.deleted =>
+            Handler.String_Value ("deleted");
+         when Enum.renamed =>
+            Handler.String_Value ("renamed");
+         when Enum.uncontrolled =>
+            Handler.String_Value ("uncontrolled");
+         when Enum.driver =>
+            Handler.String_Value ("driver");
+         when Enum.extension =>
+            Handler.String_Value ("extension");
+         when Enum.translation =>
+            Handler.String_Value ("translation");
+         when Enum.taxonomy =>
+            Handler.String_Value ("taxonomy");
+         when Enum.policy =>
+            Handler.String_Value ("policy");
+         when Enum.referencedOnCommandLine =>
+            Handler.String_Value ("referencedOnCommandLine");
+         when Enum.memoryContents =>
+            Handler.String_Value ("memoryContents");
+         when Enum.directory =>
+            Handler.String_Value ("directory");
+         when Enum.userSpecifiedConfiguration =>
+            Handler.String_Value ("userSpecifiedConfiguration");
+         when Enum.toolSpecifiedConfiguration =>
+            Handler.String_Value ("toolSpecifiedConfiguration");
+         when Enum.debugOutputFile =>
+            Handler.String_Value ("debugOutputFile");
+      end case;
+   end Output_artifact_roles;
 
    procedure Output_reportingConfiguration_level
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -578,9 +644,9 @@ package body SARIF.Outputs is
       end if;
       Handler.Key_Name ("message");
       Output_message (Handler, Value.message);
-      if not Value.level.Is_Null then
+      if Value.level.Is_Set then
          Handler.Key_Name ("level");
-         Handler.String_Value (Value.level);
+         Output_notification_level (Handler, Value.level.Value);
       end if;
       if Value.threadId.Is_Set then
          Handler.Key_Name ("threadId");
@@ -732,10 +798,10 @@ package body SARIF.Outputs is
          Handler.String_Value (Value.guid);
       end if;
       Handler.Key_Name ("kind");
-      Handler.String_Value (Value.kind);
-      if not Value.status.Is_Null then
+      Output_suppression_kind (Handler, Value.kind);
+      if Value.status.Is_Set then
          Handler.Key_Name ("status");
-         Handler.String_Value (Value.status);
+         Output_suppression_status (Handler, Value.status.Value);
       end if;
       if not Value.justification.Is_Null then
          Handler.Key_Name ("justification");
@@ -824,6 +890,39 @@ package body SARIF.Outputs is
       end if;
       Handler.End_Object;
    end Output_edge;
+
+   procedure Output_Root
+     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
+      Value   : Root) is
+   begin
+      Handler.Start_Object;
+      if not Value.schema.Is_Null then
+         Handler.Key_Name ("$schema");
+         Handler.String_Value (Value.schema);
+      end if;
+      Handler.Key_Name ("version");
+      Handler.String_Value ("2.1.0");
+      Handler.Key_Name ("runs");
+      Handler.Start_Array;
+      for J in 1 .. Value.runs.Length loop
+         Output_run (Handler, Value.runs (J));
+      end loop;
+      Handler.End_Array;
+      if Value.inlineExternalProperties.Length > 0 then
+         Handler.Key_Name ("inlineExternalProperties");
+         Handler.Start_Array;
+         for J in 1 .. Value.inlineExternalProperties.Length loop
+            Output_externalProperties
+              (Handler, Value.inlineExternalProperties (J));
+         end loop;
+         Handler.End_Array;
+      end if;
+      if Value.properties.Is_Set then
+         Handler.Key_Name ("properties");
+         Output_propertyBag (Handler, Value.properties.Value);
+      end if;
+      Handler.End_Object;
+   end Output_Root;
 
    procedure Output_specialLocations
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -942,11 +1041,11 @@ package body SARIF.Outputs is
          Handler.Key_Name ("language");
          Handler.String_Value (Value.language);
       end if;
-      if not Value.contents.Is_Empty then
+      if Value.contents.Length > 0 then
          Handler.Key_Name ("contents");
          Handler.Start_Array;
          for J in 1 .. Value.contents.Length loop
-            Handler.String_Value (Value.contents (J));
+            Output_toolComponent_contents (Handler, Value.contents (J));
          end loop;
          Handler.End_Array;
       end if;
@@ -1499,11 +1598,11 @@ package body SARIF.Outputs is
          Handler.Integer_Value
            (Interfaces.Integer_64 (Integer'(Value.length.Value)));
       end if;
-      if not Value.roles.Is_Empty then
+      if Value.roles.Length > 0 then
          Handler.Key_Name ("roles");
          Handler.Start_Array;
          for J in 1 .. Value.roles.Length loop
-            Handler.String_Value (Value.roles (J));
+            Output_artifact_roles (Handler, Value.roles (J));
          end loop;
          Handler.End_Array;
       end if;
@@ -1547,9 +1646,9 @@ package body SARIF.Outputs is
          Handler.Key_Name ("enabled");
          Handler.Boolean_Value (Value.enabled);
       end if;
-      if not Value.level.Is_Null then
+      if Value.level.Is_Set then
          Handler.Key_Name ("level");
-         Handler.String_Value (Value.level);
+         Output_reportingConfiguration_level (Handler, Value.level.Value);
       end if;
       if Value.rank.Is_Set then
          Handler.Key_Name ("rank");
@@ -1612,39 +1711,6 @@ package body SARIF.Outputs is
       end if;
       Handler.End_Object;
    end Output_tool;
-
-   procedure Output_Root
-     (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
-      Value   : Root) is
-   begin
-      Handler.Start_Object;
-      if not Value.schema.Is_Null then
-         Handler.Key_Name ("$schema");
-         Handler.String_Value (Value.schema);
-      end if;
-      Handler.Key_Name ("version");
-      Handler.String_Value ("2.1.0");
-      Handler.Key_Name ("runs");
-      Handler.Start_Array;
-      for J in 1 .. Value.runs.Length loop
-         Output_run (Handler, Value.runs (J));
-      end loop;
-      Handler.End_Array;
-      if Value.inlineExternalProperties.Length > 0 then
-         Handler.Key_Name ("inlineExternalProperties");
-         Handler.Start_Array;
-         for J in 1 .. Value.inlineExternalProperties.Length loop
-            Output_externalProperties
-              (Handler, Value.inlineExternalProperties (J));
-         end loop;
-         Handler.End_Array;
-      end if;
-      if Value.properties.Is_Set then
-         Handler.Key_Name ("properties");
-         Output_propertyBag (Handler, Value.properties.Value);
-      end if;
-      Handler.End_Object;
-   end Output_Root;
 
    procedure Output_webRequest
      (Handler : in out VSS.JSON.Content_Handlers.JSON_Content_Handler'Class;
@@ -1731,13 +1797,13 @@ package body SARIF.Outputs is
          Handler.Key_Name ("rule");
          Output_reportingDescriptorReference (Handler, Value.rule.Value);
       end if;
-      if not Value.kind.Is_Null then
+      if Value.kind.Is_Set then
          Handler.Key_Name ("kind");
-         Handler.String_Value (Value.kind);
+         Output_result_kind (Handler, Value.kind.Value);
       end if;
-      if not Value.level.Is_Null then
+      if Value.level.Is_Set then
          Handler.Key_Name ("level");
-         Handler.String_Value (Value.level);
+         Output_result_level (Handler, Value.level.Value);
       end if;
       Handler.Key_Name ("message");
       Output_message (Handler, Value.message);
@@ -1822,9 +1888,9 @@ package body SARIF.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if not Value.baselineState.Is_Null then
+      if Value.baselineState.Is_Set then
          Handler.Key_Name ("baselineState");
-         Handler.String_Value (Value.baselineState);
+         Output_result_baselineState (Handler, Value.baselineState.Value);
       end if;
       if Value.rank.Is_Set then
          Handler.Key_Name ("rank");
@@ -2202,9 +2268,9 @@ package body SARIF.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if not Value.columnKind.Is_Null then
+      if Value.columnKind.Is_Set then
          Handler.Key_Name ("columnKind");
-         Handler.String_Value (Value.columnKind);
+         Output_run_columnKind (Handler, Value.columnKind.Value);
       end if;
       if Value.externalPropertyFileReferences.Is_Set then
          Handler.Key_Name ("externalPropertyFileReferences");
@@ -2506,9 +2572,10 @@ package body SARIF.Outputs is
          Handler.Key_Name ("executionTimeUtc");
          Handler.String_Value (Value.executionTimeUtc);
       end if;
-      if not Value.importance.Is_Null then
+      if Value.importance.Is_Set then
          Handler.Key_Name ("importance");
-         Handler.String_Value (Value.importance);
+         Output_threadFlowLocation_importance
+           (Handler, Value.importance.Value);
       end if;
       if Value.webRequest.Is_Set then
          Handler.Key_Name ("webRequest");
@@ -2685,4 +2752,4 @@ package body SARIF.Outputs is
       Handler.End_Object;
    end Output_configurationOverride;
 
-end SARIF.Outputs;
+end SARIF.Types.Outputs;

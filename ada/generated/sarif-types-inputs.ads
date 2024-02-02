@@ -1,12 +1,12 @@
 --
---  Copyright (C) 2022, AdaCore
+--  Copyright (C) 2024, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 with VSS.JSON.Pull_Readers;
 
-package SARIF.Inputs is
+package SARIF.Types.Inputs is
 
    procedure Input_notification_level
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
@@ -21,6 +21,16 @@ package SARIF.Inputs is
    procedure Input_suppression_status
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out Enum.suppression_status;
+      Success : in out Boolean);
+
+   procedure Input_toolComponent_contents
+     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
+      Value   : out Enum.toolComponent_contents;
+      Success : in out Boolean);
+
+   procedure Input_artifact_roles
+     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
+      Value   : out Enum.artifact_roles;
       Success : in out Boolean);
 
    procedure Input_reportingConfiguration_level
@@ -153,6 +163,11 @@ package SARIF.Inputs is
       Value   : out edge;
       Success : in out Boolean);
 
+   procedure Input_Root
+     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
+      Value   : out Root;
+      Success : in out Boolean);
+
    procedure Input_specialLocations
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out specialLocations;
@@ -216,11 +231,6 @@ package SARIF.Inputs is
    procedure Input_tool
      (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
       Value   : out tool;
-      Success : in out Boolean);
-
-   procedure Input_Root
-     (Reader  : in out VSS.JSON.Pull_Readers.JSON_Pull_Reader'Class;
-      Value   : out Root;
       Success : in out Boolean);
 
    procedure Input_webRequest
@@ -318,4 +328,4 @@ package SARIF.Inputs is
       Value   : out configurationOverride;
       Success : in out Boolean);
 
-end SARIF.Inputs;
+end SARIF.Types.Inputs;

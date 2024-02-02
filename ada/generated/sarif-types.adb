@@ -1,12 +1,13 @@
 --
---  Copyright (C) 2022, AdaCore
+--  Copyright (C) 2024, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+pragma Style_Checks ("M99");  --  suppress style warning unitl gnatpp is fixed
 with Ada.Unchecked_Deallocation;
 
-package body SARIF is
+package body SARIF.Types is
    procedure Free is new Ada.Unchecked_Deallocation
      (configurationOverride_Array, configurationOverride_Array_Access);
 
@@ -1583,6 +1584,64 @@ package body SARIF is
       return edge_Constant_Reference is (Element => Self.Data (Index)'Access);
 
    procedure Free is new Ada.Unchecked_Deallocation
+     (toolComponent_contents_Array, toolComponent_contents_Array_Access);
+
+   overriding procedure Adjust (Self : in out toolComponent_contents_Vector) is
+   begin
+      if Self.Length > 0 then
+         Self.Data :=
+           new toolComponent_contents_Array'(Self.Data (1 .. Self.Length));
+      end if;
+   end Adjust;
+
+   overriding procedure Finalize
+     (Self : in out toolComponent_contents_Vector) is
+   begin
+      Free (Self.Data);
+      Self.Length := 0;
+   end Finalize;
+
+   function Length (Self : toolComponent_contents_Vector) return Natural is
+     (Self.Length);
+
+   procedure Clear (Self : in out toolComponent_contents_Vector) is
+   begin
+      Self.Length := 0;
+   end Clear;
+
+   procedure Append
+     (Self  : in out toolComponent_contents_Vector;
+      Value : Enum.toolComponent_contents) is
+      Init_Length     : constant Positive                   :=
+        Positive'Max (1, 256 / Enum.toolComponent_contents'Size);
+      Self_Data_Saved : toolComponent_contents_Array_Access := Self.Data;
+   begin
+      if Self.Length = 0 then
+         Self.Data := new toolComponent_contents_Array (1 .. Init_Length);
+      elsif Self.Length = Self.Data'Last then
+         Self.Data :=
+           new toolComponent_contents_Array'
+             (Self.Data.all &
+              toolComponent_contents_Array'(1 .. Self.Length => <>));
+         Free (Self_Data_Saved);
+      end if;
+      Self.Length             := Self.Length + 1;
+      Self.Data (Self.Length) := Value;
+   end Append;
+
+   not overriding function Get_toolComponent_contents_Variable_Reference
+     (Self  : aliased in out toolComponent_contents_Vector;
+      Index : Positive)
+      return toolComponent_contents_Variable_Reference is
+     (Element => Self.Data (Index)'Access);
+
+   not overriding function Get_toolComponent_contents_Constant_Reference
+     (Self  : aliased toolComponent_contents_Vector;
+      Index : Positive)
+      return toolComponent_contents_Constant_Reference is
+     (Element => Self.Data (Index)'Access);
+
+   procedure Free is new Ada.Unchecked_Deallocation
      (node_Array, node_Array_Access);
 
    overriding procedure Adjust (Self : in out node_Vector) is
@@ -1838,6 +1897,60 @@ package body SARIF is
      (Element => Self.Data (Index)'Access);
 
    procedure Free is new Ada.Unchecked_Deallocation
+     (artifact_roles_Array, artifact_roles_Array_Access);
+
+   overriding procedure Adjust (Self : in out artifact_roles_Vector) is
+   begin
+      if Self.Length > 0 then
+         Self.Data := new artifact_roles_Array'(Self.Data (1 .. Self.Length));
+      end if;
+   end Adjust;
+
+   overriding procedure Finalize (Self : in out artifact_roles_Vector) is
+   begin
+      Free (Self.Data);
+      Self.Length := 0;
+   end Finalize;
+
+   function Length (Self : artifact_roles_Vector) return Natural is
+     (Self.Length);
+
+   procedure Clear (Self : in out artifact_roles_Vector) is
+   begin
+      Self.Length := 0;
+   end Clear;
+
+   procedure Append
+     (Self : in out artifact_roles_Vector; Value : Enum.artifact_roles) is
+      Init_Length     : constant Positive           :=
+        Positive'Max (1, 256 / Enum.artifact_roles'Size);
+      Self_Data_Saved : artifact_roles_Array_Access := Self.Data;
+   begin
+      if Self.Length = 0 then
+         Self.Data := new artifact_roles_Array (1 .. Init_Length);
+      elsif Self.Length = Self.Data'Last then
+         Self.Data :=
+           new artifact_roles_Array'
+             (Self.Data.all & artifact_roles_Array'(1 .. Self.Length => <>));
+         Free (Self_Data_Saved);
+      end if;
+      Self.Length             := Self.Length + 1;
+      Self.Data (Self.Length) := Value;
+   end Append;
+
+   not overriding function Get_artifact_roles_Variable_Reference
+     (Self  : aliased in out artifact_roles_Vector;
+      Index : Positive)
+      return artifact_roles_Variable_Reference is
+     (Element => Self.Data (Index)'Access);
+
+   not overriding function Get_artifact_roles_Constant_Reference
+     (Self  : aliased artifact_roles_Vector;
+      Index : Positive)
+      return artifact_roles_Constant_Reference is
+     (Element => Self.Data (Index)'Access);
+
+   procedure Free is new Ada.Unchecked_Deallocation
      (artifact_Array, artifact_Array_Access);
 
    overriding procedure Adjust (Self : in out artifact_Vector) is
@@ -1943,6 +2056,58 @@ package body SARIF is
      (Element => Self.Data (Index)'Access);
 
    procedure Free is new Ada.Unchecked_Deallocation
+     (webRequest_Array, webRequest_Array_Access);
+
+   overriding procedure Adjust (Self : in out webRequest_Vector) is
+   begin
+      if Self.Length > 0 then
+         Self.Data := new webRequest_Array'(Self.Data (1 .. Self.Length));
+      end if;
+   end Adjust;
+
+   overriding procedure Finalize (Self : in out webRequest_Vector) is
+   begin
+      Free (Self.Data);
+      Self.Length := 0;
+   end Finalize;
+
+   function Length (Self : webRequest_Vector) return Natural is (Self.Length);
+
+   procedure Clear (Self : in out webRequest_Vector) is
+   begin
+      Self.Length := 0;
+   end Clear;
+
+   procedure Append (Self : in out webRequest_Vector; Value : webRequest) is
+      Init_Length     : constant Positive       :=
+        Positive'Max (1, 256 / webRequest'Size);
+      Self_Data_Saved : webRequest_Array_Access := Self.Data;
+   begin
+      if Self.Length = 0 then
+         Self.Data := new webRequest_Array (1 .. Init_Length);
+      elsif Self.Length = Self.Data'Last then
+         Self.Data :=
+           new webRequest_Array'
+             (Self.Data.all & webRequest_Array'(1 .. Self.Length => <>));
+         Free (Self_Data_Saved);
+      end if;
+      Self.Length             := Self.Length + 1;
+      Self.Data (Self.Length) := Value;
+   end Append;
+
+   not overriding function Get_webRequest_Variable_Reference
+     (Self  : aliased in out webRequest_Vector;
+      Index : Positive)
+      return webRequest_Variable_Reference is
+     (Element => Self.Data (Index)'Access);
+
+   not overriding function Get_webRequest_Constant_Reference
+     (Self  : aliased webRequest_Vector;
+      Index : Positive)
+      return webRequest_Constant_Reference is
+     (Element => Self.Data (Index)'Access);
+
+   procedure Free is new Ada.Unchecked_Deallocation
      (externalProperties_Array, externalProperties_Array_Access);
 
    overriding procedure Adjust (Self : in out externalProperties_Vector) is
@@ -2045,58 +2210,6 @@ package body SARIF is
      (Self  : aliased run_Vector;
       Index : Positive)
       return run_Constant_Reference is (Element => Self.Data (Index)'Access);
-
-   procedure Free is new Ada.Unchecked_Deallocation
-     (webRequest_Array, webRequest_Array_Access);
-
-   overriding procedure Adjust (Self : in out webRequest_Vector) is
-   begin
-      if Self.Length > 0 then
-         Self.Data := new webRequest_Array'(Self.Data (1 .. Self.Length));
-      end if;
-   end Adjust;
-
-   overriding procedure Finalize (Self : in out webRequest_Vector) is
-   begin
-      Free (Self.Data);
-      Self.Length := 0;
-   end Finalize;
-
-   function Length (Self : webRequest_Vector) return Natural is (Self.Length);
-
-   procedure Clear (Self : in out webRequest_Vector) is
-   begin
-      Self.Length := 0;
-   end Clear;
-
-   procedure Append (Self : in out webRequest_Vector; Value : webRequest) is
-      Init_Length     : constant Positive       :=
-        Positive'Max (1, 256 / webRequest'Size);
-      Self_Data_Saved : webRequest_Array_Access := Self.Data;
-   begin
-      if Self.Length = 0 then
-         Self.Data := new webRequest_Array (1 .. Init_Length);
-      elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new webRequest_Array'
-             (Self.Data.all & webRequest_Array'(1 .. Self.Length => <>));
-         Free (Self_Data_Saved);
-      end if;
-      Self.Length             := Self.Length + 1;
-      Self.Data (Self.Length) := Value;
-   end Append;
-
-   not overriding function Get_webRequest_Variable_Reference
-     (Self  : aliased in out webRequest_Vector;
-      Index : Positive)
-      return webRequest_Variable_Reference is
-     (Element => Self.Data (Index)'Access);
-
-   not overriding function Get_webRequest_Constant_Reference
-     (Self  : aliased webRequest_Vector;
-      Index : Positive)
-      return webRequest_Constant_Reference is
-     (Element => Self.Data (Index)'Access);
 
    procedure Free is new Ada.Unchecked_Deallocation
      (a_exception_Array, a_exception_Array_Access);
@@ -2261,4 +2374,4 @@ package body SARIF is
       return artifactLocation_Constant_Reference is
      (Element => Self.Data (Index)'Access);
 
-end SARIF;
+end SARIF.Types;
