@@ -5,6 +5,7 @@ SCHEMA_URL  = https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-sc
 
 all:
 	gprbuild -P gnat/sarif.gpr
+	gprbuild -P gnat/sarif_examples.gpr
 
 generate: create pretty
 
