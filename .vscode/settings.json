@@ -1,5 +1,5 @@
 {
-  "ada.projectFile": "ada/sarif.gpr",
+  "ada.projectFile": "gnat/sarif.gpr",
   // It is recommended to check out the VSS repository as ../VSS
   "terminal.integrated.env.osx": {
       "GPR_PROJECT_PATH": "${workspaceFolder}/../VSS/gnat:${env:GPR_PROJECT_PATH}"

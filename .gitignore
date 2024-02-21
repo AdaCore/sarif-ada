@@ -1,0 +1,5 @@
+/.obj/
+/.lib/
+/alire/
+/example-output.sarif
+/sarif-schema.json

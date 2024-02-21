@@ -1,0 +1,22 @@
+name = "sarif_ada"
+description = "An Ada library for parsing and producing SARIF reports."
+version = "0.1.0-dev"
+
+authors = ["AdaCore"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gnat/sarif.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+"*".ada_version = "Ada2022"
+
+[[depends-on]]
+vss = "*"
