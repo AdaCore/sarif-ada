@@ -1,0 +1,39 @@
+--
+--  Copyright (C) 2024, AdaCore
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+with "sarif_ada_config.gpr";
+project Sarif is
+
+   for Library_Name use "sarif";
+   for Library_Version use Project'Library_Name & ".so." &
+     Sarif_Ada_Config.Crate_Version;
+
+   for Source_Dirs use ("../source", "../source/generated");
+   for Object_Dir use "../.obj/" & Sarif_Ada_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Library_Dir use "../.lib";
+
+   type Library_Type_Type is ("relocatable", "static", "static-pic");
+   Library_Type : Library_Type_Type :=
+     external ("SARIF_LIBRARY_TYPE", external ("LIBRARY_TYPE", "static"));
+   for Library_Kind use Library_Type;
+
+   package Compiler is
+      for Default_Switches ("Ada") use Sarif_Ada_Config.Ada_Compiler_Switches;
+   end Compiler;
+
+   package Pretty_Printer is
+      for Default_Switches ("ada") use
+        ("--no-align-modes",
+         "--no-separate-is",
+         "--comments-fill",
+         "--call-threshold=1",
+         "--par-threshold=2",
+         "--vertical-named-aggregates",
+         "--wide-character-encoding=8");
+   end Pretty_Printer;
+
+end Sarif;
