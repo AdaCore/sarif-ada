@@ -8,14 +8,15 @@ A VS Code workspace is provided to work with this repository.
 It is recommended to check out the [VSS](https://github.com/AdaCore/VSS) repository relative to this one as `../VSS`.
 
 Alternatively you can change the `GPR_PROJECT_PATH` variable in the `.vscode/settings.json` workspace settings file to include your custom location of `VSS` or set it in the environment before invoking VS Code.
-# SARIF types and I/O subprograms
+
+## SARIF types and I/O subprograms
 
 The program `gen_json` generates the necessary types and procedures to
 process SARIF files.
 
-It generates all the necessary code from a single JSON Schema file
-(sarif-schema-2.1.0.json) that can be found on
-https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/ site.
+It generates all the necessary code from the official SARIF JSON Schema file
+`sarif-schema-2.1.0.json` downloaded from the [official
+source](https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/).
 
 ## Generating the code
 
