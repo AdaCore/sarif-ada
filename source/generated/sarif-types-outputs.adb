@@ -262,7 +262,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("location");
          Output_location (Handler, Value.location.Value);
       end if;
-      if Value.children.Length > 0 then
+      if not Value.children.Is_Null then
          Handler.Key_Name ("children");
          Handler.Start_Array;
          for J in 1 .. Value.children.Length loop
@@ -443,7 +443,7 @@ package body SARIF.Types.Outputs is
          Handler.Integer_Value
            (Interfaces.Integer_64 (Integer'(Value.invocationIndex.Value)));
       end if;
-      if Value.conversionSources.Length > 0 then
+      if not Value.conversionSources.Is_Null then
          Handler.Key_Name ("conversionSources");
          Handler.Start_Array;
          for J in 1 .. Value.conversionSources.Length loop
@@ -634,7 +634,7 @@ package body SARIF.Types.Outputs is
       Value   : notification) is
    begin
       Handler.Start_Object;
-      if Value.locations.Length > 0 then
+      if not Value.locations.Is_Null then
          Handler.Key_Name ("locations");
          Handler.Start_Array;
          for J in 1 .. Value.locations.Length loop
@@ -753,7 +753,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("physicalLocation");
          Output_physicalLocation (Handler, Value.physicalLocation.Value);
       end if;
-      if Value.logicalLocations.Length > 0 then
+      if not Value.logicalLocations.Is_Null then
          Handler.Key_Name ("logicalLocations");
          Handler.Start_Array;
          for J in 1 .. Value.logicalLocations.Length loop
@@ -765,7 +765,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("message");
          Output_message (Handler, Value.message.Value);
       end if;
-      if Value.annotations.Length > 0 then
+      if not Value.annotations.Is_Null then
          Handler.Key_Name ("annotations");
          Handler.Start_Array;
          for J in 1 .. Value.annotations.Length loop
@@ -773,7 +773,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.relationships.Length > 0 then
+      if not Value.relationships.Is_Null then
          Handler.Key_Name ("relationships");
          Handler.Start_Array;
          for J in 1 .. Value.relationships.Length loop
@@ -908,7 +908,7 @@ package body SARIF.Types.Outputs is
          Output_run (Handler, Value.runs (J));
       end loop;
       Handler.End_Array;
-      if Value.inlineExternalProperties.Length > 0 then
+      if not Value.inlineExternalProperties.Is_Null then
          Handler.Key_Name ("inlineExternalProperties");
          Handler.Start_Array;
          for J in 1 .. Value.inlineExternalProperties.Length loop
@@ -1005,7 +1005,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("globalMessageStrings");
          Output_Any_Value (Handler, Value.globalMessageStrings);
       end if;
-      if Value.notifications.Length > 0 then
+      if not Value.notifications.Is_Null then
          Handler.Key_Name ("notifications");
          Handler.Start_Array;
          for J in 1 .. Value.notifications.Length loop
@@ -1013,7 +1013,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.rules.Length > 0 then
+      if not Value.rules.Is_Null then
          Handler.Key_Name ("rules");
          Handler.Start_Array;
          for J in 1 .. Value.rules.Length loop
@@ -1021,7 +1021,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.taxa.Length > 0 then
+      if not Value.taxa.Is_Null then
          Handler.Key_Name ("taxa");
          Handler.Start_Array;
          for J in 1 .. Value.taxa.Length loop
@@ -1029,7 +1029,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.locations.Length > 0 then
+      if not Value.locations.Is_Null then
          Handler.Key_Name ("locations");
          Handler.Start_Array;
          for J in 1 .. Value.locations.Length loop
@@ -1041,7 +1041,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("language");
          Handler.String_Value (Value.language);
       end if;
-      if Value.contents.Length > 0 then
+      if not Value.contents.Is_Null then
          Handler.Key_Name ("contents");
          Handler.Start_Array;
          for J in 1 .. Value.contents.Length loop
@@ -1071,7 +1071,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("translationMetadata");
          Output_translationMetadata (Handler, Value.translationMetadata.Value);
       end if;
-      if Value.supportedTaxonomies.Length > 0 then
+      if not Value.supportedTaxonomies.Is_Null then
          Handler.Key_Name ("supportedTaxonomies");
          Handler.Start_Array;
          for J in 1 .. Value.supportedTaxonomies.Length loop
@@ -1104,7 +1104,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.responseFiles.Length > 0 then
+      if not Value.responseFiles.Is_Null then
          Handler.Key_Name ("responseFiles");
          Handler.Start_Array;
          for J in 1 .. Value.responseFiles.Length loop
@@ -1125,7 +1125,7 @@ package body SARIF.Types.Outputs is
          Handler.Integer_Value
            (Interfaces.Integer_64 (Integer'(Value.exitCode.Value)));
       end if;
-      if Value.ruleConfigurationOverrides.Length > 0 then
+      if not Value.ruleConfigurationOverrides.Is_Null then
          Handler.Key_Name ("ruleConfigurationOverrides");
          Handler.Start_Array;
          for J in 1 .. Value.ruleConfigurationOverrides.Length loop
@@ -1134,7 +1134,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.notificationConfigurationOverrides.Length > 0 then
+      if not Value.notificationConfigurationOverrides.Is_Null then
          Handler.Key_Name ("notificationConfigurationOverrides");
          Handler.Start_Array;
          for J in 1 .. Value.notificationConfigurationOverrides.Length loop
@@ -1143,7 +1143,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.toolExecutionNotifications.Length > 0 then
+      if not Value.toolExecutionNotifications.Is_Null then
          Handler.Key_Name ("toolExecutionNotifications");
          Handler.Start_Array;
          for J in 1 .. Value.toolExecutionNotifications.Length loop
@@ -1152,7 +1152,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.toolConfigurationNotifications.Length > 0 then
+      if not Value.toolConfigurationNotifications.Is_Null then
          Handler.Key_Name ("toolConfigurationNotifications");
          Handler.Start_Array;
          for J in 1 .. Value.toolConfigurationNotifications.Length loop
@@ -1239,7 +1239,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("invocation");
          Output_invocation (Handler, Value.invocation.Value);
       end if;
-      if Value.analysisToolLogFiles.Length > 0 then
+      if not Value.analysisToolLogFiles.Is_Null then
          Handler.Key_Name ("analysisToolLogFiles");
          Handler.Start_Array;
          for J in 1 .. Value.analysisToolLogFiles.Length loop
@@ -1291,7 +1291,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("description");
          Output_message (Handler, Value.description.Value);
       end if;
-      if Value.nodes.Length > 0 then
+      if not Value.nodes.Is_Null then
          Handler.Key_Name ("nodes");
          Handler.Start_Array;
          for J in 1 .. Value.nodes.Length loop
@@ -1299,7 +1299,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.edges.Length > 0 then
+      if not Value.edges.Is_Null then
          Handler.Key_Name ("edges");
          Handler.Start_Array;
          for J in 1 .. Value.edges.Length loop
@@ -1337,7 +1337,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("conversion");
          Output_conversion (Handler, Value.conversion.Value);
       end if;
-      if Value.graphs.Length > 0 then
+      if not Value.graphs.Is_Null then
          Handler.Key_Name ("graphs");
          Handler.Start_Array;
          for J in 1 .. Value.graphs.Length loop
@@ -1349,7 +1349,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("externalizedProperties");
          Output_propertyBag (Handler, Value.externalizedProperties.Value);
       end if;
-      if Value.artifacts.Length > 0 then
+      if not Value.artifacts.Is_Null then
          Handler.Key_Name ("artifacts");
          Handler.Start_Array;
          for J in 1 .. Value.artifacts.Length loop
@@ -1357,7 +1357,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.invocations.Length > 0 then
+      if not Value.invocations.Is_Null then
          Handler.Key_Name ("invocations");
          Handler.Start_Array;
          for J in 1 .. Value.invocations.Length loop
@@ -1365,7 +1365,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.logicalLocations.Length > 0 then
+      if not Value.logicalLocations.Is_Null then
          Handler.Key_Name ("logicalLocations");
          Handler.Start_Array;
          for J in 1 .. Value.logicalLocations.Length loop
@@ -1373,7 +1373,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.threadFlowLocations.Length > 0 then
+      if not Value.threadFlowLocations.Is_Null then
          Handler.Key_Name ("threadFlowLocations");
          Handler.Start_Array;
          for J in 1 .. Value.threadFlowLocations.Length loop
@@ -1381,7 +1381,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.results.Length > 0 then
+      if not Value.results.Is_Null then
          Handler.Key_Name ("results");
          Handler.Start_Array;
          for J in 1 .. Value.results.Length loop
@@ -1389,7 +1389,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.taxonomies.Length > 0 then
+      if not Value.taxonomies.Is_Null then
          Handler.Key_Name ("taxonomies");
          Handler.Start_Array;
          for J in 1 .. Value.taxonomies.Length loop
@@ -1401,7 +1401,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("driver");
          Output_toolComponent (Handler, Value.driver.Value);
       end if;
-      if Value.extensions.Length > 0 then
+      if not Value.extensions.Is_Null then
          Handler.Key_Name ("extensions");
          Handler.Start_Array;
          for J in 1 .. Value.extensions.Length loop
@@ -1409,7 +1409,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.policies.Length > 0 then
+      if not Value.policies.Is_Null then
          Handler.Key_Name ("policies");
          Handler.Start_Array;
          for J in 1 .. Value.policies.Length loop
@@ -1417,7 +1417,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.translations.Length > 0 then
+      if not Value.translations.Is_Null then
          Handler.Key_Name ("translations");
          Handler.Start_Array;
          for J in 1 .. Value.translations.Length loop
@@ -1425,7 +1425,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.addresses.Length > 0 then
+      if not Value.addresses.Is_Null then
          Handler.Key_Name ("addresses");
          Handler.Start_Array;
          for J in 1 .. Value.addresses.Length loop
@@ -1433,7 +1433,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.webRequests.Length > 0 then
+      if not Value.webRequests.Is_Null then
          Handler.Key_Name ("webRequests");
          Handler.Start_Array;
          for J in 1 .. Value.webRequests.Length loop
@@ -1441,7 +1441,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.webResponses.Length > 0 then
+      if not Value.webResponses.Is_Null then
          Handler.Key_Name ("webResponses");
          Handler.Start_Array;
          for J in 1 .. Value.webResponses.Length loop
@@ -1554,7 +1554,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("help");
          Output_multiformatMessageString (Handler, Value.help.Value);
       end if;
-      if Value.relationships.Length > 0 then
+      if not Value.relationships.Is_Null then
          Handler.Key_Name ("relationships");
          Handler.Start_Array;
          for J in 1 .. Value.relationships.Length loop
@@ -1598,7 +1598,7 @@ package body SARIF.Types.Outputs is
          Handler.Integer_Value
            (Interfaces.Integer_64 (Integer'(Value.length.Value)));
       end if;
-      if Value.roles.Length > 0 then
+      if not Value.roles.Is_Null then
          Handler.Key_Name ("roles");
          Handler.Start_Array;
          for J in 1 .. Value.roles.Length loop
@@ -1697,7 +1697,7 @@ package body SARIF.Types.Outputs is
       Handler.Start_Object;
       Handler.Key_Name ("driver");
       Output_toolComponent (Handler, Value.driver);
-      if Value.extensions.Length > 0 then
+      if not Value.extensions.Is_Null then
          Handler.Key_Name ("extensions");
          Handler.Start_Array;
          for J in 1 .. Value.extensions.Length loop
@@ -1811,7 +1811,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("analysisTarget");
          Output_artifactLocation (Handler, Value.analysisTarget.Value);
       end if;
-      if Value.locations.Length > 0 then
+      if not Value.locations.Is_Null then
          Handler.Key_Name ("locations");
          Handler.Start_Array;
          for J in 1 .. Value.locations.Length loop
@@ -1840,7 +1840,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("fingerprints");
          Output_Any_Value (Handler, Value.fingerprints);
       end if;
-      if Value.stacks.Length > 0 then
+      if not Value.stacks.Is_Null then
          Handler.Key_Name ("stacks");
          Handler.Start_Array;
          for J in 1 .. Value.stacks.Length loop
@@ -1848,7 +1848,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.codeFlows.Length > 0 then
+      if not Value.codeFlows.Is_Null then
          Handler.Key_Name ("codeFlows");
          Handler.Start_Array;
          for J in 1 .. Value.codeFlows.Length loop
@@ -1856,7 +1856,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.graphs.Length > 0 then
+      if not Value.graphs.Is_Null then
          Handler.Key_Name ("graphs");
          Handler.Start_Array;
          for J in 1 .. Value.graphs.Length loop
@@ -1864,7 +1864,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.graphTraversals.Length > 0 then
+      if not Value.graphTraversals.Is_Null then
          Handler.Key_Name ("graphTraversals");
          Handler.Start_Array;
          for J in 1 .. Value.graphTraversals.Length loop
@@ -1872,7 +1872,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.relatedLocations.Length > 0 then
+      if not Value.relatedLocations.Is_Null then
          Handler.Key_Name ("relatedLocations");
          Handler.Start_Array;
          for J in 1 .. Value.relatedLocations.Length loop
@@ -1880,7 +1880,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.suppressions.Length > 0 then
+      if not Value.suppressions.Is_Null then
          Handler.Key_Name ("suppressions");
          Handler.Start_Array;
          for J in 1 .. Value.suppressions.Length loop
@@ -1896,7 +1896,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("rank");
          Handler.Float_Value (Interfaces.IEEE_Float_64 (Value.rank.Value));
       end if;
-      if Value.attachments.Length > 0 then
+      if not Value.attachments.Is_Null then
          Handler.Key_Name ("attachments");
          Handler.Start_Array;
          for J in 1 .. Value.attachments.Length loop
@@ -1920,7 +1920,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("provenance");
          Output_resultProvenance (Handler, Value.provenance.Value);
       end if;
-      if Value.fixes.Length > 0 then
+      if not Value.fixes.Is_Null then
          Handler.Key_Name ("fixes");
          Handler.Start_Array;
          for J in 1 .. Value.fixes.Length loop
@@ -1928,7 +1928,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.taxa.Length > 0 then
+      if not Value.taxa.Is_Null then
          Handler.Key_Name ("taxa");
          Handler.Start_Array;
          for J in 1 .. Value.taxa.Length loop
@@ -2071,7 +2071,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("immutableState");
          Output_Any_Value (Handler, Value.immutableState);
       end if;
-      if Value.edgeTraversals.Length > 0 then
+      if not Value.edgeTraversals.Is_Null then
          Handler.Key_Name ("edgeTraversals");
          Handler.Start_Array;
          for J in 1 .. Value.edgeTraversals.Length loop
@@ -2097,7 +2097,7 @@ package body SARIF.Types.Outputs is
       end if;
       Handler.Key_Name ("artifactLocation");
       Output_artifactLocation (Handler, Value.artifactLocation);
-      if Value.regions.Length > 0 then
+      if not Value.regions.Is_Null then
          Handler.Key_Name ("regions");
          Handler.Start_Array;
          for J in 1 .. Value.regions.Length loop
@@ -2105,7 +2105,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.rectangles.Length > 0 then
+      if not Value.rectangles.Is_Null then
          Handler.Key_Name ("rectangles");
          Handler.Start_Array;
          for J in 1 .. Value.rectangles.Length loop
@@ -2167,7 +2167,7 @@ package body SARIF.Types.Outputs is
       Handler.Start_Object;
       Handler.Key_Name ("tool");
       Output_tool (Handler, Value.tool);
-      if Value.invocations.Length > 0 then
+      if not Value.invocations.Is_Null then
          Handler.Key_Name ("invocations");
          Handler.Start_Array;
          for J in 1 .. Value.invocations.Length loop
@@ -2183,7 +2183,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("language");
          Handler.String_Value (Value.language);
       end if;
-      if Value.versionControlProvenance.Length > 0 then
+      if not Value.versionControlProvenance.Is_Null then
          Handler.Key_Name ("versionControlProvenance");
          Handler.Start_Array;
          for J in 1 .. Value.versionControlProvenance.Length loop
@@ -2196,7 +2196,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("originalUriBaseIds");
          Output_Any_Value (Handler, Value.originalUriBaseIds);
       end if;
-      if Value.artifacts.Length > 0 then
+      if not Value.artifacts.Is_Null then
          Handler.Key_Name ("artifacts");
          Handler.Start_Array;
          for J in 1 .. Value.artifacts.Length loop
@@ -2204,7 +2204,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.logicalLocations.Length > 0 then
+      if not Value.logicalLocations.Is_Null then
          Handler.Key_Name ("logicalLocations");
          Handler.Start_Array;
          for J in 1 .. Value.logicalLocations.Length loop
@@ -2212,7 +2212,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.graphs.Length > 0 then
+      if not Value.graphs.Is_Null then
          Handler.Key_Name ("graphs");
          Handler.Start_Array;
          for J in 1 .. Value.graphs.Length loop
@@ -2220,7 +2220,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.results.Length > 0 then
+      if not Value.results.Is_Null then
          Handler.Key_Name ("results");
          Handler.Start_Array;
          for J in 1 .. Value.results.Length loop
@@ -2232,7 +2232,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("automationDetails");
          Output_runAutomationDetails (Handler, Value.automationDetails.Value);
       end if;
-      if Value.runAggregates.Length > 0 then
+      if not Value.runAggregates.Is_Null then
          Handler.Key_Name ("runAggregates");
          Handler.Start_Array;
          for J in 1 .. Value.runAggregates.Length loop
@@ -2277,7 +2277,7 @@ package body SARIF.Types.Outputs is
          Output_externalPropertyFileReferences
            (Handler, Value.externalPropertyFileReferences.Value);
       end if;
-      if Value.threadFlowLocations.Length > 0 then
+      if not Value.threadFlowLocations.Is_Null then
          Handler.Key_Name ("threadFlowLocations");
          Handler.Start_Array;
          for J in 1 .. Value.threadFlowLocations.Length loop
@@ -2285,7 +2285,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.taxonomies.Length > 0 then
+      if not Value.taxonomies.Is_Null then
          Handler.Key_Name ("taxonomies");
          Handler.Start_Array;
          for J in 1 .. Value.taxonomies.Length loop
@@ -2293,7 +2293,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.addresses.Length > 0 then
+      if not Value.addresses.Is_Null then
          Handler.Key_Name ("addresses");
          Handler.Start_Array;
          for J in 1 .. Value.addresses.Length loop
@@ -2301,7 +2301,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.translations.Length > 0 then
+      if not Value.translations.Is_Null then
          Handler.Key_Name ("translations");
          Handler.Start_Array;
          for J in 1 .. Value.translations.Length loop
@@ -2309,7 +2309,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.policies.Length > 0 then
+      if not Value.policies.Is_Null then
          Handler.Key_Name ("policies");
          Handler.Start_Array;
          for J in 1 .. Value.policies.Length loop
@@ -2317,7 +2317,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.webRequests.Length > 0 then
+      if not Value.webRequests.Is_Null then
          Handler.Key_Name ("webRequests");
          Handler.Start_Array;
          for J in 1 .. Value.webRequests.Length loop
@@ -2325,7 +2325,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.webResponses.Length > 0 then
+      if not Value.webResponses.Is_Null then
          Handler.Key_Name ("webResponses");
          Handler.Start_Array;
          for J in 1 .. Value.webResponses.Length loop
@@ -2354,7 +2354,7 @@ package body SARIF.Types.Outputs is
          Output_externalPropertyFileReference
            (Handler, Value.conversion.Value);
       end if;
-      if Value.graphs.Length > 0 then
+      if not Value.graphs.Is_Null then
          Handler.Key_Name ("graphs");
          Handler.Start_Array;
          for J in 1 .. Value.graphs.Length loop
@@ -2367,7 +2367,7 @@ package body SARIF.Types.Outputs is
          Output_externalPropertyFileReference
            (Handler, Value.externalizedProperties.Value);
       end if;
-      if Value.artifacts.Length > 0 then
+      if not Value.artifacts.Is_Null then
          Handler.Key_Name ("artifacts");
          Handler.Start_Array;
          for J in 1 .. Value.artifacts.Length loop
@@ -2376,7 +2376,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.invocations.Length > 0 then
+      if not Value.invocations.Is_Null then
          Handler.Key_Name ("invocations");
          Handler.Start_Array;
          for J in 1 .. Value.invocations.Length loop
@@ -2385,7 +2385,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.logicalLocations.Length > 0 then
+      if not Value.logicalLocations.Is_Null then
          Handler.Key_Name ("logicalLocations");
          Handler.Start_Array;
          for J in 1 .. Value.logicalLocations.Length loop
@@ -2394,7 +2394,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.threadFlowLocations.Length > 0 then
+      if not Value.threadFlowLocations.Is_Null then
          Handler.Key_Name ("threadFlowLocations");
          Handler.Start_Array;
          for J in 1 .. Value.threadFlowLocations.Length loop
@@ -2403,7 +2403,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.results.Length > 0 then
+      if not Value.results.Is_Null then
          Handler.Key_Name ("results");
          Handler.Start_Array;
          for J in 1 .. Value.results.Length loop
@@ -2411,7 +2411,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.taxonomies.Length > 0 then
+      if not Value.taxonomies.Is_Null then
          Handler.Key_Name ("taxonomies");
          Handler.Start_Array;
          for J in 1 .. Value.taxonomies.Length loop
@@ -2420,7 +2420,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.addresses.Length > 0 then
+      if not Value.addresses.Is_Null then
          Handler.Key_Name ("addresses");
          Handler.Start_Array;
          for J in 1 .. Value.addresses.Length loop
@@ -2433,7 +2433,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("driver");
          Output_externalPropertyFileReference (Handler, Value.driver.Value);
       end if;
-      if Value.extensions.Length > 0 then
+      if not Value.extensions.Is_Null then
          Handler.Key_Name ("extensions");
          Handler.Start_Array;
          for J in 1 .. Value.extensions.Length loop
@@ -2442,7 +2442,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.policies.Length > 0 then
+      if not Value.policies.Is_Null then
          Handler.Key_Name ("policies");
          Handler.Start_Array;
          for J in 1 .. Value.policies.Length loop
@@ -2450,7 +2450,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.translations.Length > 0 then
+      if not Value.translations.Is_Null then
          Handler.Key_Name ("translations");
          Handler.Start_Array;
          for J in 1 .. Value.translations.Length loop
@@ -2459,7 +2459,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.webRequests.Length > 0 then
+      if not Value.webRequests.Is_Null then
          Handler.Key_Name ("webRequests");
          Handler.Start_Array;
          for J in 1 .. Value.webRequests.Length loop
@@ -2468,7 +2468,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.webResponses.Length > 0 then
+      if not Value.webResponses.Is_Null then
          Handler.Key_Name ("webResponses");
          Handler.Start_Array;
          for J in 1 .. Value.webResponses.Length loop
@@ -2501,7 +2501,7 @@ package body SARIF.Types.Outputs is
          Handler.Key_Name ("stack");
          Output_stack (Handler, Value.stack.Value);
       end if;
-      if Value.innerExceptions.Length > 0 then
+      if not Value.innerExceptions.Is_Null then
          Handler.Key_Name ("innerExceptions");
          Handler.Start_Array;
          for J in 1 .. Value.innerExceptions.Length loop
@@ -2542,7 +2542,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
-      if Value.taxa.Length > 0 then
+      if not Value.taxa.Is_Null then
          Handler.Key_Name ("taxa");
          Handler.Start_Array;
          for J in 1 .. Value.taxa.Length loop
