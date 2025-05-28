@@ -18,6 +18,9 @@ procedure SARIF_Run is
    Console : VSS.Text_Streams.Output_Text_Stream'Class :=
      VSS.Text_Streams.Standards.Standard_Output;
 
+   procedure Read_File;
+   procedure Write_File;
+
    procedure Read_File is
       Input   : aliased VSS.Text_Streams.File_Input.File_Input_Text_Stream;
       Reader  : VSS.JSON.Pull_Readers.Simple.JSON_Simple_Pull_Reader;
@@ -61,8 +64,11 @@ procedure SARIF_Run is
             others => <>),
          others => <>);
 
-      Run.results.Append (Result);
+      Run.results.Clear (Is_Null => False);
+      --  This Clear call is necessary if no further results will be added.
+      --  It makes the output routine generate `results: []`.
 
+      Run.results.Append (Result);
       Root.runs.Append (Run);
 
       Console.Put_Line ("Writing example-output.sarif...", Success);

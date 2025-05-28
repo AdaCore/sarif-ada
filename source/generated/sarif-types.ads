@@ -1848,9 +1848,12 @@ package SARIF.Types is
       --  configuration override.
    end record;
 
+   function Is_Null (Self : configurationOverride_Vector) return Boolean;
+
    function Length (Self : configurationOverride_Vector) return Natural;
 
-   procedure Clear (Self : in out configurationOverride_Vector);
+   procedure Clear
+     (Self : in out configurationOverride_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out configurationOverride_Vector;
@@ -1878,9 +1881,12 @@ package SARIF.Types is
       return configurationOverride_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : locationRelationship_Vector) return Boolean;
+
    function Length (Self : locationRelationship_Vector) return Natural;
 
-   procedure Clear (Self : in out locationRelationship_Vector);
+   procedure Clear
+     (Self : in out locationRelationship_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out locationRelationship_Vector; Value : locationRelationship);
@@ -1907,9 +1913,12 @@ package SARIF.Types is
       return locationRelationship_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : threadFlowLocation_Vector) return Boolean;
+
    function Length (Self : threadFlowLocation_Vector) return Natural;
 
-   procedure Clear (Self : in out threadFlowLocation_Vector);
+   procedure Clear
+     (Self : in out threadFlowLocation_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out threadFlowLocation_Vector; Value : threadFlowLocation);
@@ -1936,9 +1945,11 @@ package SARIF.Types is
       return threadFlowLocation_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : result_Vector) return Boolean;
+
    function Length (Self : result_Vector) return Natural;
 
-   procedure Clear (Self : in out result_Vector);
+   procedure Clear (Self : in out result_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out result_Vector; Value : result);
 
@@ -1963,9 +1974,12 @@ package SARIF.Types is
       return result_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : runAutomationDetails_Vector) return Boolean;
+
    function Length (Self : runAutomationDetails_Vector) return Natural;
 
-   procedure Clear (Self : in out runAutomationDetails_Vector);
+   procedure Clear
+     (Self : in out runAutomationDetails_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out runAutomationDetails_Vector; Value : runAutomationDetails);
@@ -1992,9 +2006,12 @@ package SARIF.Types is
       return runAutomationDetails_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : replacement_Vector) return Boolean;
+
    function Length (Self : replacement_Vector) return Natural;
 
-   procedure Clear (Self : in out replacement_Vector);
+   procedure Clear
+     (Self : in out replacement_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out replacement_Vector; Value : replacement);
 
@@ -2020,9 +2037,12 @@ package SARIF.Types is
       return replacement_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : webResponse_Vector) return Boolean;
+
    function Length (Self : webResponse_Vector) return Natural;
 
-   procedure Clear (Self : in out webResponse_Vector);
+   procedure Clear
+     (Self : in out webResponse_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out webResponse_Vector; Value : webResponse);
 
@@ -2048,9 +2068,11 @@ package SARIF.Types is
       return webResponse_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : address_Vector) return Boolean;
+
    function Length (Self : address_Vector) return Natural;
 
-   procedure Clear (Self : in out address_Vector);
+   procedure Clear (Self : in out address_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out address_Vector; Value : address);
 
@@ -2075,9 +2097,12 @@ package SARIF.Types is
       return address_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : physicalLocation_Vector) return Boolean;
+
    function Length (Self : physicalLocation_Vector) return Natural;
 
-   procedure Clear (Self : in out physicalLocation_Vector);
+   procedure Clear
+     (Self : in out physicalLocation_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out physicalLocation_Vector; Value : physicalLocation);
@@ -2104,9 +2129,12 @@ package SARIF.Types is
       return physicalLocation_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : stackFrame_Vector) return Boolean;
+
    function Length (Self : stackFrame_Vector) return Natural;
 
-   procedure Clear (Self : in out stackFrame_Vector);
+   procedure Clear
+     (Self : in out stackFrame_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out stackFrame_Vector; Value : stackFrame);
 
@@ -2131,9 +2159,12 @@ package SARIF.Types is
       return stackFrame_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : toolComponent_Vector) return Boolean;
+
    function Length (Self : toolComponent_Vector) return Natural;
 
-   procedure Clear (Self : in out toolComponent_Vector);
+   procedure Clear
+     (Self : in out toolComponent_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out toolComponent_Vector; Value : toolComponent);
@@ -2160,10 +2191,15 @@ package SARIF.Types is
       return toolComponent_Constant_Reference with
      Inline;
 
+   function Is_Null
+     (Self : externalPropertyFileReference_Vector) return Boolean;
+
    function Length
      (Self : externalPropertyFileReference_Vector) return Natural;
 
-   procedure Clear (Self : in out externalPropertyFileReference_Vector);
+   procedure Clear
+     (Self    : in out externalPropertyFileReference_Vector;
+      Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out externalPropertyFileReference_Vector;
@@ -2191,9 +2227,11 @@ package SARIF.Types is
       return externalPropertyFileReference_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : stack_Vector) return Boolean;
+
    function Length (Self : stack_Vector) return Natural;
 
-   procedure Clear (Self : in out stack_Vector);
+   procedure Clear (Self : in out stack_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out stack_Vector; Value : stack);
 
@@ -2217,9 +2255,11 @@ package SARIF.Types is
       return stack_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : Integer_Vector) return Boolean;
+
    function Length (Self : Integer_Vector) return Natural;
 
-   procedure Clear (Self : in out Integer_Vector);
+   procedure Clear (Self : in out Integer_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out Integer_Vector; Value : Integer);
 
@@ -2244,9 +2284,12 @@ package SARIF.Types is
       return Integer_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : notification_Vector) return Boolean;
+
    function Length (Self : notification_Vector) return Natural;
 
-   procedure Clear (Self : in out notification_Vector);
+   procedure Clear
+     (Self : in out notification_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out notification_Vector; Value : notification);
 
@@ -2272,9 +2315,12 @@ package SARIF.Types is
       return notification_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : attachment_Vector) return Boolean;
+
    function Length (Self : attachment_Vector) return Natural;
 
-   procedure Clear (Self : in out attachment_Vector);
+   procedure Clear
+     (Self : in out attachment_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out attachment_Vector; Value : attachment);
 
@@ -2299,9 +2345,12 @@ package SARIF.Types is
       return attachment_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : suppression_Vector) return Boolean;
+
    function Length (Self : suppression_Vector) return Natural;
 
-   procedure Clear (Self : in out suppression_Vector);
+   procedure Clear
+     (Self : in out suppression_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out suppression_Vector; Value : suppression);
 
@@ -2327,9 +2376,12 @@ package SARIF.Types is
       return suppression_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : edgeTraversal_Vector) return Boolean;
+
    function Length (Self : edgeTraversal_Vector) return Natural;
 
-   procedure Clear (Self : in out edgeTraversal_Vector);
+   procedure Clear
+     (Self : in out edgeTraversal_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out edgeTraversal_Vector; Value : edgeTraversal);
@@ -2356,9 +2408,12 @@ package SARIF.Types is
       return edgeTraversal_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : graphTraversal_Vector) return Boolean;
+
    function Length (Self : graphTraversal_Vector) return Natural;
 
-   procedure Clear (Self : in out graphTraversal_Vector);
+   procedure Clear
+     (Self : in out graphTraversal_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out graphTraversal_Vector; Value : graphTraversal);
@@ -2385,9 +2440,11 @@ package SARIF.Types is
       return graphTraversal_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : location_Vector) return Boolean;
+
    function Length (Self : location_Vector) return Natural;
 
-   procedure Clear (Self : in out location_Vector);
+   procedure Clear (Self : in out location_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out location_Vector; Value : location);
 
@@ -2412,9 +2469,11 @@ package SARIF.Types is
       return location_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : graph_Vector) return Boolean;
+
    function Length (Self : graph_Vector) return Natural;
 
-   procedure Clear (Self : in out graph_Vector);
+   procedure Clear (Self : in out graph_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out graph_Vector; Value : graph);
 
@@ -2438,9 +2497,14 @@ package SARIF.Types is
       return graph_Constant_Reference with
      Inline;
 
+   function Is_Null
+     (Self : reportingDescriptorReference_Vector) return Boolean;
+
    function Length (Self : reportingDescriptorReference_Vector) return Natural;
 
-   procedure Clear (Self : in out reportingDescriptorReference_Vector);
+   procedure Clear
+     (Self    : in out reportingDescriptorReference_Vector;
+      Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out reportingDescriptorReference_Vector;
@@ -2468,10 +2532,15 @@ package SARIF.Types is
       return reportingDescriptorReference_Constant_Reference with
      Inline;
 
+   function Is_Null
+     (Self : reportingDescriptorRelationship_Vector) return Boolean;
+
    function Length
      (Self : reportingDescriptorRelationship_Vector) return Natural;
 
-   procedure Clear (Self : in out reportingDescriptorRelationship_Vector);
+   procedure Clear
+     (Self    : in out reportingDescriptorRelationship_Vector;
+      Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out reportingDescriptorRelationship_Vector;
@@ -2499,9 +2568,11 @@ package SARIF.Types is
       return reportingDescriptorRelationship_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : region_Vector) return Boolean;
+
    function Length (Self : region_Vector) return Natural;
 
-   procedure Clear (Self : in out region_Vector);
+   procedure Clear (Self : in out region_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out region_Vector; Value : region);
 
@@ -2526,9 +2597,12 @@ package SARIF.Types is
       return region_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : versionControlDetails_Vector) return Boolean;
+
    function Length (Self : versionControlDetails_Vector) return Natural;
 
-   procedure Clear (Self : in out versionControlDetails_Vector);
+   procedure Clear
+     (Self : in out versionControlDetails_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out versionControlDetails_Vector;
@@ -2556,9 +2630,11 @@ package SARIF.Types is
       return versionControlDetails_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : rectangle_Vector) return Boolean;
+
    function Length (Self : rectangle_Vector) return Natural;
 
-   procedure Clear (Self : in out rectangle_Vector);
+   procedure Clear (Self : in out rectangle_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out rectangle_Vector; Value : rectangle);
 
@@ -2583,9 +2659,11 @@ package SARIF.Types is
       return rectangle_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : codeFlow_Vector) return Boolean;
+
    function Length (Self : codeFlow_Vector) return Natural;
 
-   procedure Clear (Self : in out codeFlow_Vector);
+   procedure Clear (Self : in out codeFlow_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out codeFlow_Vector; Value : codeFlow);
 
@@ -2610,9 +2688,12 @@ package SARIF.Types is
       return codeFlow_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : toolComponentReference_Vector) return Boolean;
+
    function Length (Self : toolComponentReference_Vector) return Natural;
 
-   procedure Clear (Self : in out toolComponentReference_Vector);
+   procedure Clear
+     (Self : in out toolComponentReference_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out toolComponentReference_Vector;
@@ -2640,9 +2721,11 @@ package SARIF.Types is
       return toolComponentReference_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : edge_Vector) return Boolean;
+
    function Length (Self : edge_Vector) return Natural;
 
-   procedure Clear (Self : in out edge_Vector);
+   procedure Clear (Self : in out edge_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out edge_Vector; Value : edge);
 
@@ -2666,9 +2749,12 @@ package SARIF.Types is
       return edge_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : toolComponent_contents_Vector) return Boolean;
+
    function Length (Self : toolComponent_contents_Vector) return Natural;
 
-   procedure Clear (Self : in out toolComponent_contents_Vector);
+   procedure Clear
+     (Self : in out toolComponent_contents_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self  : in out toolComponent_contents_Vector;
@@ -2696,9 +2782,11 @@ package SARIF.Types is
       return toolComponent_contents_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : node_Vector) return Boolean;
+
    function Length (Self : node_Vector) return Natural;
 
-   procedure Clear (Self : in out node_Vector);
+   procedure Clear (Self : in out node_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out node_Vector; Value : node);
 
@@ -2722,9 +2810,12 @@ package SARIF.Types is
       return node_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : threadFlow_Vector) return Boolean;
+
    function Length (Self : threadFlow_Vector) return Natural;
 
-   procedure Clear (Self : in out threadFlow_Vector);
+   procedure Clear
+     (Self : in out threadFlow_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out threadFlow_Vector; Value : threadFlow);
 
@@ -2749,9 +2840,11 @@ package SARIF.Types is
       return threadFlow_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : fix_Vector) return Boolean;
+
    function Length (Self : fix_Vector) return Natural;
 
-   procedure Clear (Self : in out fix_Vector);
+   procedure Clear (Self : in out fix_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out fix_Vector; Value : fix);
 
@@ -2775,9 +2868,12 @@ package SARIF.Types is
       return fix_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : invocation_Vector) return Boolean;
+
    function Length (Self : invocation_Vector) return Natural;
 
-   procedure Clear (Self : in out invocation_Vector);
+   procedure Clear
+     (Self : in out invocation_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out invocation_Vector; Value : invocation);
 
@@ -2802,9 +2898,12 @@ package SARIF.Types is
       return invocation_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : artifactChange_Vector) return Boolean;
+
    function Length (Self : artifactChange_Vector) return Natural;
 
-   procedure Clear (Self : in out artifactChange_Vector);
+   procedure Clear
+     (Self : in out artifactChange_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out artifactChange_Vector; Value : artifactChange);
@@ -2831,9 +2930,12 @@ package SARIF.Types is
       return artifactChange_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : artifact_roles_Vector) return Boolean;
+
    function Length (Self : artifact_roles_Vector) return Natural;
 
-   procedure Clear (Self : in out artifact_roles_Vector);
+   procedure Clear
+     (Self : in out artifact_roles_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out artifact_roles_Vector; Value : Enum.artifact_roles);
@@ -2860,9 +2962,11 @@ package SARIF.Types is
       return artifact_roles_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : artifact_Vector) return Boolean;
+
    function Length (Self : artifact_Vector) return Natural;
 
-   procedure Clear (Self : in out artifact_Vector);
+   procedure Clear (Self : in out artifact_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out artifact_Vector; Value : artifact);
 
@@ -2887,9 +2991,12 @@ package SARIF.Types is
       return artifact_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : logicalLocation_Vector) return Boolean;
+
    function Length (Self : logicalLocation_Vector) return Natural;
 
-   procedure Clear (Self : in out logicalLocation_Vector);
+   procedure Clear
+     (Self : in out logicalLocation_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out logicalLocation_Vector; Value : logicalLocation);
@@ -2916,9 +3023,12 @@ package SARIF.Types is
       return logicalLocation_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : webRequest_Vector) return Boolean;
+
    function Length (Self : webRequest_Vector) return Natural;
 
-   procedure Clear (Self : in out webRequest_Vector);
+   procedure Clear
+     (Self : in out webRequest_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out webRequest_Vector; Value : webRequest);
 
@@ -2943,9 +3053,12 @@ package SARIF.Types is
       return webRequest_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : externalProperties_Vector) return Boolean;
+
    function Length (Self : externalProperties_Vector) return Natural;
 
-   procedure Clear (Self : in out externalProperties_Vector);
+   procedure Clear
+     (Self : in out externalProperties_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out externalProperties_Vector; Value : externalProperties);
@@ -2972,9 +3085,11 @@ package SARIF.Types is
       return externalProperties_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : run_Vector) return Boolean;
+
    function Length (Self : run_Vector) return Natural;
 
-   procedure Clear (Self : in out run_Vector);
+   procedure Clear (Self : in out run_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out run_Vector; Value : run);
 
@@ -2998,9 +3113,12 @@ package SARIF.Types is
       return run_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : a_exception_Vector) return Boolean;
+
    function Length (Self : a_exception_Vector) return Natural;
 
-   procedure Clear (Self : in out a_exception_Vector);
+   procedure Clear
+     (Self : in out a_exception_Vector; Is_Null : Boolean := True);
 
    procedure Append (Self : in out a_exception_Vector; Value : a_exception);
 
@@ -3026,9 +3144,12 @@ package SARIF.Types is
       return a_exception_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : reportingDescriptor_Vector) return Boolean;
+
    function Length (Self : reportingDescriptor_Vector) return Natural;
 
-   procedure Clear (Self : in out reportingDescriptor_Vector);
+   procedure Clear
+     (Self : in out reportingDescriptor_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out reportingDescriptor_Vector; Value : reportingDescriptor);
@@ -3055,9 +3176,12 @@ package SARIF.Types is
       return reportingDescriptor_Constant_Reference with
      Inline;
 
+   function Is_Null (Self : artifactLocation_Vector) return Boolean;
+
    function Length (Self : artifactLocation_Vector) return Natural;
 
-   procedure Clear (Self : in out artifactLocation_Vector);
+   procedure Clear
+     (Self : in out artifactLocation_Vector; Is_Null : Boolean := True);
 
    procedure Append
      (Self : in out artifactLocation_Vector; Value : artifactLocation);
@@ -3091,8 +3215,9 @@ private
      access configurationOverride_Array;
    type configurationOverride_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : configurationOverride_Array_Access;
-      Length : Natural := 0;
+      Data    : configurationOverride_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out configurationOverride_Vector);
@@ -3104,8 +3229,9 @@ private
    type locationRelationship_Array_Access is access locationRelationship_Array;
    type locationRelationship_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : locationRelationship_Array_Access;
-      Length : Natural := 0;
+      Data    : locationRelationship_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out locationRelationship_Vector);
@@ -3117,8 +3243,9 @@ private
    type threadFlowLocation_Array_Access is access threadFlowLocation_Array;
    type threadFlowLocation_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : threadFlowLocation_Array_Access;
-      Length : Natural := 0;
+      Data    : threadFlowLocation_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out threadFlowLocation_Vector);
@@ -3128,8 +3255,9 @@ private
    type result_Array is array (Positive range <>) of aliased result;
    type result_Array_Access is access result_Array;
    type result_Vector is new Ada.Finalization.Controlled with record
-      Data   : result_Array_Access;
-      Length : Natural := 0;
+      Data    : result_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out result_Vector);
@@ -3141,8 +3269,9 @@ private
    type runAutomationDetails_Array_Access is access runAutomationDetails_Array;
    type runAutomationDetails_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : runAutomationDetails_Array_Access;
-      Length : Natural := 0;
+      Data    : runAutomationDetails_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out runAutomationDetails_Vector);
@@ -3152,8 +3281,9 @@ private
    type replacement_Array is array (Positive range <>) of aliased replacement;
    type replacement_Array_Access is access replacement_Array;
    type replacement_Vector is new Ada.Finalization.Controlled with record
-      Data   : replacement_Array_Access;
-      Length : Natural := 0;
+      Data    : replacement_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out replacement_Vector);
@@ -3163,8 +3293,9 @@ private
    type webResponse_Array is array (Positive range <>) of aliased webResponse;
    type webResponse_Array_Access is access webResponse_Array;
    type webResponse_Vector is new Ada.Finalization.Controlled with record
-      Data   : webResponse_Array_Access;
-      Length : Natural := 0;
+      Data    : webResponse_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out webResponse_Vector);
@@ -3174,8 +3305,9 @@ private
    type address_Array is array (Positive range <>) of aliased address;
    type address_Array_Access is access address_Array;
    type address_Vector is new Ada.Finalization.Controlled with record
-      Data   : address_Array_Access;
-      Length : Natural := 0;
+      Data    : address_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out address_Vector);
@@ -3186,8 +3318,9 @@ private
      array (Positive range <>) of aliased physicalLocation;
    type physicalLocation_Array_Access is access physicalLocation_Array;
    type physicalLocation_Vector is new Ada.Finalization.Controlled with record
-      Data   : physicalLocation_Array_Access;
-      Length : Natural := 0;
+      Data    : physicalLocation_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out physicalLocation_Vector);
@@ -3197,8 +3330,9 @@ private
    type stackFrame_Array is array (Positive range <>) of aliased stackFrame;
    type stackFrame_Array_Access is access stackFrame_Array;
    type stackFrame_Vector is new Ada.Finalization.Controlled with record
-      Data   : stackFrame_Array_Access;
-      Length : Natural := 0;
+      Data    : stackFrame_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out stackFrame_Vector);
@@ -3209,8 +3343,9 @@ private
      array (Positive range <>) of aliased toolComponent;
    type toolComponent_Array_Access is access toolComponent_Array;
    type toolComponent_Vector is new Ada.Finalization.Controlled with record
-      Data   : toolComponent_Array_Access;
-      Length : Natural := 0;
+      Data    : toolComponent_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out toolComponent_Vector);
@@ -3223,8 +3358,9 @@ private
      access externalPropertyFileReference_Array;
    type externalPropertyFileReference_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : externalPropertyFileReference_Array_Access;
-      Length : Natural := 0;
+      Data    : externalPropertyFileReference_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust
@@ -3236,8 +3372,9 @@ private
    type stack_Array is array (Positive range <>) of aliased stack;
    type stack_Array_Access is access stack_Array;
    type stack_Vector is new Ada.Finalization.Controlled with record
-      Data   : stack_Array_Access;
-      Length : Natural := 0;
+      Data    : stack_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out stack_Vector);
@@ -3247,8 +3384,9 @@ private
    type Integer_Array is array (Positive range <>) of aliased Integer;
    type Integer_Array_Access is access Integer_Array;
    type Integer_Vector is new Ada.Finalization.Controlled with record
-      Data   : Integer_Array_Access;
-      Length : Natural := 0;
+      Data    : Integer_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out Integer_Vector);
@@ -3259,8 +3397,9 @@ private
      array (Positive range <>) of aliased notification;
    type notification_Array_Access is access notification_Array;
    type notification_Vector is new Ada.Finalization.Controlled with record
-      Data   : notification_Array_Access;
-      Length : Natural := 0;
+      Data    : notification_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out notification_Vector);
@@ -3270,8 +3409,9 @@ private
    type attachment_Array is array (Positive range <>) of aliased attachment;
    type attachment_Array_Access is access attachment_Array;
    type attachment_Vector is new Ada.Finalization.Controlled with record
-      Data   : attachment_Array_Access;
-      Length : Natural := 0;
+      Data    : attachment_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out attachment_Vector);
@@ -3281,8 +3421,9 @@ private
    type suppression_Array is array (Positive range <>) of aliased suppression;
    type suppression_Array_Access is access suppression_Array;
    type suppression_Vector is new Ada.Finalization.Controlled with record
-      Data   : suppression_Array_Access;
-      Length : Natural := 0;
+      Data    : suppression_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out suppression_Vector);
@@ -3293,8 +3434,9 @@ private
      array (Positive range <>) of aliased edgeTraversal;
    type edgeTraversal_Array_Access is access edgeTraversal_Array;
    type edgeTraversal_Vector is new Ada.Finalization.Controlled with record
-      Data   : edgeTraversal_Array_Access;
-      Length : Natural := 0;
+      Data    : edgeTraversal_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out edgeTraversal_Vector);
@@ -3305,8 +3447,9 @@ private
      array (Positive range <>) of aliased graphTraversal;
    type graphTraversal_Array_Access is access graphTraversal_Array;
    type graphTraversal_Vector is new Ada.Finalization.Controlled with record
-      Data   : graphTraversal_Array_Access;
-      Length : Natural := 0;
+      Data    : graphTraversal_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out graphTraversal_Vector);
@@ -3316,8 +3459,9 @@ private
    type location_Array is array (Positive range <>) of aliased location;
    type location_Array_Access is access location_Array;
    type location_Vector is new Ada.Finalization.Controlled with record
-      Data   : location_Array_Access;
-      Length : Natural := 0;
+      Data    : location_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out location_Vector);
@@ -3327,8 +3471,9 @@ private
    type graph_Array is array (Positive range <>) of aliased graph;
    type graph_Array_Access is access graph_Array;
    type graph_Vector is new Ada.Finalization.Controlled with record
-      Data   : graph_Array_Access;
-      Length : Natural := 0;
+      Data    : graph_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out graph_Vector);
@@ -3341,8 +3486,9 @@ private
      access reportingDescriptorReference_Array;
    type reportingDescriptorReference_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : reportingDescriptorReference_Array_Access;
-      Length : Natural := 0;
+      Data    : reportingDescriptorReference_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust
@@ -3357,8 +3503,9 @@ private
      access reportingDescriptorRelationship_Array;
    type reportingDescriptorRelationship_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : reportingDescriptorRelationship_Array_Access;
-      Length : Natural := 0;
+      Data    : reportingDescriptorRelationship_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust
@@ -3370,8 +3517,9 @@ private
    type region_Array is array (Positive range <>) of aliased region;
    type region_Array_Access is access region_Array;
    type region_Vector is new Ada.Finalization.Controlled with record
-      Data   : region_Array_Access;
-      Length : Natural := 0;
+      Data    : region_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out region_Vector);
@@ -3384,8 +3532,9 @@ private
      access versionControlDetails_Array;
    type versionControlDetails_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : versionControlDetails_Array_Access;
-      Length : Natural := 0;
+      Data    : versionControlDetails_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out versionControlDetails_Vector);
@@ -3395,8 +3544,9 @@ private
    type rectangle_Array is array (Positive range <>) of aliased rectangle;
    type rectangle_Array_Access is access rectangle_Array;
    type rectangle_Vector is new Ada.Finalization.Controlled with record
-      Data   : rectangle_Array_Access;
-      Length : Natural := 0;
+      Data    : rectangle_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out rectangle_Vector);
@@ -3406,8 +3556,9 @@ private
    type codeFlow_Array is array (Positive range <>) of aliased codeFlow;
    type codeFlow_Array_Access is access codeFlow_Array;
    type codeFlow_Vector is new Ada.Finalization.Controlled with record
-      Data   : codeFlow_Array_Access;
-      Length : Natural := 0;
+      Data    : codeFlow_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out codeFlow_Vector);
@@ -3420,8 +3571,9 @@ private
      access toolComponentReference_Array;
    type toolComponentReference_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : toolComponentReference_Array_Access;
-      Length : Natural := 0;
+      Data    : toolComponentReference_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out toolComponentReference_Vector);
@@ -3431,8 +3583,9 @@ private
    type edge_Array is array (Positive range <>) of aliased edge;
    type edge_Array_Access is access edge_Array;
    type edge_Vector is new Ada.Finalization.Controlled with record
-      Data   : edge_Array_Access;
-      Length : Natural := 0;
+      Data    : edge_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out edge_Vector);
@@ -3445,8 +3598,9 @@ private
      access toolComponent_contents_Array;
    type toolComponent_contents_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : toolComponent_contents_Array_Access;
-      Length : Natural := 0;
+      Data    : toolComponent_contents_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out toolComponent_contents_Vector);
@@ -3456,8 +3610,9 @@ private
    type node_Array is array (Positive range <>) of aliased node;
    type node_Array_Access is access node_Array;
    type node_Vector is new Ada.Finalization.Controlled with record
-      Data   : node_Array_Access;
-      Length : Natural := 0;
+      Data    : node_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out node_Vector);
@@ -3467,8 +3622,9 @@ private
    type threadFlow_Array is array (Positive range <>) of aliased threadFlow;
    type threadFlow_Array_Access is access threadFlow_Array;
    type threadFlow_Vector is new Ada.Finalization.Controlled with record
-      Data   : threadFlow_Array_Access;
-      Length : Natural := 0;
+      Data    : threadFlow_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out threadFlow_Vector);
@@ -3478,8 +3634,9 @@ private
    type fix_Array is array (Positive range <>) of aliased fix;
    type fix_Array_Access is access fix_Array;
    type fix_Vector is new Ada.Finalization.Controlled with record
-      Data   : fix_Array_Access;
-      Length : Natural := 0;
+      Data    : fix_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out fix_Vector);
@@ -3489,8 +3646,9 @@ private
    type invocation_Array is array (Positive range <>) of aliased invocation;
    type invocation_Array_Access is access invocation_Array;
    type invocation_Vector is new Ada.Finalization.Controlled with record
-      Data   : invocation_Array_Access;
-      Length : Natural := 0;
+      Data    : invocation_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out invocation_Vector);
@@ -3501,8 +3659,9 @@ private
      array (Positive range <>) of aliased artifactChange;
    type artifactChange_Array_Access is access artifactChange_Array;
    type artifactChange_Vector is new Ada.Finalization.Controlled with record
-      Data   : artifactChange_Array_Access;
-      Length : Natural := 0;
+      Data    : artifactChange_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out artifactChange_Vector);
@@ -3513,8 +3672,9 @@ private
      array (Positive range <>) of aliased Enum.artifact_roles;
    type artifact_roles_Array_Access is access artifact_roles_Array;
    type artifact_roles_Vector is new Ada.Finalization.Controlled with record
-      Data   : artifact_roles_Array_Access;
-      Length : Natural := 0;
+      Data    : artifact_roles_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out artifact_roles_Vector);
@@ -3524,8 +3684,9 @@ private
    type artifact_Array is array (Positive range <>) of aliased artifact;
    type artifact_Array_Access is access artifact_Array;
    type artifact_Vector is new Ada.Finalization.Controlled with record
-      Data   : artifact_Array_Access;
-      Length : Natural := 0;
+      Data    : artifact_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out artifact_Vector);
@@ -3536,8 +3697,9 @@ private
      array (Positive range <>) of aliased logicalLocation;
    type logicalLocation_Array_Access is access logicalLocation_Array;
    type logicalLocation_Vector is new Ada.Finalization.Controlled with record
-      Data   : logicalLocation_Array_Access;
-      Length : Natural := 0;
+      Data    : logicalLocation_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out logicalLocation_Vector);
@@ -3547,8 +3709,9 @@ private
    type webRequest_Array is array (Positive range <>) of aliased webRequest;
    type webRequest_Array_Access is access webRequest_Array;
    type webRequest_Vector is new Ada.Finalization.Controlled with record
-      Data   : webRequest_Array_Access;
-      Length : Natural := 0;
+      Data    : webRequest_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out webRequest_Vector);
@@ -3560,8 +3723,9 @@ private
    type externalProperties_Array_Access is access externalProperties_Array;
    type externalProperties_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : externalProperties_Array_Access;
-      Length : Natural := 0;
+      Data    : externalProperties_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out externalProperties_Vector);
@@ -3571,8 +3735,9 @@ private
    type run_Array is array (Positive range <>) of aliased run;
    type run_Array_Access is access run_Array;
    type run_Vector is new Ada.Finalization.Controlled with record
-      Data   : run_Array_Access;
-      Length : Natural := 0;
+      Data    : run_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out run_Vector);
@@ -3582,8 +3747,9 @@ private
    type a_exception_Array is array (Positive range <>) of aliased a_exception;
    type a_exception_Array_Access is access a_exception_Array;
    type a_exception_Vector is new Ada.Finalization.Controlled with record
-      Data   : a_exception_Array_Access;
-      Length : Natural := 0;
+      Data    : a_exception_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out a_exception_Vector);
@@ -3595,8 +3761,9 @@ private
    type reportingDescriptor_Array_Access is access reportingDescriptor_Array;
    type reportingDescriptor_Vector is
    new Ada.Finalization.Controlled with record
-      Data   : reportingDescriptor_Array_Access;
-      Length : Natural := 0;
+      Data    : reportingDescriptor_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out reportingDescriptor_Vector);
@@ -3607,8 +3774,9 @@ private
      array (Positive range <>) of aliased artifactLocation;
    type artifactLocation_Array_Access is access artifactLocation_Array;
    type artifactLocation_Vector is new Ada.Finalization.Controlled with record
-      Data   : artifactLocation_Array_Access;
-      Length : Natural := 0;
+      Data    : artifactLocation_Array_Access;
+      Length  : Natural := 0;
+      Is_Null : Boolean := True;
    end record;
 
    overriding procedure Adjust (Self : in out artifactLocation_Vector);

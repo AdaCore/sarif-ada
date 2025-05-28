@@ -26,12 +26,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : configurationOverride_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : configurationOverride_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out configurationOverride_Vector) is
+   procedure Clear
+     (Self : in out configurationOverride_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -42,7 +47,8 @@ package body SARIF.Types is
       Self_Data_Saved : configurationOverride_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new configurationOverride_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new configurationOverride_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new configurationOverride_Array'
@@ -83,12 +89,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : locationRelationship_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : locationRelationship_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out locationRelationship_Vector) is
+   procedure Clear
+     (Self : in out locationRelationship_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -99,7 +110,8 @@ package body SARIF.Types is
       Self_Data_Saved : locationRelationship_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new locationRelationship_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new locationRelationship_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new locationRelationship_Array'
@@ -140,12 +152,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : threadFlowLocation_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : threadFlowLocation_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out threadFlowLocation_Vector) is
+   procedure Clear
+     (Self : in out threadFlowLocation_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -155,7 +172,8 @@ package body SARIF.Types is
       Self_Data_Saved : threadFlowLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new threadFlowLocation_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new threadFlowLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new threadFlowLocation_Array'
@@ -195,11 +213,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : result_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : result_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out result_Vector) is
+   procedure Clear (Self : in out result_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out result_Vector; Value : result) is
@@ -207,7 +228,8 @@ package body SARIF.Types is
       Self_Data_Saved : result_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new result_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new result_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new result_Array'
@@ -247,12 +269,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : runAutomationDetails_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : runAutomationDetails_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out runAutomationDetails_Vector) is
+   procedure Clear
+     (Self : in out runAutomationDetails_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -263,7 +290,8 @@ package body SARIF.Types is
       Self_Data_Saved : runAutomationDetails_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new runAutomationDetails_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new runAutomationDetails_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new runAutomationDetails_Array'
@@ -303,11 +331,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : replacement_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : replacement_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out replacement_Vector) is
+   procedure Clear
+     (Self : in out replacement_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out replacement_Vector; Value : replacement) is
@@ -316,7 +349,8 @@ package body SARIF.Types is
       Self_Data_Saved : replacement_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new replacement_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new replacement_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new replacement_Array'
@@ -355,11 +389,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : webResponse_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : webResponse_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out webResponse_Vector) is
+   procedure Clear
+     (Self : in out webResponse_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out webResponse_Vector; Value : webResponse) is
@@ -368,7 +407,8 @@ package body SARIF.Types is
       Self_Data_Saved : webResponse_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new webResponse_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new webResponse_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new webResponse_Array'
@@ -407,11 +447,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : address_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : address_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out address_Vector) is
+   procedure Clear (Self : in out address_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out address_Vector; Value : address) is
@@ -419,7 +462,8 @@ package body SARIF.Types is
       Self_Data_Saved : address_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new address_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new address_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new address_Array'
@@ -459,12 +503,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : physicalLocation_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : physicalLocation_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out physicalLocation_Vector) is
+   procedure Clear
+     (Self : in out physicalLocation_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -474,7 +523,8 @@ package body SARIF.Types is
       Self_Data_Saved : physicalLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new physicalLocation_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new physicalLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new physicalLocation_Array'
@@ -513,11 +563,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : stackFrame_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : stackFrame_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out stackFrame_Vector) is
+   procedure Clear
+     (Self : in out stackFrame_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out stackFrame_Vector; Value : stackFrame) is
@@ -526,7 +581,8 @@ package body SARIF.Types is
       Self_Data_Saved : stackFrame_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new stackFrame_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new stackFrame_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new stackFrame_Array'
@@ -565,12 +621,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : toolComponent_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : toolComponent_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out toolComponent_Vector) is
+   procedure Clear
+     (Self : in out toolComponent_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -580,7 +641,8 @@ package body SARIF.Types is
       Self_Data_Saved : toolComponent_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new toolComponent_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new toolComponent_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new toolComponent_Array'
@@ -624,13 +686,20 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null
+     (Self : externalPropertyFileReference_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length
      (Self : externalPropertyFileReference_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out externalPropertyFileReference_Vector) is
+   procedure Clear
+     (Self    : in out externalPropertyFileReference_Vector;
+      Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -642,7 +711,8 @@ package body SARIF.Types is
         Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data :=
+         Self.Is_Null := False;
+         Self.Data    :=
            new externalPropertyFileReference_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
@@ -683,11 +753,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : stack_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : stack_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out stack_Vector) is
+   procedure Clear (Self : in out stack_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out stack_Vector; Value : stack) is
@@ -695,7 +768,8 @@ package body SARIF.Types is
       Self_Data_Saved : stack_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new stack_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new stack_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new stack_Array'
@@ -734,11 +808,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : Integer_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : Integer_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out Integer_Vector) is
+   procedure Clear (Self : in out Integer_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out Integer_Vector; Value : Integer) is
@@ -746,7 +823,8 @@ package body SARIF.Types is
       Self_Data_Saved : Integer_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new Integer_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new Integer_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new Integer_Array'
@@ -785,12 +863,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : notification_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : notification_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out notification_Vector) is
+   procedure Clear
+     (Self : in out notification_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -800,7 +883,8 @@ package body SARIF.Types is
       Self_Data_Saved : notification_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new notification_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new notification_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new notification_Array'
@@ -839,11 +923,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : attachment_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : attachment_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out attachment_Vector) is
+   procedure Clear
+     (Self : in out attachment_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out attachment_Vector; Value : attachment) is
@@ -852,7 +941,8 @@ package body SARIF.Types is
       Self_Data_Saved : attachment_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new attachment_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new attachment_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new attachment_Array'
@@ -891,11 +981,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : suppression_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : suppression_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out suppression_Vector) is
+   procedure Clear
+     (Self : in out suppression_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out suppression_Vector; Value : suppression) is
@@ -904,7 +999,8 @@ package body SARIF.Types is
       Self_Data_Saved : suppression_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new suppression_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new suppression_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new suppression_Array'
@@ -943,12 +1039,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : edgeTraversal_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : edgeTraversal_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out edgeTraversal_Vector) is
+   procedure Clear
+     (Self : in out edgeTraversal_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -958,7 +1059,8 @@ package body SARIF.Types is
       Self_Data_Saved : edgeTraversal_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new edgeTraversal_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new edgeTraversal_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new edgeTraversal_Array'
@@ -997,12 +1099,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : graphTraversal_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : graphTraversal_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out graphTraversal_Vector) is
+   procedure Clear
+     (Self : in out graphTraversal_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1012,7 +1119,8 @@ package body SARIF.Types is
       Self_Data_Saved : graphTraversal_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new graphTraversal_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new graphTraversal_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new graphTraversal_Array'
@@ -1051,11 +1159,15 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : location_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : location_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out location_Vector) is
+   procedure Clear
+     (Self : in out location_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out location_Vector; Value : location) is
@@ -1063,7 +1175,8 @@ package body SARIF.Types is
       Self_Data_Saved : location_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new location_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new location_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new location_Array'
@@ -1102,11 +1215,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : graph_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : graph_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out graph_Vector) is
+   procedure Clear (Self : in out graph_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out graph_Vector; Value : graph) is
@@ -1114,7 +1230,8 @@ package body SARIF.Types is
       Self_Data_Saved : graph_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new graph_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new graph_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new graph_Array'
@@ -1158,13 +1275,20 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null
+     (Self : reportingDescriptorReference_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length
      (Self : reportingDescriptorReference_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out reportingDescriptorReference_Vector) is
+   procedure Clear
+     (Self    : in out reportingDescriptorReference_Vector;
+      Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1175,7 +1299,8 @@ package body SARIF.Types is
       Self_Data_Saved : reportingDescriptorReference_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data :=
+         Self.Is_Null := False;
+         Self.Data    :=
            new reportingDescriptorReference_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
@@ -1221,13 +1346,20 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null
+     (Self : reportingDescriptorRelationship_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length
      (Self : reportingDescriptorRelationship_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out reportingDescriptorRelationship_Vector) is
+   procedure Clear
+     (Self    : in out reportingDescriptorRelationship_Vector;
+      Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1239,7 +1371,8 @@ package body SARIF.Types is
         Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data :=
+         Self.Is_Null := False;
+         Self.Data    :=
            new reportingDescriptorRelationship_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
@@ -1280,11 +1413,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : region_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : region_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out region_Vector) is
+   procedure Clear (Self : in out region_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out region_Vector; Value : region) is
@@ -1292,7 +1428,8 @@ package body SARIF.Types is
       Self_Data_Saved : region_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new region_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new region_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new region_Array'
@@ -1333,12 +1470,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : versionControlDetails_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : versionControlDetails_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out versionControlDetails_Vector) is
+   procedure Clear
+     (Self : in out versionControlDetails_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1349,7 +1491,8 @@ package body SARIF.Types is
       Self_Data_Saved : versionControlDetails_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new versionControlDetails_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new versionControlDetails_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new versionControlDetails_Array'
@@ -1389,11 +1532,15 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : rectangle_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : rectangle_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out rectangle_Vector) is
+   procedure Clear
+     (Self : in out rectangle_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out rectangle_Vector; Value : rectangle) is
@@ -1402,7 +1549,8 @@ package body SARIF.Types is
       Self_Data_Saved : rectangle_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new rectangle_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new rectangle_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new rectangle_Array'
@@ -1441,11 +1589,15 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : codeFlow_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : codeFlow_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out codeFlow_Vector) is
+   procedure Clear
+     (Self : in out codeFlow_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out codeFlow_Vector; Value : codeFlow) is
@@ -1453,7 +1605,8 @@ package body SARIF.Types is
       Self_Data_Saved : codeFlow_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new codeFlow_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new codeFlow_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new codeFlow_Array'
@@ -1494,12 +1647,18 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : toolComponentReference_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : toolComponentReference_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out toolComponentReference_Vector) is
+   procedure Clear
+     (Self    : in out toolComponentReference_Vector;
+      Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1510,7 +1669,8 @@ package body SARIF.Types is
       Self_Data_Saved : toolComponentReference_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new toolComponentReference_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new toolComponentReference_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new toolComponentReference_Array'
@@ -1550,11 +1710,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : edge_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : edge_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out edge_Vector) is
+   procedure Clear (Self : in out edge_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out edge_Vector; Value : edge) is
@@ -1562,7 +1725,8 @@ package body SARIF.Types is
       Self_Data_Saved : edge_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new edge_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new edge_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new edge_Array'
@@ -1601,12 +1765,18 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : toolComponent_contents_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : toolComponent_contents_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out toolComponent_contents_Vector) is
+   procedure Clear
+     (Self    : in out toolComponent_contents_Vector;
+      Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1617,7 +1787,8 @@ package body SARIF.Types is
       Self_Data_Saved : toolComponent_contents_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new toolComponent_contents_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new toolComponent_contents_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new toolComponent_contents_Array'
@@ -1657,11 +1828,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : node_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : node_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out node_Vector) is
+   procedure Clear (Self : in out node_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out node_Vector; Value : node) is
@@ -1669,7 +1843,8 @@ package body SARIF.Types is
       Self_Data_Saved : node_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new node_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new node_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new node_Array'
@@ -1706,11 +1881,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : threadFlow_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : threadFlow_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out threadFlow_Vector) is
+   procedure Clear
+     (Self : in out threadFlow_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out threadFlow_Vector; Value : threadFlow) is
@@ -1719,7 +1899,8 @@ package body SARIF.Types is
       Self_Data_Saved : threadFlow_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new threadFlow_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new threadFlow_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new threadFlow_Array'
@@ -1758,11 +1939,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : fix_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : fix_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out fix_Vector) is
+   procedure Clear (Self : in out fix_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out fix_Vector; Value : fix) is
@@ -1770,7 +1954,8 @@ package body SARIF.Types is
       Self_Data_Saved : fix_Array_Access  := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new fix_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new fix_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new fix_Array'(Self.Data.all & fix_Array'(1 .. Self.Length => <>));
@@ -1806,11 +1991,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : invocation_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : invocation_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out invocation_Vector) is
+   procedure Clear
+     (Self : in out invocation_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out invocation_Vector; Value : invocation) is
@@ -1819,7 +2009,8 @@ package body SARIF.Types is
       Self_Data_Saved : invocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new invocation_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new invocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new invocation_Array'
@@ -1858,12 +2049,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : artifactChange_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : artifactChange_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out artifactChange_Vector) is
+   procedure Clear
+     (Self : in out artifactChange_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1873,7 +2069,8 @@ package body SARIF.Types is
       Self_Data_Saved : artifactChange_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new artifactChange_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new artifactChange_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new artifactChange_Array'
@@ -1912,12 +2109,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : artifact_roles_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : artifact_roles_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out artifact_roles_Vector) is
+   procedure Clear
+     (Self : in out artifact_roles_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -1927,7 +2129,8 @@ package body SARIF.Types is
       Self_Data_Saved : artifact_roles_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new artifact_roles_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new artifact_roles_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new artifact_roles_Array'
@@ -1966,11 +2169,15 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : artifact_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : artifact_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out artifact_Vector) is
+   procedure Clear
+     (Self : in out artifact_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out artifact_Vector; Value : artifact) is
@@ -1978,7 +2185,8 @@ package body SARIF.Types is
       Self_Data_Saved : artifact_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new artifact_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new artifact_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new artifact_Array'
@@ -2017,12 +2225,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : logicalLocation_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : logicalLocation_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out logicalLocation_Vector) is
+   procedure Clear
+     (Self : in out logicalLocation_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -2032,7 +2245,8 @@ package body SARIF.Types is
       Self_Data_Saved : logicalLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new logicalLocation_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new logicalLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new logicalLocation_Array'
@@ -2071,11 +2285,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : webRequest_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : webRequest_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out webRequest_Vector) is
+   procedure Clear
+     (Self : in out webRequest_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out webRequest_Vector; Value : webRequest) is
@@ -2084,7 +2303,8 @@ package body SARIF.Types is
       Self_Data_Saved : webRequest_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new webRequest_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new webRequest_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new webRequest_Array'
@@ -2124,12 +2344,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : externalProperties_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : externalProperties_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out externalProperties_Vector) is
+   procedure Clear
+     (Self : in out externalProperties_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -2139,7 +2364,8 @@ package body SARIF.Types is
       Self_Data_Saved : externalProperties_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new externalProperties_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new externalProperties_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new externalProperties_Array'
@@ -2179,11 +2405,14 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : run_Vector) return Boolean is (Self.Is_Null);
+
    function Length (Self : run_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out run_Vector) is
+   procedure Clear (Self : in out run_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out run_Vector; Value : run) is
@@ -2191,7 +2420,8 @@ package body SARIF.Types is
       Self_Data_Saved : run_Array_Access  := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new run_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new run_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new run_Array'(Self.Data.all & run_Array'(1 .. Self.Length => <>));
@@ -2227,11 +2457,16 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : a_exception_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : a_exception_Vector) return Natural is (Self.Length);
 
-   procedure Clear (Self : in out a_exception_Vector) is
+   procedure Clear
+     (Self : in out a_exception_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append (Self : in out a_exception_Vector; Value : a_exception) is
@@ -2240,7 +2475,8 @@ package body SARIF.Types is
       Self_Data_Saved : a_exception_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new a_exception_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new a_exception_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new a_exception_Array'
@@ -2280,12 +2516,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : reportingDescriptor_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : reportingDescriptor_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out reportingDescriptor_Vector) is
+   procedure Clear
+     (Self : in out reportingDescriptor_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -2295,7 +2536,8 @@ package body SARIF.Types is
       Self_Data_Saved : reportingDescriptor_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new reportingDescriptor_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new reportingDescriptor_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new reportingDescriptor_Array'
@@ -2336,12 +2578,17 @@ package body SARIF.Types is
       Self.Length := 0;
    end Finalize;
 
+   function Is_Null (Self : artifactLocation_Vector) return Boolean is
+     (Self.Is_Null);
+
    function Length (Self : artifactLocation_Vector) return Natural is
      (Self.Length);
 
-   procedure Clear (Self : in out artifactLocation_Vector) is
+   procedure Clear
+     (Self : in out artifactLocation_Vector; Is_Null : Boolean := True) is
    begin
-      Self.Length := 0;
+      Self.Length  := 0;
+      Self.Is_Null := Is_Null;
    end Clear;
 
    procedure Append
@@ -2351,7 +2598,8 @@ package body SARIF.Types is
       Self_Data_Saved : artifactLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
-         Self.Data := new artifactLocation_Array (1 .. Init_Length);
+         Self.Is_Null := False;
+         Self.Data    := new artifactLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
          Self.Data :=
            new artifactLocation_Array'

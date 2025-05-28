@@ -368,6 +368,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  children
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.children.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : node;
@@ -534,6 +535,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  parameters
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.parameters.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -606,6 +608,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  kinds
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.kinds.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -676,6 +679,7 @@ package body SARIF.Types.Inputs is
                   when 1 =>  --  tags
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.tags.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -890,6 +894,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  conversionSources
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.conversionSources.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : physicalLocation;
@@ -975,6 +980,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  arguments
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.arguments.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -1046,6 +1052,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  replacements
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.replacements.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : replacement;
@@ -1443,6 +1450,7 @@ package body SARIF.Types.Inputs is
                   when 1 =>  --  locations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.locations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : location;
@@ -1736,6 +1744,7 @@ package body SARIF.Types.Inputs is
                   when 3 =>  --  logicalLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.logicalLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : logicalLocation;
@@ -1758,6 +1767,7 @@ package body SARIF.Types.Inputs is
                   when 5 =>  --  annotations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.annotations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : region;
@@ -1775,6 +1785,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  relationships
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.relationships.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : locationRelationship;
@@ -2000,6 +2011,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  kinds
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.kinds.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -2162,6 +2174,7 @@ package body SARIF.Types.Inputs is
                   when 3 =>  --  runs
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.runs.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : run;
@@ -2179,6 +2192,8 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  inlineExternalProperties
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.inlineExternalProperties.Clear
+                          (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalProperties;
@@ -2417,6 +2432,7 @@ package body SARIF.Types.Inputs is
                   when 16 =>  --  notifications
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.notifications.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : reportingDescriptor;
@@ -2435,6 +2451,7 @@ package body SARIF.Types.Inputs is
                   when 17 =>  --  rules
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.rules.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : reportingDescriptor;
@@ -2453,6 +2470,7 @@ package body SARIF.Types.Inputs is
                   when 18 =>  --  taxa
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.taxa.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : reportingDescriptor;
@@ -2471,6 +2489,7 @@ package body SARIF.Types.Inputs is
                   when 19 =>  --  locations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.locations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : artifactLocation;
@@ -2495,6 +2514,7 @@ package body SARIF.Types.Inputs is
                   when 21 =>  --  contents
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.contents.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : Enum.toolComponent_contents;
@@ -2548,6 +2568,7 @@ package body SARIF.Types.Inputs is
                   when 27 =>  --  supportedTaxonomies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.supportedTaxonomies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponentReference;
@@ -2641,6 +2662,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  arguments
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.arguments.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -2663,6 +2685,7 @@ package body SARIF.Types.Inputs is
                   when 3 =>  --  responseFiles
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.responseFiles.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : artifactLocation;
@@ -2708,6 +2731,8 @@ package body SARIF.Types.Inputs is
                   when 7 =>  --  ruleConfigurationOverrides
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.ruleConfigurationOverrides.Clear
+                          (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : configurationOverride;
@@ -2726,6 +2751,8 @@ package body SARIF.Types.Inputs is
                   when 8 =>  --  notificationConfigurationOverrides
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.notificationConfigurationOverrides.Clear
+                          (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : configurationOverride;
@@ -2745,6 +2772,8 @@ package body SARIF.Types.Inputs is
                   when 9 =>  --  toolExecutionNotifications
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.toolExecutionNotifications.Clear
+                          (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : notification;
@@ -2762,6 +2791,8 @@ package body SARIF.Types.Inputs is
                   when 10 =>  --  toolConfigurationNotifications
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.toolConfigurationNotifications.Clear
+                          (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : notification;
@@ -2944,6 +2975,7 @@ package body SARIF.Types.Inputs is
                   when 3 =>  --  analysisToolLogFiles
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.analysisToolLogFiles.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : artifactLocation;
@@ -3086,6 +3118,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  nodes
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.nodes.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : node;
@@ -3103,6 +3136,7 @@ package body SARIF.Types.Inputs is
                   when 3 =>  --  edges
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.edges.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : edge;
@@ -3219,6 +3253,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  graphs
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.graphs.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : graph;
@@ -3242,6 +3277,7 @@ package body SARIF.Types.Inputs is
                   when 8 =>  --  artifacts
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.artifacts.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : artifact;
@@ -3259,6 +3295,7 @@ package body SARIF.Types.Inputs is
                   when 9 =>  --  invocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.invocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : invocation;
@@ -3276,6 +3313,7 @@ package body SARIF.Types.Inputs is
                   when 10 =>  --  logicalLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.logicalLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : logicalLocation;
@@ -3293,6 +3331,7 @@ package body SARIF.Types.Inputs is
                   when 11 =>  --  threadFlowLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.threadFlowLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : threadFlowLocation;
@@ -3310,6 +3349,7 @@ package body SARIF.Types.Inputs is
                   when 12 =>  --  results
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.results.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : result;
@@ -3327,6 +3367,7 @@ package body SARIF.Types.Inputs is
                   when 13 =>  --  taxonomies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.taxonomies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -3349,6 +3390,7 @@ package body SARIF.Types.Inputs is
                   when 15 =>  --  extensions
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.extensions.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -3366,6 +3408,7 @@ package body SARIF.Types.Inputs is
                   when 16 =>  --  policies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.policies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -3383,6 +3426,7 @@ package body SARIF.Types.Inputs is
                   when 17 =>  --  translations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.translations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -3400,6 +3444,7 @@ package body SARIF.Types.Inputs is
                   when 18 =>  --  addresses
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.addresses.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : address;
@@ -3417,6 +3462,7 @@ package body SARIF.Types.Inputs is
                   when 19 =>  --  webRequests
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.webRequests.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : webRequest;
@@ -3434,6 +3480,7 @@ package body SARIF.Types.Inputs is
                   when 20 =>  --  webResponses
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.webResponses.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : webResponse;
@@ -3648,6 +3695,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  deprecatedIds
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.deprecatedIds.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -3677,6 +3725,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  deprecatedGuids
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.deprecatedGuids.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -3706,6 +3755,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  deprecatedNames
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.deprecatedNames.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -3761,6 +3811,7 @@ package body SARIF.Types.Inputs is
                   when 13 =>  --  relationships
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.relationships.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : reportingDescriptorRelationship;
@@ -3887,6 +3938,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  roles
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.roles.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : Enum.artifact_roles;
@@ -4149,6 +4201,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  extensions
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.extensions.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -4319,6 +4372,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  artifactChanges
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.artifactChanges.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : artifactChange;
@@ -4453,6 +4507,7 @@ package body SARIF.Types.Inputs is
                   when 8 =>  --  locations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.locations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : location;
@@ -4503,6 +4558,7 @@ package body SARIF.Types.Inputs is
                   when 14 =>  --  stacks
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.stacks.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : stack;
@@ -4520,6 +4576,7 @@ package body SARIF.Types.Inputs is
                   when 15 =>  --  codeFlows
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.codeFlows.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : codeFlow;
@@ -4537,6 +4594,7 @@ package body SARIF.Types.Inputs is
                   when 16 =>  --  graphs
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.graphs.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : graph;
@@ -4554,6 +4612,7 @@ package body SARIF.Types.Inputs is
                   when 17 =>  --  graphTraversals
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.graphTraversals.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : graphTraversal;
@@ -4571,6 +4630,7 @@ package body SARIF.Types.Inputs is
                   when 18 =>  --  relatedLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.relatedLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : location;
@@ -4588,6 +4648,7 @@ package body SARIF.Types.Inputs is
                   when 19 =>  --  suppressions
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.suppressions.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : suppression;
@@ -4631,6 +4692,7 @@ package body SARIF.Types.Inputs is
                   when 22 =>  --  attachments
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.attachments.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : attachment;
@@ -4655,6 +4717,7 @@ package body SARIF.Types.Inputs is
                   when 24 =>  --  workItemUris
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.workItemUris.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -4683,6 +4746,7 @@ package body SARIF.Types.Inputs is
                   when 26 =>  --  fixes
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.fixes.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : fix;
@@ -4700,6 +4764,7 @@ package body SARIF.Types.Inputs is
                   when 27 =>  --  taxa
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.taxa.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : reportingDescriptorReference;
@@ -5082,6 +5147,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  edgeTraversals
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.edgeTraversals.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : edgeTraversal;
@@ -5154,6 +5220,7 @@ package body SARIF.Types.Inputs is
                   when 3 =>  --  regions
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.regions.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : region;
@@ -5171,6 +5238,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  rectangles
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.rectangles.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : rectangle;
@@ -5238,6 +5306,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  frames
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.frames.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : stackFrame;
@@ -5380,6 +5449,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  invocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.invocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : invocation;
@@ -5410,6 +5480,8 @@ package body SARIF.Types.Inputs is
                   when 5 =>  --  versionControlProvenance
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.versionControlProvenance.Clear
+                          (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : versionControlDetails;
@@ -5431,6 +5503,7 @@ package body SARIF.Types.Inputs is
                   when 7 =>  --  artifacts
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.artifacts.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : artifact;
@@ -5448,6 +5521,7 @@ package body SARIF.Types.Inputs is
                   when 8 =>  --  logicalLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.logicalLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : logicalLocation;
@@ -5465,6 +5539,7 @@ package body SARIF.Types.Inputs is
                   when 9 =>  --  graphs
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.graphs.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : graph;
@@ -5482,6 +5557,7 @@ package body SARIF.Types.Inputs is
                   when 10 =>  --  results
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.results.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : result;
@@ -5505,6 +5581,7 @@ package body SARIF.Types.Inputs is
                   when 12 =>  --  runAggregates
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.runAggregates.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : runAutomationDetails;
@@ -5530,6 +5607,7 @@ package body SARIF.Types.Inputs is
                   when 14 =>  --  redactionTokens
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.redactionTokens.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -5566,6 +5644,7 @@ package body SARIF.Types.Inputs is
                   when 17 =>  --  newlineSequences
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.newlineSequences.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -5601,6 +5680,7 @@ package body SARIF.Types.Inputs is
                   when 20 =>  --  threadFlowLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.threadFlowLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : threadFlowLocation;
@@ -5618,6 +5698,7 @@ package body SARIF.Types.Inputs is
                   when 21 =>  --  taxonomies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.taxonomies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -5635,6 +5716,7 @@ package body SARIF.Types.Inputs is
                   when 22 =>  --  addresses
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.addresses.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : address;
@@ -5652,6 +5734,7 @@ package body SARIF.Types.Inputs is
                   when 23 =>  --  translations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.translations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -5669,6 +5752,7 @@ package body SARIF.Types.Inputs is
                   when 24 =>  --  policies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.policies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : toolComponent;
@@ -5686,6 +5770,7 @@ package body SARIF.Types.Inputs is
                   when 25 =>  --  webRequests
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.webRequests.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : webRequest;
@@ -5703,6 +5788,7 @@ package body SARIF.Types.Inputs is
                   when 26 =>  --  webResponses
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.webResponses.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : webResponse;
@@ -5792,6 +5878,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  graphs
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.graphs.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5816,6 +5903,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  artifacts
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.artifacts.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5834,6 +5922,7 @@ package body SARIF.Types.Inputs is
                   when 5 =>  --  invocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.invocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5852,6 +5941,7 @@ package body SARIF.Types.Inputs is
                   when 6 =>  --  logicalLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.logicalLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5870,6 +5960,7 @@ package body SARIF.Types.Inputs is
                   when 7 =>  --  threadFlowLocations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.threadFlowLocations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5888,6 +5979,7 @@ package body SARIF.Types.Inputs is
                   when 8 =>  --  results
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.results.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5906,6 +5998,7 @@ package body SARIF.Types.Inputs is
                   when 9 =>  --  taxonomies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.taxonomies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5924,6 +6017,7 @@ package body SARIF.Types.Inputs is
                   when 10 =>  --  addresses
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.addresses.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5948,6 +6042,7 @@ package body SARIF.Types.Inputs is
                   when 12 =>  --  extensions
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.extensions.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5966,6 +6061,7 @@ package body SARIF.Types.Inputs is
                   when 13 =>  --  policies
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.policies.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -5984,6 +6080,7 @@ package body SARIF.Types.Inputs is
                   when 14 =>  --  translations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.translations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -6002,6 +6099,7 @@ package body SARIF.Types.Inputs is
                   when 15 =>  --  webRequests
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.webRequests.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -6020,6 +6118,7 @@ package body SARIF.Types.Inputs is
                   when 16 =>  --  webResponses
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.webResponses.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : externalPropertyFileReference;
@@ -6104,6 +6203,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  innerExceptions
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.innerExceptions.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : a_exception;
@@ -6202,6 +6302,7 @@ package body SARIF.Types.Inputs is
                   when 4 =>  --  kinds
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.kinds.Clear;
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : VSS.Strings.Virtual_String;
@@ -6224,6 +6325,7 @@ package body SARIF.Types.Inputs is
                   when 5 =>  --  taxa
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.taxa.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : reportingDescriptorReference;
@@ -6354,6 +6456,7 @@ package body SARIF.Types.Inputs is
                   when 2 =>  --  threadFlows
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.threadFlows.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : threadFlow;
@@ -6677,6 +6780,7 @@ package body SARIF.Types.Inputs is
                   when 5 =>  --  locations
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
+                        Value.locations.Clear (Is_Null => False);
                         while Success and not Reader.Is_End_Array loop
                            declare
                               Item : threadFlowLocation;
