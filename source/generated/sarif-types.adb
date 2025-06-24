@@ -43,17 +43,16 @@ package body SARIF.Types is
      (Self  : in out configurationOverride_Vector;
       Value : configurationOverride) is
       Init_Length     : constant Positive                  :=
-        Positive'Max (1, 256 / configurationOverride'Size);
+        Positive'Max (2, 256 / configurationOverride'Size);
       Self_Data_Saved : configurationOverride_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new configurationOverride_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new configurationOverride_Array'
-             (Self.Data.all &
-              configurationOverride_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new configurationOverride_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -106,17 +105,16 @@ package body SARIF.Types is
      (Self  : in out locationRelationship_Vector;
       Value : locationRelationship) is
       Init_Length     : constant Positive                 :=
-        Positive'Max (1, 256 / locationRelationship'Size);
+        Positive'Max (2, 256 / locationRelationship'Size);
       Self_Data_Saved : locationRelationship_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new locationRelationship_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new locationRelationship_Array'
-             (Self.Data.all &
-              locationRelationship_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new locationRelationship_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -168,17 +166,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out threadFlowLocation_Vector; Value : threadFlowLocation) is
       Init_Length     : constant Positive               :=
-        Positive'Max (1, 256 / threadFlowLocation'Size);
+        Positive'Max (2, 256 / threadFlowLocation'Size);
       Self_Data_Saved : threadFlowLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new threadFlowLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new threadFlowLocation_Array'
-             (Self.Data.all &
-              threadFlowLocation_Array'(1 .. Self.Length => <>));
+         Self.Data := new threadFlowLocation_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -224,16 +220,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out result_Vector; Value : result) is
-      Init_Length : constant Positive   := Positive'Max (1, 256 / result'Size);
+      Init_Length : constant Positive   := Positive'Max (2, 256 / result'Size);
       Self_Data_Saved : result_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new result_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new result_Array'
-             (Self.Data.all & result_Array'(1 .. Self.Length => <>));
+         Self.Data := new result_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -286,17 +281,16 @@ package body SARIF.Types is
      (Self  : in out runAutomationDetails_Vector;
       Value : runAutomationDetails) is
       Init_Length     : constant Positive                 :=
-        Positive'Max (1, 256 / runAutomationDetails'Size);
+        Positive'Max (2, 256 / runAutomationDetails'Size);
       Self_Data_Saved : runAutomationDetails_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new runAutomationDetails_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new runAutomationDetails_Array'
-             (Self.Data.all &
-              runAutomationDetails_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new runAutomationDetails_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -345,16 +339,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out replacement_Vector; Value : replacement) is
       Init_Length     : constant Positive        :=
-        Positive'Max (1, 256 / replacement'Size);
+        Positive'Max (2, 256 / replacement'Size);
       Self_Data_Saved : replacement_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new replacement_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new replacement_Array'
-             (Self.Data.all & replacement_Array'(1 .. Self.Length => <>));
+         Self.Data := new replacement_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -403,16 +396,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out webResponse_Vector; Value : webResponse) is
       Init_Length     : constant Positive        :=
-        Positive'Max (1, 256 / webResponse'Size);
+        Positive'Max (2, 256 / webResponse'Size);
       Self_Data_Saved : webResponse_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new webResponse_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new webResponse_Array'
-             (Self.Data.all & webResponse_Array'(1 .. Self.Length => <>));
+         Self.Data := new webResponse_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -458,16 +450,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out address_Vector; Value : address) is
-      Init_Length : constant Positive := Positive'Max (1, 256 / address'Size);
+      Init_Length : constant Positive := Positive'Max (2, 256 / address'Size);
       Self_Data_Saved : address_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new address_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new address_Array'
-             (Self.Data.all & address_Array'(1 .. Self.Length => <>));
+         Self.Data := new address_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -519,16 +510,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out physicalLocation_Vector; Value : physicalLocation) is
       Init_Length     : constant Positive             :=
-        Positive'Max (1, 256 / physicalLocation'Size);
+        Positive'Max (2, 256 / physicalLocation'Size);
       Self_Data_Saved : physicalLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new physicalLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new physicalLocation_Array'
-             (Self.Data.all & physicalLocation_Array'(1 .. Self.Length => <>));
+         Self.Data := new physicalLocation_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -577,16 +567,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out stackFrame_Vector; Value : stackFrame) is
       Init_Length     : constant Positive       :=
-        Positive'Max (1, 256 / stackFrame'Size);
+        Positive'Max (2, 256 / stackFrame'Size);
       Self_Data_Saved : stackFrame_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new stackFrame_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new stackFrame_Array'
-             (Self.Data.all & stackFrame_Array'(1 .. Self.Length => <>));
+         Self.Data := new stackFrame_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -637,16 +626,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out toolComponent_Vector; Value : toolComponent) is
       Init_Length     : constant Positive          :=
-        Positive'Max (1, 256 / toolComponent'Size);
+        Positive'Max (2, 256 / toolComponent'Size);
       Self_Data_Saved : toolComponent_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new toolComponent_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new toolComponent_Array'
-             (Self.Data.all & toolComponent_Array'(1 .. Self.Length => <>));
+         Self.Data := new toolComponent_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -706,7 +694,7 @@ package body SARIF.Types is
      (Self  : in out externalPropertyFileReference_Vector;
       Value : externalPropertyFileReference) is
       Init_Length     : constant Positive                          :=
-        Positive'Max (1, 256 / externalPropertyFileReference'Size);
+        Positive'Max (2, 256 / externalPropertyFileReference'Size);
       Self_Data_Saved : externalPropertyFileReference_Array_Access :=
         Self.Data;
    begin
@@ -715,10 +703,9 @@ package body SARIF.Types is
          Self.Data    :=
            new externalPropertyFileReference_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new externalPropertyFileReference_Array'
-             (Self.Data.all &
-              externalPropertyFileReference_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new externalPropertyFileReference_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -764,16 +751,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out stack_Vector; Value : stack) is
-      Init_Length : constant Positive  := Positive'Max (1, 256 / stack'Size);
+      Init_Length : constant Positive  := Positive'Max (2, 256 / stack'Size);
       Self_Data_Saved : stack_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new stack_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new stack_Array'
-             (Self.Data.all & stack_Array'(1 .. Self.Length => <>));
+         Self.Data := new stack_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -819,16 +805,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out Integer_Vector; Value : Integer) is
-      Init_Length : constant Positive := Positive'Max (1, 256 / Integer'Size);
+      Init_Length : constant Positive := Positive'Max (2, 256 / Integer'Size);
       Self_Data_Saved : Integer_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new Integer_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new Integer_Array'
-             (Self.Data.all & Integer_Array'(1 .. Self.Length => <>));
+         Self.Data := new Integer_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -879,16 +864,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out notification_Vector; Value : notification) is
       Init_Length     : constant Positive         :=
-        Positive'Max (1, 256 / notification'Size);
+        Positive'Max (2, 256 / notification'Size);
       Self_Data_Saved : notification_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new notification_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new notification_Array'
-             (Self.Data.all & notification_Array'(1 .. Self.Length => <>));
+         Self.Data := new notification_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -937,16 +921,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out attachment_Vector; Value : attachment) is
       Init_Length     : constant Positive       :=
-        Positive'Max (1, 256 / attachment'Size);
+        Positive'Max (2, 256 / attachment'Size);
       Self_Data_Saved : attachment_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new attachment_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new attachment_Array'
-             (Self.Data.all & attachment_Array'(1 .. Self.Length => <>));
+         Self.Data := new attachment_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -995,16 +978,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out suppression_Vector; Value : suppression) is
       Init_Length     : constant Positive        :=
-        Positive'Max (1, 256 / suppression'Size);
+        Positive'Max (2, 256 / suppression'Size);
       Self_Data_Saved : suppression_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new suppression_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new suppression_Array'
-             (Self.Data.all & suppression_Array'(1 .. Self.Length => <>));
+         Self.Data := new suppression_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1055,16 +1037,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out edgeTraversal_Vector; Value : edgeTraversal) is
       Init_Length     : constant Positive          :=
-        Positive'Max (1, 256 / edgeTraversal'Size);
+        Positive'Max (2, 256 / edgeTraversal'Size);
       Self_Data_Saved : edgeTraversal_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new edgeTraversal_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new edgeTraversal_Array'
-             (Self.Data.all & edgeTraversal_Array'(1 .. Self.Length => <>));
+         Self.Data := new edgeTraversal_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1115,16 +1096,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out graphTraversal_Vector; Value : graphTraversal) is
       Init_Length     : constant Positive           :=
-        Positive'Max (1, 256 / graphTraversal'Size);
+        Positive'Max (2, 256 / graphTraversal'Size);
       Self_Data_Saved : graphTraversal_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new graphTraversal_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new graphTraversal_Array'
-             (Self.Data.all & graphTraversal_Array'(1 .. Self.Length => <>));
+         Self.Data := new graphTraversal_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1171,16 +1151,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out location_Vector; Value : location) is
-      Init_Length : constant Positive := Positive'Max (1, 256 / location'Size);
+      Init_Length : constant Positive := Positive'Max (2, 256 / location'Size);
       Self_Data_Saved : location_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new location_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new location_Array'
-             (Self.Data.all & location_Array'(1 .. Self.Length => <>));
+         Self.Data := new location_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1226,16 +1205,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out graph_Vector; Value : graph) is
-      Init_Length : constant Positive  := Positive'Max (1, 256 / graph'Size);
+      Init_Length : constant Positive  := Positive'Max (2, 256 / graph'Size);
       Self_Data_Saved : graph_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new graph_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new graph_Array'
-             (Self.Data.all & graph_Array'(1 .. Self.Length => <>));
+         Self.Data := new graph_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1295,7 +1273,7 @@ package body SARIF.Types is
      (Self  : in out reportingDescriptorReference_Vector;
       Value : reportingDescriptorReference) is
       Init_Length     : constant Positive                         :=
-        Positive'Max (1, 256 / reportingDescriptorReference'Size);
+        Positive'Max (2, 256 / reportingDescriptorReference'Size);
       Self_Data_Saved : reportingDescriptorReference_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
@@ -1303,10 +1281,9 @@ package body SARIF.Types is
          Self.Data    :=
            new reportingDescriptorReference_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new reportingDescriptorReference_Array'
-             (Self.Data.all &
-              reportingDescriptorReference_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new reportingDescriptorReference_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1366,7 +1343,7 @@ package body SARIF.Types is
      (Self  : in out reportingDescriptorRelationship_Vector;
       Value : reportingDescriptorRelationship) is
       Init_Length     : constant Positive                            :=
-        Positive'Max (1, 256 / reportingDescriptorRelationship'Size);
+        Positive'Max (2, 256 / reportingDescriptorRelationship'Size);
       Self_Data_Saved : reportingDescriptorRelationship_Array_Access :=
         Self.Data;
    begin
@@ -1375,10 +1352,10 @@ package body SARIF.Types is
          Self.Data    :=
            new reportingDescriptorRelationship_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new reportingDescriptorRelationship_Array'
-             (Self.Data.all &
-              reportingDescriptorRelationship_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new reportingDescriptorRelationship_Array
+             (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1424,16 +1401,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out region_Vector; Value : region) is
-      Init_Length : constant Positive   := Positive'Max (1, 256 / region'Size);
+      Init_Length : constant Positive   := Positive'Max (2, 256 / region'Size);
       Self_Data_Saved : region_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new region_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new region_Array'
-             (Self.Data.all & region_Array'(1 .. Self.Length => <>));
+         Self.Data := new region_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1487,17 +1463,16 @@ package body SARIF.Types is
      (Self  : in out versionControlDetails_Vector;
       Value : versionControlDetails) is
       Init_Length     : constant Positive                  :=
-        Positive'Max (1, 256 / versionControlDetails'Size);
+        Positive'Max (2, 256 / versionControlDetails'Size);
       Self_Data_Saved : versionControlDetails_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new versionControlDetails_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new versionControlDetails_Array'
-             (Self.Data.all &
-              versionControlDetails_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new versionControlDetails_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1545,16 +1520,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out rectangle_Vector; Value : rectangle) is
       Init_Length     : constant Positive      :=
-        Positive'Max (1, 256 / rectangle'Size);
+        Positive'Max (2, 256 / rectangle'Size);
       Self_Data_Saved : rectangle_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new rectangle_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new rectangle_Array'
-             (Self.Data.all & rectangle_Array'(1 .. Self.Length => <>));
+         Self.Data := new rectangle_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1601,16 +1575,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out codeFlow_Vector; Value : codeFlow) is
-      Init_Length : constant Positive := Positive'Max (1, 256 / codeFlow'Size);
+      Init_Length : constant Positive := Positive'Max (2, 256 / codeFlow'Size);
       Self_Data_Saved : codeFlow_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new codeFlow_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new codeFlow_Array'
-             (Self.Data.all & codeFlow_Array'(1 .. Self.Length => <>));
+         Self.Data := new codeFlow_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1665,17 +1638,16 @@ package body SARIF.Types is
      (Self  : in out toolComponentReference_Vector;
       Value : toolComponentReference) is
       Init_Length     : constant Positive                   :=
-        Positive'Max (1, 256 / toolComponentReference'Size);
+        Positive'Max (2, 256 / toolComponentReference'Size);
       Self_Data_Saved : toolComponentReference_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new toolComponentReference_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new toolComponentReference_Array'
-             (Self.Data.all &
-              toolComponentReference_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new toolComponentReference_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1721,16 +1693,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out edge_Vector; Value : edge) is
-      Init_Length     : constant Positive := Positive'Max (1, 256 / edge'Size);
+      Init_Length     : constant Positive := Positive'Max (2, 256 / edge'Size);
       Self_Data_Saved : edge_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new edge_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new edge_Array'
-             (Self.Data.all & edge_Array'(1 .. Self.Length => <>));
+         Self.Data := new edge_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1783,17 +1754,16 @@ package body SARIF.Types is
      (Self  : in out toolComponent_contents_Vector;
       Value : Enum.toolComponent_contents) is
       Init_Length     : constant Positive                   :=
-        Positive'Max (1, 256 / Enum.toolComponent_contents'Size);
+        Positive'Max (2, 256 / Enum.toolComponent_contents'Size);
       Self_Data_Saved : toolComponent_contents_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new toolComponent_contents_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new toolComponent_contents_Array'
-             (Self.Data.all &
-              toolComponent_contents_Array'(1 .. Self.Length => <>));
+         Self.Data                    :=
+           new toolComponent_contents_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1839,16 +1809,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out node_Vector; Value : node) is
-      Init_Length     : constant Positive := Positive'Max (1, 256 / node'Size);
+      Init_Length     : constant Positive := Positive'Max (2, 256 / node'Size);
       Self_Data_Saved : node_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new node_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new node_Array'
-             (Self.Data.all & node_Array'(1 .. Self.Length => <>));
+         Self.Data := new node_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1895,16 +1864,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out threadFlow_Vector; Value : threadFlow) is
       Init_Length     : constant Positive       :=
-        Positive'Max (1, 256 / threadFlow'Size);
+        Positive'Max (2, 256 / threadFlow'Size);
       Self_Data_Saved : threadFlow_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new threadFlow_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new threadFlow_Array'
-             (Self.Data.all & threadFlow_Array'(1 .. Self.Length => <>));
+         Self.Data := new threadFlow_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -1950,15 +1918,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out fix_Vector; Value : fix) is
-      Init_Length     : constant Positive := Positive'Max (1, 256 / fix'Size);
+      Init_Length     : constant Positive := Positive'Max (2, 256 / fix'Size);
       Self_Data_Saved : fix_Array_Access  := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new fix_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new fix_Array'(Self.Data.all & fix_Array'(1 .. Self.Length => <>));
+         Self.Data := new fix_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2005,16 +1973,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out invocation_Vector; Value : invocation) is
       Init_Length     : constant Positive       :=
-        Positive'Max (1, 256 / invocation'Size);
+        Positive'Max (2, 256 / invocation'Size);
       Self_Data_Saved : invocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new invocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new invocation_Array'
-             (Self.Data.all & invocation_Array'(1 .. Self.Length => <>));
+         Self.Data := new invocation_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2065,16 +2032,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out artifactChange_Vector; Value : artifactChange) is
       Init_Length     : constant Positive           :=
-        Positive'Max (1, 256 / artifactChange'Size);
+        Positive'Max (2, 256 / artifactChange'Size);
       Self_Data_Saved : artifactChange_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new artifactChange_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new artifactChange_Array'
-             (Self.Data.all & artifactChange_Array'(1 .. Self.Length => <>));
+         Self.Data := new artifactChange_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2125,16 +2091,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out artifact_roles_Vector; Value : Enum.artifact_roles) is
       Init_Length     : constant Positive           :=
-        Positive'Max (1, 256 / Enum.artifact_roles'Size);
+        Positive'Max (2, 256 / Enum.artifact_roles'Size);
       Self_Data_Saved : artifact_roles_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new artifact_roles_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new artifact_roles_Array'
-             (Self.Data.all & artifact_roles_Array'(1 .. Self.Length => <>));
+         Self.Data := new artifact_roles_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2181,16 +2146,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out artifact_Vector; Value : artifact) is
-      Init_Length : constant Positive := Positive'Max (1, 256 / artifact'Size);
+      Init_Length : constant Positive := Positive'Max (2, 256 / artifact'Size);
       Self_Data_Saved : artifact_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new artifact_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new artifact_Array'
-             (Self.Data.all & artifact_Array'(1 .. Self.Length => <>));
+         Self.Data := new artifact_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2241,16 +2205,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out logicalLocation_Vector; Value : logicalLocation) is
       Init_Length     : constant Positive            :=
-        Positive'Max (1, 256 / logicalLocation'Size);
+        Positive'Max (2, 256 / logicalLocation'Size);
       Self_Data_Saved : logicalLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new logicalLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new logicalLocation_Array'
-             (Self.Data.all & logicalLocation_Array'(1 .. Self.Length => <>));
+         Self.Data := new logicalLocation_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2299,16 +2262,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out webRequest_Vector; Value : webRequest) is
       Init_Length     : constant Positive       :=
-        Positive'Max (1, 256 / webRequest'Size);
+        Positive'Max (2, 256 / webRequest'Size);
       Self_Data_Saved : webRequest_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new webRequest_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new webRequest_Array'
-             (Self.Data.all & webRequest_Array'(1 .. Self.Length => <>));
+         Self.Data := new webRequest_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2360,17 +2322,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out externalProperties_Vector; Value : externalProperties) is
       Init_Length     : constant Positive               :=
-        Positive'Max (1, 256 / externalProperties'Size);
+        Positive'Max (2, 256 / externalProperties'Size);
       Self_Data_Saved : externalProperties_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new externalProperties_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new externalProperties_Array'
-             (Self.Data.all &
-              externalProperties_Array'(1 .. Self.Length => <>));
+         Self.Data := new externalProperties_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2416,15 +2376,15 @@ package body SARIF.Types is
    end Clear;
 
    procedure Append (Self : in out run_Vector; Value : run) is
-      Init_Length     : constant Positive := Positive'Max (1, 256 / run'Size);
+      Init_Length     : constant Positive := Positive'Max (2, 256 / run'Size);
       Self_Data_Saved : run_Array_Access  := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new run_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new run_Array'(Self.Data.all & run_Array'(1 .. Self.Length => <>));
+         Self.Data := new run_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2471,16 +2431,15 @@ package body SARIF.Types is
 
    procedure Append (Self : in out a_exception_Vector; Value : a_exception) is
       Init_Length     : constant Positive        :=
-        Positive'Max (1, 256 / a_exception'Size);
+        Positive'Max (2, 256 / a_exception'Size);
       Self_Data_Saved : a_exception_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new a_exception_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new a_exception_Array'
-             (Self.Data.all & a_exception_Array'(1 .. Self.Length => <>));
+         Self.Data := new a_exception_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2532,17 +2491,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out reportingDescriptor_Vector; Value : reportingDescriptor) is
       Init_Length     : constant Positive                :=
-        Positive'Max (1, 256 / reportingDescriptor'Size);
+        Positive'Max (2, 256 / reportingDescriptor'Size);
       Self_Data_Saved : reportingDescriptor_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new reportingDescriptor_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new reportingDescriptor_Array'
-             (Self.Data.all &
-              reportingDescriptor_Array'(1 .. Self.Length => <>));
+         Self.Data := new reportingDescriptor_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
@@ -2594,16 +2551,15 @@ package body SARIF.Types is
    procedure Append
      (Self : in out artifactLocation_Vector; Value : artifactLocation) is
       Init_Length     : constant Positive             :=
-        Positive'Max (1, 256 / artifactLocation'Size);
+        Positive'Max (2, 256 / artifactLocation'Size);
       Self_Data_Saved : artifactLocation_Array_Access := Self.Data;
    begin
       if Self.Length = 0 then
          Self.Is_Null := False;
          Self.Data    := new artifactLocation_Array (1 .. Init_Length);
       elsif Self.Length = Self.Data'Last then
-         Self.Data :=
-           new artifactLocation_Array'
-             (Self.Data.all & artifactLocation_Array'(1 .. Self.Length => <>));
+         Self.Data := new artifactLocation_Array (1 .. 3 * Self.Length / 2);
+         Self.Data (1 .. Self.Length) := Self_Data_Saved.all;
          Free (Self_Data_Saved);
       end if;
       Self.Length             := Self.Length + 1;
