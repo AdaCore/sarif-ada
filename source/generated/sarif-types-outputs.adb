@@ -376,6 +376,7 @@ package body SARIF.Types.Outputs is
          end loop;
          Handler.End_Array;
       end if;
+      Output_Any_Value (Handler, Value.Additional_Properties);
       Handler.End_Object;
    end Output_propertyBag;
 

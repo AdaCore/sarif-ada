@@ -345,10 +345,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  node_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -356,16 +357,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  label
+                     Reader.Read_Next;
+
                      Value.label :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.label.Value, Success);
                   when 3 =>  --  location
+                     Reader.Read_Next;
+
                      Value.location :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_location (Reader, Value.location.Value, Success);
                   when 4 =>  --  children
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.children.Clear (Is_Null => False);
@@ -384,12 +391,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -428,10 +438,11 @@ package body SARIF.Types.Inputs is
                  edgeTraversal_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  edgeId
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.edgeId := Reader.String_Value;
                         Reader.Read_Next;
@@ -439,13 +450,19 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 3 =>  --  finalState
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.finalState, Success);
                   when 4 =>  --  stepOverEdgeCount
+                     Reader.Read_Next;
+
                      Value.stepOverEdgeCount :=
                        (Is_Set => True,
                         Value  => <>);
@@ -460,12 +477,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -503,15 +523,18 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  stackFrame_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  location
+                     Reader.Read_Next;
+
                      Value.location :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_location (Reader, Value.location.Value, Success);
                   when 2 =>  --  module
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.module := Reader.String_Value;
                         Reader.Read_Next;
@@ -519,6 +542,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  threadId
+                     Reader.Read_Next;
+
                      Value.threadId :=
                        (Is_Set => True,
                         Value  => <>);
@@ -533,6 +558,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  parameters
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.parameters.Clear;
@@ -556,12 +583,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -599,13 +629,16 @@ package body SARIF.Types.Inputs is
                  reportingDescriptorRelationship_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  target
+                     Reader.Read_Next;
+
                      Input_reportingDescriptorReference
                        (Reader, Value.target, Success);
                   when 2 =>  --  kinds
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.kinds.Clear;
@@ -629,17 +662,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -673,10 +711,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  propertyBag_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  tags
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.tags.Clear;
@@ -700,7 +739,12 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when others =>
-                     Reader.Skip_Current_Value;
+                     Value.Additional_Properties.Append
+                       ((VSS.JSON.Streams.Key_Name,
+                         Reader.Key_Name));
+                     Reader.Read_Next;
+                     Input_Any_Value
+                       (Reader, Value.Additional_Properties, Success);
                end case;
             end;
          else
@@ -740,10 +784,11 @@ package body SARIF.Types.Inputs is
                  logicalLocation_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  name
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.name := Reader.String_Value;
                         Reader.Read_Next;
@@ -751,6 +796,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -765,6 +812,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  fullyQualifiedName
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.fullyQualifiedName := Reader.String_Value;
                         Reader.Read_Next;
@@ -772,6 +821,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  decoratedName
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.decoratedName := Reader.String_Value;
                         Reader.Read_Next;
@@ -779,6 +830,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  parentIndex
+                     Reader.Read_Next;
+
                      Value.parentIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -793,6 +846,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  kind
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.kind := Reader.String_Value;
                         Reader.Read_Next;
@@ -800,12 +855,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -846,10 +904,11 @@ package body SARIF.Types.Inputs is
                  resultProvenance_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  firstDetectionTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.firstDetectionTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -857,6 +916,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  lastDetectionTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.lastDetectionTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -864,6 +925,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  firstDetectionRunGuid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.firstDetectionRunGuid := Reader.String_Value;
                         Reader.Read_Next;
@@ -871,6 +934,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  lastDetectionRunGuid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.lastDetectionRunGuid := Reader.String_Value;
                         Reader.Read_Next;
@@ -878,6 +943,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  invocationIndex
+                     Reader.Read_Next;
+
                      Value.invocationIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -892,6 +959,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  conversionSources
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.conversionSources.Clear (Is_Null => False);
@@ -910,12 +979,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -953,10 +1025,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  message_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  text
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.text := Reader.String_Value;
                         Reader.Read_Next;
@@ -964,6 +1037,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  markdown
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.markdown := Reader.String_Value;
                         Reader.Read_Next;
@@ -971,6 +1046,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -978,6 +1055,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  arguments
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.arguments.Clear;
@@ -1001,12 +1080,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1043,13 +1125,16 @@ package body SARIF.Types.Inputs is
                  artifactChange_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  artifactLocation
+                     Reader.Read_Next;
+
                      Input_artifactLocation
                        (Reader, Value.artifactLocation, Success);
                   when 2 =>  --  replacements
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.replacements.Clear (Is_Null => False);
@@ -1068,12 +1153,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1116,10 +1204,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  address_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  absoluteAddress
+                     Reader.Read_Next;
+
                      Value.absoluteAddress :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1134,6 +1223,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  relativeAddress
+                     Reader.Read_Next;
+
                      Value.relativeAddress :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1148,6 +1239,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  length
+                     Reader.Read_Next;
+
                      Value.length :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1162,6 +1255,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  kind
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.kind := Reader.String_Value;
                         Reader.Read_Next;
@@ -1169,6 +1264,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  name
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.name := Reader.String_Value;
                         Reader.Read_Next;
@@ -1176,6 +1273,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  fullyQualifiedName
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.fullyQualifiedName := Reader.String_Value;
                         Reader.Read_Next;
@@ -1183,6 +1282,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  offsetFromParent
+                     Reader.Read_Next;
+
                      Value.offsetFromParent :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1197,6 +1298,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 8 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1211,6 +1314,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  parentIndex
+                     Reader.Read_Next;
+
                      Value.parentIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1225,12 +1330,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1269,10 +1377,11 @@ package body SARIF.Types.Inputs is
                  reportingDescriptorReference_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -1280,6 +1389,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1294,6 +1405,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -1301,18 +1414,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  toolComponent
+                     Reader.Read_Next;
+
                      Value.toolComponent :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_toolComponentReference
                        (Reader, Value.toolComponent.Value, Success);
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1353,10 +1471,11 @@ package body SARIF.Types.Inputs is
                  translationMetadata_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  name
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.name := Reader.String_Value;
                         Reader.Read_Next;
@@ -1364,6 +1483,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  fullName
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.fullName := Reader.String_Value;
                         Reader.Read_Next;
@@ -1371,18 +1492,24 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  shortDescription
+                     Reader.Read_Next;
+
                      Value.shortDescription :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.shortDescription.Value, Success);
                   when 4 =>  --  fullDescription
+                     Reader.Read_Next;
+
                      Value.fullDescription :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.fullDescription.Value, Success);
                   when 5 =>  --  downloadUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.downloadUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -1390,6 +1517,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  informationUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.informationUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -1397,12 +1526,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1444,10 +1576,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  notification_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  locations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.locations.Clear (Is_Null => False);
@@ -1466,14 +1599,20 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  message
+                     Reader.Read_Next;
+
                      Input_message (Reader, Value.message, Success);
                   when 3 =>  --  level
+                     Reader.Read_Next;
+
                      Value.level :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_notification_level
                        (Reader, Value.level.Value, Success);
                   when 4 =>  --  threadId
+                     Reader.Read_Next;
+
                      Value.threadId :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1488,6 +1627,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  timeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.timeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -1495,30 +1636,39 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  exception
+                     Reader.Read_Next;
+
                      Value.a_exception :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_a_exception
                        (Reader, Value.a_exception.Value, Success);
                   when 7 =>  --  descriptor
+                     Reader.Read_Next;
+
                      Value.descriptor :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_reportingDescriptorReference
                        (Reader, Value.descriptor.Value, Success);
                   when 8 =>  --  associatedRule
+                     Reader.Read_Next;
+
                      Value.associatedRule :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_reportingDescriptorReference
                        (Reader, Value.associatedRule.Value, Success);
                   when 9 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1557,37 +1707,47 @@ package body SARIF.Types.Inputs is
                  physicalLocation_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  address
+                     Reader.Read_Next;
+
                      Value.address :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_address (Reader, Value.address.Value, Success);
                   when 2 =>  --  artifactLocation
+                     Reader.Read_Next;
+
                      Value.artifactLocation :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.artifactLocation.Value, Success);
                   when 3 =>  --  region
+                     Reader.Read_Next;
+
                      Value.region :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_region (Reader, Value.region.Value, Success);
                   when 4 =>  --  contextRegion
+                     Reader.Read_Next;
+
                      Value.contextRegion :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_region (Reader, Value.contextRegion.Value, Success);
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1628,10 +1788,11 @@ package body SARIF.Types.Inputs is
                  versionControlDetails_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  repositoryUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.repositoryUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -1639,6 +1800,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  revisionId
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.revisionId := Reader.String_Value;
                         Reader.Read_Next;
@@ -1646,6 +1809,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  branch
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.branch := Reader.String_Value;
                         Reader.Read_Next;
@@ -1653,6 +1818,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  revisionTag
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.revisionTag := Reader.String_Value;
                         Reader.Read_Next;
@@ -1660,6 +1827,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  asOfTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.asOfTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -1667,18 +1836,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  mappedTo
+                     Reader.Read_Next;
+
                      Value.mappedTo :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.mappedTo.Value, Success);
                   when 7 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1718,10 +1892,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  location_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  id
+                     Reader.Read_Next;
+
                      Value.id :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1736,12 +1911,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  physicalLocation
+                     Reader.Read_Next;
+
                      Value.physicalLocation :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_physicalLocation
                        (Reader, Value.physicalLocation.Value, Success);
                   when 3 =>  --  logicalLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.logicalLocations.Clear (Is_Null => False);
@@ -1760,11 +1939,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 5 =>  --  annotations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.annotations.Clear (Is_Null => False);
@@ -1783,6 +1966,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  relationships
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.relationships.Clear (Is_Null => False);
@@ -1802,12 +1987,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1846,10 +2034,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  suppression_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -1857,14 +2046,20 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  kind
+                     Reader.Read_Next;
+
                      Input_suppression_kind (Reader, Value.kind, Success);
                   when 3 =>  --  status
+                     Reader.Read_Next;
+
                      Value.status :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_suppression_status
                        (Reader, Value.status.Value, Success);
                   when 4 =>  --  justification
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.justification := Reader.String_Value;
                         Reader.Read_Next;
@@ -1872,17 +2067,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  location
+                     Reader.Read_Next;
+
                      Value.location :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_location (Reader, Value.location.Value, Success);
                   when 6 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1920,16 +2120,19 @@ package body SARIF.Types.Inputs is
                  externalPropertyFileReference_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  location
+                     Reader.Read_Next;
+
                      Value.location :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.location.Value, Success);
                   when 2 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -1937,6 +2140,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  itemCount
+                     Reader.Read_Next;
+
                      Value.itemCount :=
                        (Is_Set => True,
                         Value  => <>);
@@ -1951,12 +2156,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -1994,10 +2202,11 @@ package body SARIF.Types.Inputs is
                  locationRelationship_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  target
+                     Reader.Read_Next;
+
                      if Reader.Is_Number_Value
                        and then Reader.Number_Value.Kind =
                          VSS.JSON.JSON_Integer
@@ -2009,6 +2218,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  kinds
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.kinds.Clear;
@@ -2032,17 +2243,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -2080,10 +2296,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  edge_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -2091,11 +2308,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  label
+                     Reader.Read_Next;
+
                      Value.label :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.label.Value, Success);
                   when 3 =>  --  sourceNodeId
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.sourceNodeId := Reader.String_Value;
                         Reader.Read_Next;
@@ -2103,6 +2324,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  targetNodeId
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.targetNodeId := Reader.String_Value;
                         Reader.Read_Next;
@@ -2110,12 +2333,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -2153,10 +2379,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  Root_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  $schema
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.schema := Reader.String_Value;
                         Reader.Read_Next;
@@ -2164,6 +2391,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  version
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value
                        and then Reader.String_Value = "2.1.0"
                      then
@@ -2172,6 +2401,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  runs
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.runs.Clear (Is_Null => False);
@@ -2190,6 +2421,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  inlineExternalProperties
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.inlineExternalProperties.Clear
@@ -2209,12 +2442,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -2250,22 +2486,26 @@ package body SARIF.Types.Inputs is
                  specialLocations_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  displayBase
+                     Reader.Read_Next;
+
                      Value.displayBase :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.displayBase.Value, Success);
                   when 2 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -2327,10 +2567,11 @@ package body SARIF.Types.Inputs is
                  toolComponent_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -2338,6 +2579,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  name
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.name := Reader.String_Value;
                         Reader.Read_Next;
@@ -2345,6 +2588,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  organization
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.organization := Reader.String_Value;
                         Reader.Read_Next;
@@ -2352,6 +2597,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  product
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.product := Reader.String_Value;
                         Reader.Read_Next;
@@ -2359,6 +2606,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  productSuite
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.productSuite := Reader.String_Value;
                         Reader.Read_Next;
@@ -2366,18 +2615,24 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  shortDescription
+                     Reader.Read_Next;
+
                      Value.shortDescription :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.shortDescription.Value, Success);
                   when 7 =>  --  fullDescription
+                     Reader.Read_Next;
+
                      Value.fullDescription :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.fullDescription.Value, Success);
                   when 8 =>  --  fullName
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.fullName := Reader.String_Value;
                         Reader.Read_Next;
@@ -2385,6 +2640,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  version
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.version := Reader.String_Value;
                         Reader.Read_Next;
@@ -2392,6 +2649,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  semanticVersion
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.semanticVersion := Reader.String_Value;
                         Reader.Read_Next;
@@ -2399,6 +2658,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  dottedQuadFileVersion
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.dottedQuadFileVersion := Reader.String_Value;
                         Reader.Read_Next;
@@ -2406,6 +2667,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 12 =>  --  releaseDateUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.releaseDateUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -2413,6 +2676,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 13 =>  --  downloadUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.downloadUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -2420,6 +2685,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 14 =>  --  informationUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.informationUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -2427,9 +2694,13 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 15 =>  --  globalMessageStrings
+                     Reader.Read_Next;
+
                      Input_Any_Value
                        (Reader, Value.globalMessageStrings, Success);
                   when 16 =>  --  notifications
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.notifications.Clear (Is_Null => False);
@@ -2449,6 +2720,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 17 =>  --  rules
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.rules.Clear (Is_Null => False);
@@ -2468,6 +2741,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 18 =>  --  taxa
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.taxa.Clear (Is_Null => False);
@@ -2487,6 +2762,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 19 =>  --  locations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.locations.Clear (Is_Null => False);
@@ -2505,6 +2782,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 20 =>  --  language
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.language := Reader.String_Value;
                         Reader.Read_Next;
@@ -2512,6 +2791,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 21 =>  --  contents
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.contents.Clear (Is_Null => False);
@@ -2531,6 +2812,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 22 =>  --  isComprehensive
+                     Reader.Read_Next;
+
                      if Reader.Is_Boolean_Value then
                         Value.isComprehensive := Reader.Boolean_Value;
                         Reader.Read_Next;
@@ -2538,6 +2821,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 23 =>  --  localizedDataSemanticVersion
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.localizedDataSemanticVersion :=
                           Reader.String_Value;
@@ -2546,6 +2831,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 24 =>  --  minimumRequiredLocalizedDataSemanticVersion
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.minimumRequiredLocalizedDataSemanticVersion :=
                           Reader.String_Value;
@@ -2554,18 +2841,24 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 25 =>  --  associatedComponent
+                     Reader.Read_Next;
+
                      Value.associatedComponent :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_toolComponentReference
                        (Reader, Value.associatedComponent.Value, Success);
                   when 26 =>  --  translationMetadata
+                     Reader.Read_Next;
+
                      Value.translationMetadata :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_translationMetadata
                        (Reader, Value.translationMetadata.Value, Success);
                   when 27 =>  --  supportedTaxonomies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.supportedTaxonomies.Clear (Is_Null => False);
@@ -2585,12 +2878,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 28 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -2649,10 +2945,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  invocation_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  commandLine
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.commandLine := Reader.String_Value;
                         Reader.Read_Next;
@@ -2660,6 +2957,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  arguments
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.arguments.Clear;
@@ -2683,6 +2982,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  responseFiles
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.responseFiles.Clear (Is_Null => False);
@@ -2701,6 +3002,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  startTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.startTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -2708,6 +3011,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  endTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.endTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -2715,6 +3020,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  exitCode
+                     Reader.Read_Next;
+
                      Value.exitCode :=
                        (Is_Set => True,
                         Value  => <>);
@@ -2729,6 +3036,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  ruleConfigurationOverrides
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.ruleConfigurationOverrides.Clear
@@ -2749,6 +3058,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 8 =>  --  notificationConfigurationOverrides
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.notificationConfigurationOverrides.Clear
@@ -2770,6 +3081,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  toolExecutionNotifications
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.toolExecutionNotifications.Clear
@@ -2789,6 +3102,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  toolConfigurationNotifications
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.toolConfigurationNotifications.Clear
@@ -2809,6 +3124,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  exitCodeDescription
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.exitCodeDescription := Reader.String_Value;
                         Reader.Read_Next;
@@ -2816,6 +3133,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 12 =>  --  exitSignalName
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.exitSignalName := Reader.String_Value;
                         Reader.Read_Next;
@@ -2823,6 +3142,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 13 =>  --  exitSignalNumber
+                     Reader.Read_Next;
+
                      Value.exitSignalNumber :=
                        (Is_Set => True,
                         Value  => <>);
@@ -2837,6 +3158,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 14 =>  --  processStartFailureMessage
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.processStartFailureMessage :=
                           Reader.String_Value;
@@ -2845,6 +3168,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 15 =>  --  executionSuccessful
+                     Reader.Read_Next;
+
                      if Reader.Is_Boolean_Value then
                         Value.executionSuccessful := Reader.Boolean_Value;
                         Reader.Read_Next;
@@ -2852,6 +3177,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 16 =>  --  machine
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.machine := Reader.String_Value;
                         Reader.Read_Next;
@@ -2859,6 +3186,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 17 =>  --  account
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.account := Reader.String_Value;
                         Reader.Read_Next;
@@ -2866,6 +3195,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 18 =>  --  processId
+                     Reader.Read_Next;
+
                      Value.processId :=
                        (Is_Set => True,
                         Value  => <>);
@@ -2880,51 +3211,68 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 19 =>  --  executableLocation
+                     Reader.Read_Next;
+
                      Value.executableLocation :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.executableLocation.Value, Success);
                   when 20 =>  --  workingDirectory
+                     Reader.Read_Next;
+
                      Value.workingDirectory :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.workingDirectory.Value, Success);
                   when 21 =>  --  environmentVariables
+                     Reader.Read_Next;
+
                      Input_Any_Value
                        (Reader, Value.environmentVariables, Success);
                   when 22 =>  --  stdin
+                     Reader.Read_Next;
+
                      Value.stdin :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.stdin.Value, Success);
                   when 23 =>  --  stdout
+                     Reader.Read_Next;
+
                      Value.stdout :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.stdout.Value, Success);
                   when 24 =>  --  stderr
+                     Reader.Read_Next;
+
                      Value.stderr :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.stderr.Value, Success);
                   when 25 =>  --  stdoutStderr
+                     Reader.Read_Next;
+
                      Value.stdoutStderr :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.stdoutStderr.Value, Success);
                   when 26 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -2961,18 +3309,23 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  conversion_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  tool
+                     Reader.Read_Next;
+
                      Input_tool (Reader, Value.tool, Success);
                   when 2 =>  --  invocation
+                     Reader.Read_Next;
+
                      Value.invocation :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_invocation
                        (Reader, Value.invocation.Value, Success);
                   when 3 =>  --  analysisToolLogFiles
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.analysisToolLogFiles.Clear (Is_Null => False);
@@ -2991,12 +3344,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -3035,15 +3391,18 @@ package body SARIF.Types.Inputs is
                  runAutomationDetails_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 2 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -3051,6 +3410,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -3058,6 +3419,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  correlationGuid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.correlationGuid := Reader.String_Value;
                         Reader.Read_Next;
@@ -3065,12 +3428,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -3107,15 +3473,18 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  graph_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 2 =>  --  nodes
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.nodes.Clear (Is_Null => False);
@@ -3134,6 +3503,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  edges
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.edges.Clear (Is_Null => False);
@@ -3152,12 +3523,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -3212,10 +3586,11 @@ package body SARIF.Types.Inputs is
                  externalProperties_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  schema
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.schema := Reader.String_Value;
                         Reader.Read_Next;
@@ -3223,6 +3598,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  version
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value
                        and then Reader.String_Value = "2.1.0"
                      then
@@ -3231,6 +3608,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -3238,6 +3617,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  runGuid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.runGuid := Reader.String_Value;
                         Reader.Read_Next;
@@ -3245,12 +3626,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  conversion
+                     Reader.Read_Next;
+
                      Value.conversion :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_conversion
                        (Reader, Value.conversion.Value, Success);
                   when 6 =>  --  graphs
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.graphs.Clear (Is_Null => False);
@@ -3269,12 +3654,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  externalizedProperties
+                     Reader.Read_Next;
+
                      Value.externalizedProperties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.externalizedProperties.Value, Success);
                   when 8 =>  --  artifacts
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.artifacts.Clear (Is_Null => False);
@@ -3293,6 +3682,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  invocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.invocations.Clear (Is_Null => False);
@@ -3311,6 +3702,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  logicalLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.logicalLocations.Clear (Is_Null => False);
@@ -3329,6 +3722,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  threadFlowLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.threadFlowLocations.Clear (Is_Null => False);
@@ -3347,6 +3742,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 12 =>  --  results
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.results.Clear (Is_Null => False);
@@ -3365,6 +3762,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 13 =>  --  taxonomies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.taxonomies.Clear (Is_Null => False);
@@ -3383,11 +3782,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 14 =>  --  driver
+                     Reader.Read_Next;
+
                      Value.driver :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_toolComponent (Reader, Value.driver.Value, Success);
                   when 15 =>  --  extensions
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.extensions.Clear (Is_Null => False);
@@ -3406,6 +3809,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 16 =>  --  policies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.policies.Clear (Is_Null => False);
@@ -3424,6 +3829,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 17 =>  --  translations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.translations.Clear (Is_Null => False);
@@ -3442,6 +3849,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 18 =>  --  addresses
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.addresses.Clear (Is_Null => False);
@@ -3460,6 +3869,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 19 =>  --  webRequests
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.webRequests.Clear (Is_Null => False);
@@ -3478,6 +3889,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 20 =>  --  webResponses
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.webResponses.Clear (Is_Null => False);
@@ -3496,12 +3909,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 21 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -3540,10 +3956,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  rectangle_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  top
+                     Reader.Read_Next;
+
                      Value.top :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3564,6 +3981,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  left
+                     Reader.Read_Next;
+
                      Value.left :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3584,6 +4003,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  bottom
+                     Reader.Read_Next;
+
                      Value.bottom :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3604,6 +4025,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  right
+                     Reader.Read_Next;
+
                      Value.right :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3624,17 +4047,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 6 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -3682,10 +4110,11 @@ package body SARIF.Types.Inputs is
                  reportingDescriptor_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -3693,6 +4122,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  deprecatedIds
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.deprecatedIds.Clear;
@@ -3716,6 +4147,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -3723,6 +4156,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  deprecatedGuids
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.deprecatedGuids.Clear;
@@ -3746,6 +4181,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  name
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.name := Reader.String_Value;
                         Reader.Read_Next;
@@ -3753,6 +4190,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  deprecatedNames
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.deprecatedNames.Clear;
@@ -3776,26 +4215,36 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  shortDescription
+                     Reader.Read_Next;
+
                      Value.shortDescription :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.shortDescription.Value, Success);
                   when 8 =>  --  fullDescription
+                     Reader.Read_Next;
+
                      Value.fullDescription :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.fullDescription.Value, Success);
                   when 9 =>  --  messageStrings
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.messageStrings, Success);
                   when 10 =>  --  defaultConfiguration
+                     Reader.Read_Next;
+
                      Value.defaultConfiguration :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_reportingConfiguration
                        (Reader, Value.defaultConfiguration.Value, Success);
                   when 11 =>  --  helpUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.helpUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -3803,12 +4252,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 12 =>  --  help
+                     Reader.Read_Next;
+
                      Value.help :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.help.Value, Success);
                   when 13 =>  --  relationships
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.relationships.Clear (Is_Null => False);
@@ -3828,12 +4281,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 14 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -3879,21 +4335,26 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  artifact_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 2 =>  --  location
+                     Reader.Read_Next;
+
                      Value.location :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.location.Value, Success);
                   when 3 =>  --  parentIndex
+                     Reader.Read_Next;
+
                      Value.parentIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3908,6 +4369,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  offset
+                     Reader.Read_Next;
+
                      Value.offset :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3922,6 +4385,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  length
+                     Reader.Read_Next;
+
                      Value.length :=
                        (Is_Set => True,
                         Value  => <>);
@@ -3936,6 +4401,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  roles
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.roles.Clear (Is_Null => False);
@@ -3954,6 +4421,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  mimeType
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.mimeType := Reader.String_Value;
                         Reader.Read_Next;
@@ -3961,12 +4430,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 8 =>  --  contents
+                     Reader.Read_Next;
+
                      Value.contents :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactContent
                        (Reader, Value.contents.Value, Success);
                   when 9 =>  --  encoding
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.encoding := Reader.String_Value;
                         Reader.Read_Next;
@@ -3974,6 +4447,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  sourceLanguage
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.sourceLanguage := Reader.String_Value;
                         Reader.Read_Next;
@@ -3981,8 +4456,12 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  hashes
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.hashes, Success);
                   when 12 =>  --  lastModifiedTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.lastModifiedTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -3990,12 +4469,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 13 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4034,10 +4516,11 @@ package body SARIF.Types.Inputs is
                  reportingConfiguration_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  enabled
+                     Reader.Read_Next;
+
                      if Reader.Is_Boolean_Value then
                         Value.enabled := Reader.Boolean_Value;
                         Reader.Read_Next;
@@ -4045,12 +4528,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  level
+                     Reader.Read_Next;
+
                      Value.level :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_reportingConfiguration_level
                        (Reader, Value.level.Value, Success);
                   when 3 =>  --  rank
+                     Reader.Read_Next;
+
                      Value.rank :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4071,18 +4558,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  parameters
+                     Reader.Read_Next;
+
                      Value.parameters :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.parameters.Value, Success);
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4120,10 +4612,11 @@ package body SARIF.Types.Inputs is
                  toolComponentReference_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  name
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.name := Reader.String_Value;
                         Reader.Read_Next;
@@ -4131,6 +4624,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4145,6 +4640,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -4152,12 +4649,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4193,12 +4693,15 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  tool_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  driver
+                     Reader.Read_Next;
+
                      Input_toolComponent (Reader, Value.driver, Success);
                   when 2 =>  --  extensions
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.extensions.Clear (Is_Null => False);
@@ -4217,12 +4720,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4264,10 +4770,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  webRequest_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4282,6 +4789,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  protocol
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.protocol := Reader.String_Value;
                         Reader.Read_Next;
@@ -4289,6 +4798,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  version
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.version := Reader.String_Value;
                         Reader.Read_Next;
@@ -4296,6 +4807,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  target
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.target := Reader.String_Value;
                         Reader.Read_Next;
@@ -4303,6 +4816,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  method
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.method := Reader.String_Value;
                         Reader.Read_Next;
@@ -4310,22 +4825,31 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  headers
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.headers, Success);
                   when 7 =>  --  parameters
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.parameters, Success);
                   when 8 =>  --  body
+                     Reader.Read_Next;
+
                      Value.a_body :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactContent
                        (Reader, Value.a_body.Value, Success);
                   when 9 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4361,15 +4885,18 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  fix_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 2 =>  --  artifactChanges
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.artifactChanges.Clear (Is_Null => False);
@@ -4388,12 +4915,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4456,10 +4986,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  result_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  ruleId
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.ruleId := Reader.String_Value;
                         Reader.Read_Next;
@@ -4467,6 +4998,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  ruleIndex
+                     Reader.Read_Next;
+
                      Value.ruleIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4481,30 +5014,42 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  rule
+                     Reader.Read_Next;
+
                      Value.rule :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_reportingDescriptorReference
                        (Reader, Value.rule.Value, Success);
                   when 4 =>  --  kind
+                     Reader.Read_Next;
+
                      Value.kind :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_result_kind (Reader, Value.kind.Value, Success);
                   when 5 =>  --  level
+                     Reader.Read_Next;
+
                      Value.level :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_result_level (Reader, Value.level.Value, Success);
                   when 6 =>  --  message
+                     Reader.Read_Next;
+
                      Input_message (Reader, Value.message, Success);
                   when 7 =>  --  analysisTarget
+                     Reader.Read_Next;
+
                      Value.analysisTarget :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactLocation
                        (Reader, Value.analysisTarget.Value, Success);
                   when 8 =>  --  locations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.locations.Clear (Is_Null => False);
@@ -4523,6 +5068,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  guid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.guid := Reader.String_Value;
                         Reader.Read_Next;
@@ -4530,6 +5077,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  correlationGuid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.correlationGuid := Reader.String_Value;
                         Reader.Read_Next;
@@ -4537,6 +5086,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  occurrenceCount
+                     Reader.Read_Next;
+
                      Value.occurrenceCount :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4551,11 +5102,17 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 12 =>  --  partialFingerprints
+                     Reader.Read_Next;
+
                      Input_Any_Value
                        (Reader, Value.partialFingerprints, Success);
                   when 13 =>  --  fingerprints
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.fingerprints, Success);
                   when 14 =>  --  stacks
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.stacks.Clear (Is_Null => False);
@@ -4574,6 +5131,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 15 =>  --  codeFlows
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.codeFlows.Clear (Is_Null => False);
@@ -4592,6 +5151,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 16 =>  --  graphs
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.graphs.Clear (Is_Null => False);
@@ -4610,6 +5171,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 17 =>  --  graphTraversals
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.graphTraversals.Clear (Is_Null => False);
@@ -4628,6 +5191,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 18 =>  --  relatedLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.relatedLocations.Clear (Is_Null => False);
@@ -4646,6 +5211,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 19 =>  --  suppressions
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.suppressions.Clear (Is_Null => False);
@@ -4664,12 +5231,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 20 =>  --  baselineState
+                     Reader.Read_Next;
+
                      Value.baselineState :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_result_baselineState
                        (Reader, Value.baselineState.Value, Success);
                   when 21 =>  --  rank
+                     Reader.Read_Next;
+
                      Value.rank :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4690,6 +5261,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 22 =>  --  attachments
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.attachments.Clear (Is_Null => False);
@@ -4708,6 +5281,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 23 =>  --  hostedViewerUri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.hostedViewerUri := Reader.String_Value;
                         Reader.Read_Next;
@@ -4715,6 +5290,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 24 =>  --  workItemUris
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.workItemUris.Clear;
@@ -4738,12 +5315,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 25 =>  --  provenance
+                     Reader.Read_Next;
+
                      Value.provenance :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_resultProvenance
                        (Reader, Value.provenance.Value, Success);
                   when 26 =>  --  fixes
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.fixes.Clear (Is_Null => False);
@@ -4762,6 +5343,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 27 =>  --  taxa
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.taxa.Clear (Is_Null => False);
@@ -4781,24 +5364,31 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 28 =>  --  webRequest
+                     Reader.Read_Next;
+
                      Value.webRequest :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_webRequest
                        (Reader, Value.webRequest.Value, Success);
                   when 29 =>  --  webResponse
+                     Reader.Read_Next;
+
                      Value.webResponse :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_webResponse
                        (Reader, Value.webResponse.Value, Success);
                   when 30 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -4843,10 +5433,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  region_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  startLine
+                     Reader.Read_Next;
+
                      Value.startLine :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4861,6 +5452,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  startColumn
+                     Reader.Read_Next;
+
                      Value.startColumn :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4875,6 +5468,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  endLine
+                     Reader.Read_Next;
+
                      Value.endLine :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4889,6 +5484,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  endColumn
+                     Reader.Read_Next;
+
                      Value.endColumn :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4903,6 +5500,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  charOffset
+                     Reader.Read_Next;
+
                      Value.charOffset :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4917,6 +5516,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  charLength
+                     Reader.Read_Next;
+
                      Value.charLength :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4931,6 +5532,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  byteOffset
+                     Reader.Read_Next;
+
                      Value.byteOffset :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4945,6 +5548,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 8 =>  --  byteLength
+                     Reader.Read_Next;
+
                      Value.byteLength :=
                        (Is_Set => True,
                         Value  => <>);
@@ -4959,17 +5564,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  snippet
+                     Reader.Read_Next;
+
                      Value.snippet :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactContent
                        (Reader, Value.snippet.Value, Success);
                   when 10 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 11 =>  --  sourceLanguage
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.sourceLanguage := Reader.String_Value;
                         Reader.Read_Next;
@@ -4977,12 +5588,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 12 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5021,10 +5635,11 @@ package body SARIF.Types.Inputs is
                  artifactLocation_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  uri
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.uri := Reader.String_Value;
                         Reader.Read_Next;
@@ -5032,6 +5647,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  uriBaseId
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.uriBaseId := Reader.String_Value;
                         Reader.Read_Next;
@@ -5039,6 +5656,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -5053,17 +5672,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5104,10 +5728,11 @@ package body SARIF.Types.Inputs is
                  graphTraversal_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  runGraphIndex
+                     Reader.Read_Next;
+
                      Value.runGraphIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -5122,6 +5747,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  resultGraphIndex
+                     Reader.Read_Next;
+
                      Value.resultGraphIndex :=
                        (Is_Set => True,
                         Value  => <>);
@@ -5136,15 +5763,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 4 =>  --  initialState
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.initialState, Success);
                   when 5 =>  --  immutableState
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.immutableState, Success);
                   when 6 =>  --  edgeTraversals
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.edgeTraversals.Clear (Is_Null => False);
@@ -5163,12 +5798,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5206,18 +5844,23 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  attachment_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  description
+                     Reader.Read_Next;
+
                      Value.description :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.description.Value, Success);
                   when 2 =>  --  artifactLocation
+                     Reader.Read_Next;
+
                      Input_artifactLocation
                        (Reader, Value.artifactLocation, Success);
                   when 3 =>  --  regions
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.regions.Clear (Is_Null => False);
@@ -5236,6 +5879,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  rectangles
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.rectangles.Clear (Is_Null => False);
@@ -5254,12 +5899,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5295,15 +5943,18 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  stack_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 2 =>  --  frames
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.frames.Clear (Is_Null => False);
@@ -5322,12 +5973,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5363,24 +6017,30 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  replacement_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  deletedRegion
+                     Reader.Read_Next;
+
                      Input_region (Reader, Value.deletedRegion, Success);
                   when 2 =>  --  insertedContent
+                     Reader.Read_Next;
+
                      Value.insertedContent :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactContent
                        (Reader, Value.insertedContent.Value, Success);
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5441,12 +6101,15 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  run_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  tool
+                     Reader.Read_Next;
+
                      Input_tool (Reader, Value.tool, Success);
                   when 2 =>  --  invocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.invocations.Clear (Is_Null => False);
@@ -5465,12 +6128,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  conversion
+                     Reader.Read_Next;
+
                      Value.conversion :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_conversion
                        (Reader, Value.conversion.Value, Success);
                   when 4 =>  --  language
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.language := Reader.String_Value;
                         Reader.Read_Next;
@@ -5478,6 +6145,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  versionControlProvenance
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.versionControlProvenance.Clear
@@ -5498,9 +6167,13 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  originalUriBaseIds
+                     Reader.Read_Next;
+
                      Input_Any_Value
                        (Reader, Value.originalUriBaseIds, Success);
                   when 7 =>  --  artifacts
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.artifacts.Clear (Is_Null => False);
@@ -5519,6 +6192,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 8 =>  --  logicalLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.logicalLocations.Clear (Is_Null => False);
@@ -5537,6 +6212,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  graphs
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.graphs.Clear (Is_Null => False);
@@ -5555,6 +6232,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  results
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.results.Clear (Is_Null => False);
@@ -5573,12 +6252,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  automationDetails
+                     Reader.Read_Next;
+
                      Value.automationDetails :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_runAutomationDetails
                        (Reader, Value.automationDetails.Value, Success);
                   when 12 =>  --  runAggregates
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.runAggregates.Clear (Is_Null => False);
@@ -5598,6 +6281,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 13 =>  --  baselineGuid
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.baselineGuid := Reader.String_Value;
                         Reader.Read_Next;
@@ -5605,6 +6290,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 14 =>  --  redactionTokens
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.redactionTokens.Clear;
@@ -5628,6 +6315,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 15 =>  --  defaultEncoding
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.defaultEncoding := Reader.String_Value;
                         Reader.Read_Next;
@@ -5635,6 +6324,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 16 =>  --  defaultSourceLanguage
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.defaultSourceLanguage := Reader.String_Value;
                         Reader.Read_Next;
@@ -5642,6 +6333,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 17 =>  --  newlineSequences
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.newlineSequences.Clear;
@@ -5665,12 +6358,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 18 =>  --  columnKind
+                     Reader.Read_Next;
+
                      Value.columnKind :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_run_columnKind
                        (Reader, Value.columnKind.Value, Success);
                   when 19 =>  --  externalPropertyFileReferences
+                     Reader.Read_Next;
+
                      Value.externalPropertyFileReferences :=
                        (Is_Set => True,
                         Value  => <>);
@@ -5678,6 +6375,8 @@ package body SARIF.Types.Inputs is
                        (Reader, Value.externalPropertyFileReferences.Value,
                         Success);
                   when 20 =>  --  threadFlowLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.threadFlowLocations.Clear (Is_Null => False);
@@ -5696,6 +6395,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 21 =>  --  taxonomies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.taxonomies.Clear (Is_Null => False);
@@ -5714,6 +6415,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 22 =>  --  addresses
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.addresses.Clear (Is_Null => False);
@@ -5732,6 +6435,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 23 =>  --  translations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.translations.Clear (Is_Null => False);
@@ -5750,6 +6455,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 24 =>  --  policies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.policies.Clear (Is_Null => False);
@@ -5768,6 +6475,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 25 =>  --  webRequests
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.webRequests.Clear (Is_Null => False);
@@ -5786,6 +6495,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 26 =>  --  webResponses
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.webResponses.Clear (Is_Null => False);
@@ -5804,18 +6515,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 27 =>  --  specialLocations
+                     Reader.Read_Next;
+
                      Value.specialLocations :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_specialLocations
                        (Reader, Value.specialLocations.Value, Success);
                   when 28 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -5866,16 +6582,19 @@ package body SARIF.Types.Inputs is
                  externalPropertyFileReferences_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  conversion
+                     Reader.Read_Next;
+
                      Value.conversion :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_externalPropertyFileReference
                        (Reader, Value.conversion.Value, Success);
                   when 2 =>  --  graphs
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.graphs.Clear (Is_Null => False);
@@ -5895,12 +6614,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  externalizedProperties
+                     Reader.Read_Next;
+
                      Value.externalizedProperties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_externalPropertyFileReference
                        (Reader, Value.externalizedProperties.Value, Success);
                   when 4 =>  --  artifacts
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.artifacts.Clear (Is_Null => False);
@@ -5920,6 +6643,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  invocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.invocations.Clear (Is_Null => False);
@@ -5939,6 +6664,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  logicalLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.logicalLocations.Clear (Is_Null => False);
@@ -5958,6 +6685,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  threadFlowLocations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.threadFlowLocations.Clear (Is_Null => False);
@@ -5977,6 +6706,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 8 =>  --  results
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.results.Clear (Is_Null => False);
@@ -5996,6 +6727,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  taxonomies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.taxonomies.Clear (Is_Null => False);
@@ -6015,6 +6748,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  addresses
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.addresses.Clear (Is_Null => False);
@@ -6034,12 +6769,16 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  driver
+                     Reader.Read_Next;
+
                      Value.driver :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_externalPropertyFileReference
                        (Reader, Value.driver.Value, Success);
                   when 12 =>  --  extensions
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.extensions.Clear (Is_Null => False);
@@ -6059,6 +6798,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 13 =>  --  policies
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.policies.Clear (Is_Null => False);
@@ -6078,6 +6819,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 14 =>  --  translations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.translations.Clear (Is_Null => False);
@@ -6097,6 +6840,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 15 =>  --  webRequests
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.webRequests.Clear (Is_Null => False);
@@ -6116,6 +6861,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 16 =>  --  webResponses
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.webResponses.Clear (Is_Null => False);
@@ -6135,12 +6882,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 17 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6178,10 +6928,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  a_exception_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  kind
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.kind := Reader.String_Value;
                         Reader.Read_Next;
@@ -6189,6 +6940,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  message
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.message := Reader.String_Value;
                         Reader.Read_Next;
@@ -6196,11 +6949,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  stack
+                     Reader.Read_Next;
+
                      Value.stack :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_stack (Reader, Value.stack.Value, Success);
                   when 4 =>  --  innerExceptions
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.innerExceptions.Clear (Is_Null => False);
@@ -6219,12 +6976,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6272,10 +7032,11 @@ package body SARIF.Types.Inputs is
                  threadFlowLocation_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -6290,16 +7051,22 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  location
+                     Reader.Read_Next;
+
                      Value.location :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_location (Reader, Value.location.Value, Success);
                   when 3 =>  --  stack
+                     Reader.Read_Next;
+
                      Value.stack :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_stack (Reader, Value.stack.Value, Success);
                   when 4 =>  --  kinds
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.kinds.Clear;
@@ -6323,6 +7090,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  taxa
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.taxa.Clear (Is_Null => False);
@@ -6342,6 +7111,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  module
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.module := Reader.String_Value;
                         Reader.Read_Next;
@@ -6349,8 +7120,12 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 7 =>  --  state
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.state, Success);
                   when 8 =>  --  nestingLevel
+                     Reader.Read_Next;
+
                      Value.nestingLevel :=
                        (Is_Set => True,
                         Value  => <>);
@@ -6365,6 +7140,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  executionOrder
+                     Reader.Read_Next;
+
                      Value.executionOrder :=
                        (Is_Set => True,
                         Value  => <>);
@@ -6379,6 +7156,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 10 =>  --  executionTimeUtc
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.executionTimeUtc := Reader.String_Value;
                         Reader.Read_Next;
@@ -6386,30 +7165,39 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 11 =>  --  importance
+                     Reader.Read_Next;
+
                      Value.importance :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_threadFlowLocation_importance
                        (Reader, Value.importance.Value, Success);
                   when 12 =>  --  webRequest
+                     Reader.Read_Next;
+
                      Value.webRequest :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_webRequest
                        (Reader, Value.webRequest.Value, Success);
                   when 13 =>  --  webResponse
+                     Reader.Read_Next;
+
                      Value.webResponse :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_webResponse
                        (Reader, Value.webResponse.Value, Success);
                   when 14 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6445,15 +7233,18 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  codeFlow_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 2 =>  --  threadFlows
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.threadFlows.Clear (Is_Null => False);
@@ -6472,12 +7263,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6514,10 +7308,11 @@ package body SARIF.Types.Inputs is
                  multiformatMessageString_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  text
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.text := Reader.String_Value;
                         Reader.Read_Next;
@@ -6525,6 +7320,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  markdown
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.markdown := Reader.String_Value;
                         Reader.Read_Next;
@@ -6532,12 +7329,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6575,10 +7375,11 @@ package body SARIF.Types.Inputs is
                  artifactContent_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  text
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.text := Reader.String_Value;
                         Reader.Read_Next;
@@ -6586,6 +7387,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  binary
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.binary := Reader.String_Value;
                         Reader.Read_Next;
@@ -6593,18 +7396,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  rendered
+                     Reader.Read_Next;
+
                      Value.rendered :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_multiformatMessageString
                        (Reader, Value.rendered.Value, Success);
                   when 4 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6646,10 +7454,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  webResponse_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  index
+                     Reader.Read_Next;
+
                      Value.index :=
                        (Is_Set => True,
                         Value  => <>);
@@ -6664,6 +7473,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  protocol
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.protocol := Reader.String_Value;
                         Reader.Read_Next;
@@ -6671,6 +7482,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 3 =>  --  version
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.version := Reader.String_Value;
                         Reader.Read_Next;
@@ -6678,6 +7491,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 4 =>  --  statusCode
+                     Reader.Read_Next;
+
                      Value.statusCode :=
                        (Is_Set => True,
                         Value  => <>);
@@ -6692,6 +7507,8 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 5 =>  --  reasonPhrase
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.reasonPhrase := Reader.String_Value;
                         Reader.Read_Next;
@@ -6699,14 +7516,20 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  headers
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.headers, Success);
                   when 7 =>  --  body
+                     Reader.Read_Next;
+
                      Value.a_body :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_artifactContent
                        (Reader, Value.a_body.Value, Success);
                   when 8 =>  --  noResponseReceived
+                     Reader.Read_Next;
+
                      if Reader.Is_Boolean_Value then
                         Value.noResponseReceived := Reader.Boolean_Value;
                         Reader.Read_Next;
@@ -6714,12 +7537,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 9 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6758,10 +7584,11 @@ package body SARIF.Types.Inputs is
                Index : constant Natural :=
                  threadFlow_Minimal_Perfect_Hash.Get_Index (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  id
+                     Reader.Read_Next;
+
                      if Reader.Is_String_Value then
                         Value.id := Reader.String_Value;
                         Reader.Read_Next;
@@ -6769,15 +7596,23 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 2 =>  --  message
+                     Reader.Read_Next;
+
                      Value.message :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_message (Reader, Value.message.Value, Success);
                   when 3 =>  --  initialState
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.initialState, Success);
                   when 4 =>  --  immutableState
+                     Reader.Read_Next;
+
                      Input_Any_Value (Reader, Value.immutableState, Success);
                   when 5 =>  --  locations
+                     Reader.Read_Next;
+
                      if Success and Reader.Is_Start_Array then
                         Reader.Read_Next;
                         Value.locations.Clear (Is_Null => False);
@@ -6796,12 +7631,15 @@ package body SARIF.Types.Inputs is
                         Success := False;
                      end if;
                   when 6 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;
@@ -6838,22 +7676,28 @@ package body SARIF.Types.Inputs is
                  configurationOverride_Minimal_Perfect_Hash.Get_Index
                    (Reader.Key_Name);
             begin
-               Reader.Read_Next;
 
                case Index is
                   when 1 =>  --  configuration
+                     Reader.Read_Next;
+
                      Input_reportingConfiguration
                        (Reader, Value.configuration, Success);
                   when 2 =>  --  descriptor
+                     Reader.Read_Next;
+
                      Input_reportingDescriptorReference
                        (Reader, Value.descriptor, Success);
                   when 3 =>  --  properties
+                     Reader.Read_Next;
+
                      Value.properties :=
                        (Is_Set => True,
                         Value  => <>);
                      Input_propertyBag
                        (Reader, Value.properties.Value, Success);
                   when others =>
+                     Reader.Read_Next;
                      Reader.Skip_Current_Value;
                end case;
             end;

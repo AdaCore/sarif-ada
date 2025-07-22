@@ -13,6 +13,7 @@ create: source/header.adt
 	curl -o sarif-schema.json ${SCHEMA_URL}
 	${GEN_JSON} --root-package SARIF.Types \
 	  --enum-package Enum --root-type Root \
+	  --additional-properties \
 	  --header-file $^ sarif-schema.json > ada.txt
 	gnatchop -gnatyN -gnat2022 -w ada.txt ${OUT_DIR}
 	rm -f ada.txt
