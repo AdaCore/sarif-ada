@@ -342,8 +342,9 @@ package SARIF.Types is
    end Enum;
 
    type propertyBag is record
-      tags : VSS.String_Vectors.Virtual_String_Vector;
+      tags                  : VSS.String_Vectors.Virtual_String_Vector;
       --  A set of distinct strings that provide additional information.
+      Additional_Properties : Any_Object;
    end record;
 
    type Optional_propertyBag (Is_Set : Boolean := False) is record
