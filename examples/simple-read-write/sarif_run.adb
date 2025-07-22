@@ -1,11 +1,12 @@
 --
---  Copyright (C) 2024, AdaCore
+--  Copyright (C) 2024-2025, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
 with VSS.JSON.Pull_Readers.Simple;
 with VSS.JSON.Push_Writers;
+with VSS.JSON.Streams;
 with VSS.Text_Streams.File_Input;
 with VSS.Text_Streams.File_Output;
 with VSS.Text_Streams.Standards;
@@ -56,6 +57,7 @@ procedure SARIF_Run is
       Success : Boolean := True;
       Root    : SARIF.Types.Root;
       Run     : SARIF.Types.run;
+      Props   : SARIF.Types.propertyBag;
       Result  : SARIF.Types.result;
    begin
       Result :=
@@ -69,6 +71,23 @@ procedure SARIF_Run is
       --  It makes the output routine generate `results: []`.
 
       Run.results.Append (Result);
+
+      --  Construct properties
+      Props.tags.Append ("openSource");
+
+      Props.Additional_Properties.Append
+        ((VSS.JSON.Streams.Key_Name, "openSource"));
+      Props.Additional_Properties.Append
+        ((Kind => VSS.JSON.Streams.Start_Object));
+      Props.Additional_Properties.Append
+        ((VSS.JSON.Streams.Key_Name, "informationUri"));
+      Props.Additional_Properties.Append
+        ((VSS.JSON.Streams.String_Value, "https://example.com/using.html"));
+      Props.Additional_Properties.Append
+        ((Kind => VSS.JSON.Streams.End_Object));
+
+      Run.properties := (Is_Set => True, Value => Props);
+
       Root.runs.Append (Run);
 
       Console.Put_Line ("Writing example-output.sarif...", Success);
