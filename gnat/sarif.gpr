@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, AdaCore
+--  Copyright (C) 2024-2025, AdaCore
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -22,7 +22,9 @@ project Sarif is
    for Library_Kind use Library_Type;
 
    package Compiler is
-      for Default_Switches ("Ada") use Sarif_Ada_Config.Ada_Compiler_Switches;
+      for Default_Switches ("Ada")
+        use Sarif_Ada_Config.Ada_Compiler_Switches
+          & ("-fno-function-sections", "-fno-data-sections");
    end Compiler;
 
    package Pretty_Printer is
