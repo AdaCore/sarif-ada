@@ -5,10 +5,8 @@ version = "0.1.0-dev"
 authors = ["AdaCore"]
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
-project-files = ["gnat/sarif.gpr"]
 
 [configuration]
-output_dir = "gnat"
 generate_ada = false
 generate_c = false
 
@@ -19,4 +17,9 @@ development.contracts = "Yes"
 "*".ada_version = "Ada2022"
 
 [[depends-on]]
-vss = "*"
+vss_text = "*"
+vss_extra = "*"
+
+[[pins]]
+vss_text = { url='https://github.com/AdaCore/vss-text' }
+vss_extra = { url='https://github.com/AdaCore/vss-extra' }

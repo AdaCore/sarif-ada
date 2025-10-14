@@ -1,11 +1,11 @@
 GEN_JSON    = gen_json
-OUT_DIR     = source/generated
-GNATPP_OPTS = -P gnat/sarif.gpr
+OUT_DIR     = src/generated
+GNATPP_OPTS = -P sarif_ada.gpr
 SCHEMA_URL  = https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json
 
 all:
-	gprbuild -P gnat/sarif.gpr
-	gprbuild -P gnat/sarif_examples.gpr
+	gprbuild -P sarif_ada.gpr
+	gprbuild -P share/sarif_ada/examples/sarif_examples.gpr
 
 generate: create pretty
 
