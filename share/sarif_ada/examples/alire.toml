@@ -1,0 +1,15 @@
+name = "sarif_examples"
+description = ""
+version = "0.1.0-dev"
+
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+[[depends-on]]
+vss_extra = "*"
+sarif_ada = "*"
+
+[[pins]]
+sarif_ada = { path='../../..' }
+vss_extra = { url='https://github.com/AdaCore/vss-extra' }
+vss_text = { url='https://github.com/AdaCore/vss-text' }

@@ -1,0 +1,17 @@
+--
+--  Copyright (C) 2024-2025, AdaCore
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+with "sarif_ada.gpr";
+with "vss_os.gpr";  --  From vss_extra crate
+
+project SARIF_Examples is
+   for Source_Dirs use ("simple-read-write");
+   for Object_Dir use ".obj";
+   for Main use ("sarif_run.adb");
+
+   package Compiler renames SARIF_Ada.Compiler;
+
+end SARIF_Examples;
