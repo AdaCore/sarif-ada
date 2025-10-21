@@ -18,13 +18,13 @@ by default in GNAT toolchains) and `alr` available in your `PATH`
 (you can download Alire [here](https://alire.ada.dev/)).
 
 Then you will need to build the `gen_json` tool from the
-[`VSS` repository](https://github.com/AdaCore/vss-extra/tree/master/tools/json_schema),
+[`vss-extra` repository](https://github.com/AdaCore/vss-extra/tree/master/tools/json_schema),
 and make it available in your `PATH` environment variable.
 Here are the instructions to achieve that:
 
 ```shell
-git clone https://github.com/AdaCore/VSS.git
-cd VSS/tools/json_schema
+git clone https://github.com/AdaCore/vss-extra.git
+cd vss-extra/tools/json_schema
 alr build
 export PATH=`pwd`/../../.objs/tools:$PATH
 ```
